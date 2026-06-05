@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCP RAYMOND — Mandataire Judiciaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0d1117;
+      --amber: #c08442;
+      --stone: #f4f1ec;
+      --white: #fff;
+      --nav-h: 52px;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    nav .nav-brand {
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.50);
+      text-decoration: none;
+    }
+    nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    nav .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: var(--white); }
+    nav .nav-gallery {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.30);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav .nav-gallery:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
+
+    /* DARK OVERLAY — layered for depth */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(13,17,23,0.82) 0%,
+        rgba(13,17,23,0.72) 50%,
+        rgba(13,17,23,0.45) 100%
+      );
+    }
+    .hero-overlay-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(13,17,23,0.90), transparent);
+    }
+
+    /* CONTENT */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--nav-h) 64px 0;
+      max-width: 660px;
+    }
+
+    .flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      align-self: flex-start;
+    }
+    .flag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--amber);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 62px);
+      font-weight: 400;
+      line-height: 1.14;
+      color: var(--white);
+      margin-bottom: 16px;
+      max-width: 540px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.60);
+      line-height: 1.65;
+      max-width: 400px;
+      margin-bottom: 36px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--amber);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--amber);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--amber);
+    }
+    .btn-ghost {
+      display: inline-block;
+      padding: 14px 28px;
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.20);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* CREDENTIAL STRIP at bottom */
+    .cred-strip {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      height: 44px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(13,17,23,0.78);
+      backdrop-filter: blur(12px);
+    }
+    .cred-item {
+      padding: 0 22px;
+      font-size: 9px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+      white-space: nowrap;
+    }
+    .cred-item.amber { color: var(--amber); }
+    .cred-sep {
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    /* CONTACT in corner */
+    .corner-contact {
+      position: fixed;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: right;
+    }
+    .corner-block .city {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 3px;
+    }
+    .corner-block .phone {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+    }
+    .corner-block .mail {
+      display: block;
+      font-size: 10px;
+      color: rgba(255,255,255,0.30);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .corner-block .mail:hover { color: var(--amber); }
+    .corner-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+</div>
+
+<nav>
+  <a href="#" class="nav-brand">SCP Raymond</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#">Procédures</a></li>
+      <li><a href="#">Cabinets</a></li>
+    </ul>
+    <a href="../index.html" class="nav-gallery">← Galerie</a>
+  </div>
+</nav>
+
+<div class="hero-content">
+  <span class="flag">Mandataire Judiciaire inscrit CNAJMj</span>
+  <h1>Accompagner l'entreprise<br>dans <em>chaque épreuve</em><br>judiciaire</h1>
+  <p class="hero-desc">
+    SCP Raymond intervient dans les procédures collectives,<br>
+    la sauvegarde, le redressement et la liquidation judiciaire.<br>
+    Désigné par le Tribunal. Premier audit sans engagement.
+  </p>
+  <div class="cta-group">
+    <a href="#" class="btn-primary">Audit gratuit — 45 min</a>
+    <a href="#" class="btn-ghost">Découvrir les procédures</a>
+  </div>
+</div>
+
+<div class="corner-contact">
+  <div class="corner-block">
+    <div class="city">La Rochelle</div>
+    <div class="phone">05 46 41 32 19</div>
+    <a href="mailto:contact@mj-atlantique.fr" class="mail">contact@mj-atlantique.fr</a>
+  </div>
+  <div class="corner-divider"></div>
+  <div class="corner-block">
+    <div class="city">Perpignan</div>
+    <div class="phone">04 68 81 09 97</div>
+    <a href="mailto:contact@mj-perpignan.fr" class="mail">contact@mj-perpignan.fr</a>
+  </div>
+</div>
+
+<div class="cred-strip">
+  <span class="cred-item amber">CNAJMj</span>
+  <div class="cred-sep"></div>
+  <span class="cred-item">Désigné par Tribunal</span>
+  <div class="cred-sep"></div>
+  <span class="cred-item">15 ans d'exercice</span>
+  <div class="cred-sep"></div>
+  <span class="cred-item">La Rochelle</span>
+  <div class="cred-sep"></div>
+  <span class="cred-item">Perpignan</span>
+</div>
+
+</body>
+</html>

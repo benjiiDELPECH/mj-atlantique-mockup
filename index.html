@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCP RAYMOND — Galerie des variantes</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0d1117;--amber:#7a5820;--stone:#f4f1ec;--mid:#5a6476;--border:#ddd8cf;--navy:#0d2340}
+body{font-family:'Inter',sans-serif;background:var(--stone);color:var(--ink);-webkit-font-smoothing:antialiased}
+header{background:var(--ink);padding:20px 40px;display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--amber)}
+.h-name{font-family:'EB Garamond',serif;font-size:18px;color:#fff}
+.h-sep{width:1px;height:16px;background:rgba(255,255,255,.2)}
+.h-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.h-count{margin-left:auto;font-size:11px;color:rgba(255,255,255,.3)}
+main{padding:32px 40px;max-width:1440px;margin:0 auto}
+
+/* Groupes de variantes */
+.group{margin-bottom:48px}
+.group-header{
+  display:flex;align-items:baseline;gap:14px;
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+}
+.group-title{font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:var(--ink)}
+.group-base{
+  font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--amber);background:rgba(122,88,32,.1);padding:3px 8px;
+}
+.group-desc{font-size:12px;color:var(--mid);font-weight:300;margin-left:auto}
+
+/* Grille */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.card{
+  background:#fff;border:1px solid var(--border);overflow:hidden;
+  text-decoration:none;color:inherit;display:block;
+  transition:transform .18s,box-shadow .18s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.09)}
+.card-tag{
+  background:var(--ink);display:flex;align-items:center;justify-content:space-between;
+  padding:5px 10px;
+}
+.card-id{font-size:11px;font-weight:600;color:#fff;letter-spacing:.5px}
+.card-badge{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.card-title{padding:10px 12px 6px;font-size:12px;font-weight:600;color:var(--ink);line-height:1.3}
+.card-desc{padding:0 12px 12px;font-size:11px;font-weight:300;color:var(--mid);line-height:1.5}
+
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:820px){.grid{grid-template-columns:repeat(3,1fr)};main{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="h-name">SCP RAYMOND</div>
+    <div class="h-sub" style="margin-top:2px">Galerie · 71 variantes</div>
+  </div>
+  <div class="h-sep"></div>
+  <div class="h-count">15 bases · 56 sous-variantes · Fogg · Boulton · BigLaw · WCAG AA</div>
+</header>
+<main>
+
+<!-- ═══ BASES ORIGINALES ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Bases originales</span>
+    <span class="group-base">V01 → V15</span>
+    <span class="group-desc">15 directions de design distinctes</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/01.html"><div class="card-tag"><span class="card-id">V01</span><span class="card-badge">FOLD</span></div><div class="card-title">Split sombre · 4 Fogg</div><div class="card-desc">Tout above fold, contenu gauche, photo droite</div></a>
+    <a class="card" href="v/02.html"><div class="card-tag"><span class="card-id">V02</span><span class="card-badge">FOLD</span></div><div class="card-title">Cover centré · magazine</div><div class="card-desc">Full dark, stats en évidence, profils en grille</div></a>
+    <a class="card" href="v/03.html"><div class="card-tag"><span class="card-id">V03</span><span class="card-badge">FOLD</span></div><div class="card-title">Photo hero · overlay</div><div class="card-desc">Photo La Rochelle, overlay sombre, minimaliste</div></a>
+    <a class="card" href="v/04.html"><div class="card-tag"><span class="card-id">V04</span><span class="card-badge">FOLD ★</span></div><div class="card-title">Dashboard bicolore</div><div class="card-desc">Sidebar credentials + carousel + 4 rôles avec icônes</div></a>
+    <a class="card" href="v/05.html"><div class="card-tag"><span class="card-id">V05</span><span class="card-badge">FOLD</span></div><div class="card-title">Typographie pure · crème</div><div class="card-desc">Aucune image, Garamond XL, fond stone</div></a>
+    <a class="card" href="v/06.html"><div class="card-tag"><span class="card-id">V06</span><span class="card-badge">SCROLL ★</span></div><div class="card-title">Debevoise &amp; Plimpton</div><div class="card-desc">Quasi-noir, photo encadrée, amber, éditorial</div></a>
+    <a class="card" href="v/07.html"><div class="card-tag"><span class="card-id">V07</span><span class="card-badge">SCROLL</span></div><div class="card-title">Sullivan &amp; Cromwell</div><div class="card-desc">Blanc/bordeaux, sidebar verticale, sections alternées</div></a>
+    <a class="card" href="v/08.html"><div class="card-tag"><span class="card-id">V08</span><span class="card-badge">SCROLL ★</span></div><div class="card-title">Latham &amp; Watkins</div><div class="card-desc">Blanc, navy #003366, grands chiffres, bande photo</div></a>
+    <a class="card" href="v/09.html"><div class="card-tag"><span class="card-id">V09</span><span class="card-badge">SCROLL</span></div><div class="card-title">Paul, Weiss</div><div class="card-desc">Split 55/45, noir/photo cristal, texte littéraire</div></a>
+    <a class="card" href="v/10.html"><div class="card-tag"><span class="card-id">V10</span><span class="card-badge">SCROLL</span></div><div class="card-title">Skadden, Arps</div><div class="card-desc">Navy mono, 3 mots forts, sans photo héro</div></a>
+    <a class="card" href="v/11.html"><div class="card-tag"><span class="card-id">V11</span><span class="card-badge">GLASS ★</span></div><div class="card-title">Frosted glass · scroll</div><div class="card-desc">Carousel plein fond, panneau verre gauche, photo nette droite</div></a>
+    <a class="card" href="v/12.html"><div class="card-tag"><span class="card-id">V12</span><span class="card-badge">GLASS</span></div><div class="card-title">Frosted glass · sans scroll</div><div class="card-desc">Panneau verre centré, luxury hotel feel</div></a>
+    <a class="card" href="v/13.html"><div class="card-tag"><span class="card-id">V13</span><span class="card-badge">GLASS</span></div><div class="card-title">Glass split hard</div><div class="card-desc">Séparation franche verre/photo, filet amber</div></a>
+    <a class="card" href="v/14.html"><div class="card-tag"><span class="card-id">V14</span><span class="card-badge">SCROLL</span></div><div class="card-title">Éditorial noir · typo</div><div class="card-desc">Aucune photo héro, watermark RAYMOND, ticker credentials</div></a>
+    <a class="card" href="v/15.html"><div class="card-tag"><span class="card-id">V15</span><span class="card-badge">SCROLL ★</span></div><div class="card-title">Newspaper · crème</div><div class="card-desc">Fond crème, colonnes journal, année 2009, grayscale</div></a>
+  </div>
+</div>
+
+<!-- ═══ V04 DASHBOARD ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Dashboard bicolore</span>
+    <span class="group-base">V04 · 10 variantes</span>
+    <span class="group-desc">Sidebar + carousel + 4 rôles</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/04a.html"><div class="card-tag"><span class="card-id">04A</span><span class="card-badge">WHITESPACE</span></div><div class="card-title">Carousel 200px · Boulton</div><div class="card-desc">Whitespace maximal, carousel plus haut, cards aérées</div></a>
+    <a class="card" href="v/04b.html"><div class="card-tag"><span class="card-id">04B</span><span class="card-badge">LAYOUT</span></div><div class="card-title">Cards horizontales · 1 col</div><div class="card-desc">4 rangées pleine largeur, icône | texte | action</div></a>
+    <a class="card" href="v/04c.html"><div class="card-tag"><span class="card-id">04C</span><span class="card-badge">SIDEBAR+</span></div><div class="card-title">Sidebar 320px · procédures</div><div class="card-desc">Sidebar élargie + bloc 4 procédures rapides en bas</div></a>
+    <a class="card" href="v/04d.html"><div class="card-tag"><span class="card-id">04D</span><span class="card-badge">INVERSÉ</span></div><div class="card-title">Thème inversé · dark main</div><div class="card-desc">Sidebar blanc, zone principale navy très sombre</div></a>
+    <a class="card" href="v/04e.html"><div class="card-tag"><span class="card-id">04E</span><span class="card-badge">STATIQUE</span></div><div class="card-title">3 photos côte à côte</div><div class="card-desc">Bande statique, 3 images 33% chacune, pas de JS carousel</div></a>
+    <a class="card" href="v/04f.html"><div class="card-tag"><span class="card-id">04F</span><span class="card-badge">URGENCE</span></div><div class="card-title">Badges deadline · Fogg</div><div class="card-desc">Créancier en rouge urgent, délai AGS mis en évidence</div></a>
+    <a class="card" href="v/04g.html"><div class="card-tag"><span class="card-id">04G</span><span class="card-badge">COMPACT</span></div><div class="card-title">Ultra-compact · dense</div><div class="card-desc">Nav 40px, carousel 100px, tout visible petit écran</div></a>
+    <a class="card" href="v/04h.html"><div class="card-tag"><span class="card-id">04H</span><span class="card-badge">HUMAIN</span></div><div class="card-title">Avatar · portrait placeholder</div><div class="card-desc">Silhouette SR dans sidebar — real-organization signal Fogg</div></a>
+    <a class="card" href="v/04i.html"><div class="card-tag"><span class="card-id">04I</span><span class="card-badge">TYPO</span></div><div class="card-title">Typographie seule · 40px</div><div class="card-desc">Pas d'icônes, titres Garamond dominants, minimalisme</div></a>
+    <a class="card" href="v/04j.html"><div class="card-tag"><span class="card-id">04J</span><span class="card-badge">PORTAIL</span></div><div class="card-title">Portail + recherche dossier</div><div class="card-desc">Barre de recherche en haut, pills suggestions, puis rôles</div></a>
+  </div>
+</div>
+
+<!-- ═══ V06 DEBEVOISE ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Debevoise &amp; Plimpton</span>
+    <span class="group-base">V06 · 10 variantes</span>
+    <span class="group-desc">Near-black · éditorial · amber</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/06a.html"><div class="card-tag"><span class="card-id">06A</span></div><div class="card-title">Photo plein fond hero</div><div class="card-desc">Overlay gradient sombre, titre en bas du viewport</div></a>
+    <a class="card" href="v/06b.html"><div class="card-tag"><span class="card-id">06B</span></div><div class="card-title">Split 65/35 · Paul Weiss</div><div class="card-desc">Gauche texte sombre, droite photo cristal sans overlay</div></a>
+    <a class="card" href="v/06c.html"><div class="card-tag"><span class="card-id">06C</span></div><div class="card-title">Version claire inversée</div><div class="card-desc">Fond off-white, typographie noire, photo encadrée reste</div></a>
+    <a class="card" href="v/06d.html"><div class="card-tag"><span class="card-id">06D</span></div><div class="card-title">Chiffres géants · Earned</div><div class="card-desc">15+ / 2 / CNAJMj en Garamond avant le fold</div></a>
+    <a class="card" href="v/06e.html"><div class="card-tag"><span class="card-id">06E</span></div><div class="card-title">Timeline procédures</div><div class="card-desc">Mandat ad hoc → Conciliation → … → Liquidation horizontal</div></a>
+    <a class="card" href="v/06f.html"><div class="card-tag"><span class="card-id">06F</span></div><div class="card-title">Citation légale · Reputed</div><div class="card-desc">Code de Commerce cité, désignation Tribunal mise en valeur</div></a>
+    <a class="card" href="v/06g.html"><div class="card-tag"><span class="card-id">06G</span></div><div class="card-title">Profils liste inline</div><div class="card-desc">4 rôles en lignes horizontales : n° | titre | desc</div></a>
+    <a class="card" href="v/06h.html"><div class="card-tag"><span class="card-id">06H</span></div><div class="card-title">Photo × 2</div><div class="card-desc">Petite dans hero + pleine section entre les blocs</div></a>
+    <a class="card" href="v/06i.html"><div class="card-tag"><span class="card-id">06I</span></div><div class="card-title">Rapport annuel · dense</div><div class="card-desc">3 colonnes serrées, données juridiques, corporate finance</div></a>
+    <a class="card" href="v/06j.html"><div class="card-tag"><span class="card-id">06J</span></div><div class="card-title">Footer enrichi</div><div class="card-desc">8 procédures, adresses complètes, liens CNAJMj + Légifrance</div></a>
+  </div>
+</div>
+
+<!-- ═══ V08 LATHAM ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Latham &amp; Watkins</span>
+    <span class="group-base">V08 · 10 variantes</span>
+    <span class="group-desc">Blanc · navy #003366 · grands chiffres</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/08a.html"><div class="card-tag"><span class="card-id">08A</span></div><div class="card-title">Watermark 2009</div><div class="card-desc">Année de fondation en filigrane derrière le titre</div></a>
+    <a class="card" href="v/08b.html"><div class="card-tag"><span class="card-id">08B</span></div><div class="card-title">3 photos côte à côte</div><div class="card-desc">Bande 180px des 3 vraies images avec légendes</div></a>
+    <a class="card" href="v/08c.html"><div class="card-tag"><span class="card-id">08C</span></div><div class="card-title">Bande credentials first</div><div class="card-desc">Bloc noir CNAJMj/Tribunal/15 ans AVANT le hero</div></a>
+    <a class="card" href="v/08d.html"><div class="card-tag"><span class="card-id">08D</span></div><div class="card-title">Sidebar verticale 60px</div><div class="card-desc">Initiales SR + liens verticaux, hero pleine largeur</div></a>
+    <a class="card" href="v/08e.html"><div class="card-tag"><span class="card-id">08E</span></div><div class="card-title">Profils en tableau</div><div class="card-desc">4 colonnes : N° · Rôle · Description · Action</div></a>
+    <a class="card" href="v/08f.html"><div class="card-tag"><span class="card-id">08F</span></div><div class="card-title">Pull-quote magazine</div><div class="card-desc">Grande citation Garamond italique comme hero principal</div></a>
+    <a class="card" href="v/08g.html"><div class="card-tag"><span class="card-id">08G</span></div><div class="card-title">Procédures color-coded</div><div class="card-desc">Amiable/bleu clair · judiciaire/navy · liquidation/anthracite</div></a>
+    <a class="card" href="v/08h.html"><div class="card-tag"><span class="card-id">08H</span></div><div class="card-title">Split photo gauche</div><div class="card-desc">Photo 40% gauche cristal, texte 60% blanc droite</div></a>
+    <a class="card" href="v/08i.html"><div class="card-tag"><span class="card-id">08I</span></div><div class="card-title">Fact sheet · tout above fold</div><div class="card-desc">3 colonnes denses : rôles / procédures / contacts</div></a>
+    <a class="card" href="v/08j.html"><div class="card-tag"><span class="card-id">08J</span></div><div class="card-title">Animations scroll · count-up</div><div class="card-desc">Fade-in IntersectionObserver + chiffres qui comptent</div></a>
+  </div>
+</div>
+
+<!-- ═══ V09 PAUL WEISS ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Paul, Weiss — variantes</span>
+    <span class="group-base">V09 · 6 variantes</span>
+    <span class="group-desc">Split noir/photo · texte littéraire · principes doc</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/09.html"><div class="card-tag"><span class="card-id">V09</span><span class="card-badge">BASE</span></div><div class="card-title">Paul, Weiss original</div><div class="card-desc">Split 55/45, noir/photo cristal</div></a>
+    <a class="card" href="v/09a.html"><div class="card-tag"><span class="card-id">09A</span></div><div class="card-title">Whitespace maximal</div><div class="card-desc">120px padding, aucune couleur, CTA texte seul</div></a>
+    <a class="card" href="v/09b.html"><div class="card-tag"><span class="card-id">09B</span></div><div class="card-title">Hiérarchie typo pure</div><div class="card-desc">3 niveaux stricts, amber = CTA seul</div></a>
+    <a class="card" href="v/09c.html"><div class="card-tag"><span class="card-id">09C</span></div><div class="card-title">Photo gauche · mur credentials</div><div class="card-desc">Photo 35% gauche, texte crème droite, 4 crédentials amber</div></a>
+    <a class="card" href="v/09d.html"><div class="card-tag"><span class="card-id">09D</span></div><div class="card-title">Bande étroite 70/30</div><div class="card-desc">Texte dominant 70%, bande photo 30% avec carousel lent</div></a>
+    <a class="card" href="v/09e.html"><div class="card-tag"><span class="card-id">09E</span></div><div class="card-title">Ancienneté · Earned signal</div><div class="card-desc">2009 watermark géant, timeline milestones, 0€ prominent</div></a>
+    <a class="card" href="v/09f.html"><div class="card-tag"><span class="card-id">09F</span></div><div class="card-title">Monochrome · amber = CTA seul</div><div class="card-desc">Zéro couleur sauf le bouton CTA — anti-sapin absolu</div></a>
+  </div>
+</div>
+
+<!-- ═══ V11 FROSTED GLASS ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Frosted Glass</span>
+    <span class="group-base">V11 · 10 variantes</span>
+    <span class="group-desc">Carousel plein fond · verre · photo cristal</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/11a.html"><div class="card-tag"><span class="card-id">11A</span></div><div class="card-title">Panneau centré</div><div class="card-desc">Glass 680px au centre, photo visible gauche ET droite</div></a>
+    <a class="card" href="v/11b.html"><div class="card-tag"><span class="card-id">11B</span></div><div class="card-title">Tiroir bas · discovery</div><div class="card-desc">Photo 70% haut, contenu glass en tiroir en bas</div></a>
+    <a class="card" href="v/11c.html"><div class="card-tag"><span class="card-id">11C</span></div><div class="card-title">Carousel vertical · clip-path</div><div class="card-desc">Photos se déroulent de haut en bas</div></a>
+    <a class="card" href="v/11d.html"><div class="card-tag"><span class="card-id">11D</span></div><div class="card-title">Split inversé · glass droite</div><div class="card-desc">Photo cristal 62% gauche, glass 38% droite</div></a>
+    <a class="card" href="v/11e.html"><div class="card-tag"><span class="card-id">11E</span></div><div class="card-title">Glass très transparent</div><div class="card-desc">Opacity 0.55, text-shadow fort pour WCAG</div></a>
+    <a class="card" href="v/11f.html"><div class="card-tag"><span class="card-id">11F</span></div><div class="card-title">Rôles above fold</div><div class="card-desc">4 boutons rôles en bas du hero — tout visible sans scroll</div></a>
+    <a class="card" href="v/11g.html"><div class="card-tag"><span class="card-id">11G</span></div><div class="card-title">Parallaxe CSS</div><div class="card-desc">background-attachment:fixed, profondeur au scroll</div></a>
+    <a class="card" href="v/11h.html"><div class="card-tag"><span class="card-id">11H</span></div><div class="card-title">Ken Burns + progress bar</div><div class="card-desc">Zoom lent 1.0→1.08, barre de progression par slide</div></a>
+    <a class="card" href="v/11i.html"><div class="card-tag"><span class="card-id">11I</span></div><div class="card-title">Mobile-first dual layout</div><div class="card-desc">Bande 120px mobile, split full desktop</div></a>
+    <a class="card" href="v/11j.html"><div class="card-tag"><span class="card-id">11J</span></div><div class="card-title">Credentials sticky</div><div class="card-desc">Bande CNAJMj sticky après le hero — jamais hors vue</div></a>
+  </div>
+</div>
+
+<!-- ═══ V15 NEWSPAPER ═══ -->
+<div class="group">
+  <div class="group-header">
+    <span class="group-title">Newspaper · Crème</span>
+    <span class="group-base">V15 · 10 variantes</span>
+    <span class="group-desc">Editorial · colonnes · Garamond · grayscale</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="v/15a.html"><div class="card-tag"><span class="card-id">15A</span></div><div class="card-title">Photo N&amp;B · header 220px</div><div class="card-desc">tour.jpg full NB, titre Garamond dessous sur crème</div></a>
+    <a class="card" href="v/15b.html"><div class="card-tag"><span class="card-id">15B</span></div><div class="card-title">3 colonnes journal</div><div class="card-desc">Credentials · contenu · contacts en vraies colonnes</div></a>
+    <a class="card" href="v/15c.html"><div class="card-tag"><span class="card-id">15C</span></div><div class="card-title">Typographie seule · Le Monde</div><div class="card-desc">Zéro photo, Garamond 104px, ruled lines, dense</div></a>
+    <a class="card" href="v/15d.html"><div class="card-tag"><span class="card-id">15D</span></div><div class="card-title">Affiche juridique</div><div class="card-desc">Tout centré vertical, comme une affiche de tribunal</div></a>
+    <a class="card" href="v/15e.html"><div class="card-tag"><span class="card-id">15E</span></div><div class="card-title">Pull-quote 48px</div><div class="card-desc">Citation légale en Garamond italique comme hero</div></a>
+    <a class="card" href="v/15f.html"><div class="card-tag"><span class="card-id">15F</span></div><div class="card-title">Timeline journal historique</div><div class="card-desc">Procédures en chronologie J-90 → Clôture</div></a>
+    <a class="card" href="v/15g.html"><div class="card-tag"><span class="card-id">15G</span></div><div class="card-title">Annonces journal · 4 colonnes</div><div class="card-desc">Rôles en colonnes avec filets, style petites annonces</div></a>
+    <a class="card" href="v/15h.html"><div class="card-tag"><span class="card-id">15H</span></div><div class="card-title">Latin juridique · bilingue</div><div class="card-desc">Titres en latin + français, Ubi ius ibi remedium</div></a>
+    <a class="card" href="v/15i.html"><div class="card-tag"><span class="card-id">15I</span></div><div class="card-title">Nom 220px · typographic logo</div><div class="card-desc">SCP RAYMOND déborde du viewport, identité typographique</div></a>
+    <a class="card" href="v/15j.html"><div class="card-tag"><span class="card-id">15J</span></div><div class="card-title">Alternance tonale · rythme</div><div class="card-desc">Sections crème/blanc très léger, rythme sans couleur</div></a>
+  </div>
+</div>
+
+</main>
+</body>
+</html>

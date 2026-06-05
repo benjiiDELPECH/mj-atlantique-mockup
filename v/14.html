@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP RAYMOND — Mandataire Judiciaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d1117;
+    --amber: #c08442;
+    --stone: #f4f1ec;
+    --white: #fff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    background: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    width: 100%;
+    padding: 24px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav-brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+
+  .nav-brand span {
+    color: var(--amber);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--amber); }
+
+  .back-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--amber); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 80px 80px 96px;
+    overflow: hidden;
+    min-height: calc(100vh - 73px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Giant watermark "RAYMOND" */
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(120px, 16vw, 220px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    opacity: 0.04;
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+  }
+
+  .hero-headline {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .hero-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 28px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.55);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  /* Ticker band */
+  .ticker-band {
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 0;
+    position: relative;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: ticker 22s linear infinite;
+  }
+
+  .ticker-track:hover { animation-play-state: paused; }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 0 28px;
+    white-space: nowrap;
+  }
+
+  .ticker-text {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .ticker-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* CTA row */
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    background: var(--amber);
+    color: var(--white);
+    border: 1px solid var(--amber);
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8703a; border-color: #a8703a; }
+
+  .btn-outline {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.45); color: var(--white); }
+
+  /* ── SECTIONS — all dark ── */
+
+  /* Section wrapper */
+  .section-wrap {
+    padding: 96px 80px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 48px;
+  }
+
+  /* Profiles — amber left-border on hover */
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .profile-card {
+    background: var(--ink);
+    padding: 36px 28px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .profile-card:hover {
+    border-left-color: var(--amber);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .profile-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .profile-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
+  }
+
+  .profile-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(192,132,66,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .profile-link:hover { border-color: var(--amber); }
+
+  /* Procedures — table */
+  .proc-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .proc-table thead tr {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .proc-table th {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding: 0 0 14px;
+    text-align: left;
+  }
+
+  .proc-table th:last-child { text-align: right; }
+
+  .proc-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.15s;
+  }
+  .proc-table tbody tr:hover { background: rgba(255,255,255,0.025); }
+
+  .proc-table td {
+    padding: 18px 0;
+    vertical-align: top;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .proc-table td:first-child {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.3);
+    width: 48px;
+  }
+
+  .proc-name-cell {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--white) !important;
+    width: 240px;
+  }
+
+  .proc-desc-cell {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .proc-timing-cell {
+    font-size: 11px;
+    text-align: right;
+    color: var(--amber) !important;
+    white-space: nowrap;
+    padding-left: 24px;
+  }
+
+  /* Audit section */
+  .audit-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .audit-photo {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .audit-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+
+  .audit-text {}
+
+  .audit-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+  }
+
+  .audit-steps {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .audit-steps li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+  }
+
+  .step-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--amber);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .contact-card {
+    background: var(--ink);
+    padding: 40px;
+  }
+
+  .contact-city {
+    font-family: 'EB Garamond', serif;
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .cinfo-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .cinfo-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    width: 64px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .cinfo-val {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .cinfo-val a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+  }
+  .cinfo-val a:hover { color: var(--amber); }
+
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-legal {
+    font-size: 11px;
+    color: rgba(255,255,255,0.18);
+  }
+
+  @media (max-width: 960px) {
+    nav, .hero, .section-wrap, footer { padding-left: 32px; padding-right: 32px; }
+    .profiles-grid { grid-template-columns: 1fr 1fr; }
+    .audit-section { grid-template-columns: 1fr; gap: 48px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .proc-timing-cell { display: none; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-brand">SCP <span>Raymond</span></div>
+  <div class="nav-right">
+    <a href="#profiles" class="nav-link">Votre situation</a>
+    <a href="#procedures" class="nav-link">Procédures</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="../index.html" class="back-link">← Galerie</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="watermark">RAYMOND</div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Procédures collectives</div>
+
+    <h1 class="hero-headline">
+      Restructurer.<br>
+      Protéger.<br>
+      <em>Transmettre.</em>
+    </h1>
+
+    <div class="hero-rule"></div>
+
+    <p class="hero-desc">
+      SCP Raymond est un cabinet de mandataires judiciaires désignés par les Tribunaux de Commerce
+      de La Rochelle et de Perpignan. Membre de la CNAJMj, le cabinet accompagne dirigeants, salariés,
+      créanciers et repreneurs dans toutes les phases des procédures collectives.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#procedures" class="btn-outline">Les procédures</a>
+    </div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-band">
+  <div class="ticker-track" id="ticker">
+    <!-- Items duplicated for seamless loop -->
+    <div class="ticker-item"><span class="ticker-text">CNAJMj</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Tribunal de Commerce de La Rochelle</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Tribunal de Commerce de Perpignan</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">15 ans d'exercice</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Audit gratuit</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Registre National des Mandataires Judiciaires</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">CNAJMj</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Tribunal de Commerce de La Rochelle</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Tribunal de Commerce de Perpignan</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">15 ans d'exercice</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Audit gratuit</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span class="ticker-text">Registre National des Mandataires Judiciaires</span><span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- Profiles -->
+<section class="section-wrap" id="profiles">
+  <div class="section-header">
+    <span class="section-eyebrow">Votre profil</span>
+    <div class="section-rule"></div>
+  </div>
+  <h2 class="section-title">Vous intervenez dans<br>une procédure collective</h2>
+
+  <div class="profiles-grid">
+    <div class="profile-card">
+      <div class="profile-name">Dirigeant</div>
+      <p class="profile-desc">Anticipez. La cessation de paiements n'est pas une fatalité : mandat ad hoc, conciliation, sauvegarde — les options existent. Un audit confidentiel clarifie tout.</p>
+      <a href="#contact" class="profile-link">Prendre contact</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">Salarié</div>
+      <p class="profile-desc">Vos droits sont protégés par la loi. L'AGS garantit vos créances salariales. Nous vous informons sur les délais et les démarches à effectuer.</p>
+      <a href="#contact" class="profile-link">Mes droits</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">Créancier</div>
+      <p class="profile-desc">La déclaration de créance obéit à des délais de forclusion stricts. Un seul délai manqué peut éteindre définitivement votre droit au remboursement.</p>
+      <a href="#contact" class="profile-link">Déclarer une créance</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">Repreneur</div>
+      <p class="profile-desc">Une offre de reprise doit répondre aux exigences formelles du Tribunal pour être retenue. Nous vous guidons dans sa constitution et sa présentation.</p>
+      <a href="#contact" class="profile-link">Préparer une offre</a>
+    </div>
+  </div>
+</section>
+
+<!-- Procedures table -->
+<section class="section-wrap" id="procedures">
+  <div class="section-header">
+    <span class="section-eyebrow">Procédures</span>
+    <div class="section-rule"></div>
+  </div>
+  <h2 class="section-title">Domaines d'intervention</h2>
+
+  <table class="proc-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Procédure</th>
+        <th>Description</th>
+        <th>Délai type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td class="proc-name-cell">Mandat ad hoc</td>
+        <td class="proc-desc-cell">Procédure amiable et confidentielle avant cessation de paiements. Le mandataire facilite la négociation entre l'entreprise et ses principaux créanciers sans recours judiciaire.</td>
+        <td class="proc-timing-cell">Amiable</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td class="proc-name-cell">Conciliation</td>
+        <td class="proc-desc-cell">Accord négocié et homologué par le Tribunal. Confère aux nouveaux apporteurs de fonds un privilège de paiement renforcé dit « privilège de New Money ».</td>
+        <td class="proc-timing-cell">4 mois</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td class="proc-name-cell">Sauvegarde</td>
+        <td class="proc-desc-cell">Procédure judiciaire ouverte avant cessation de paiements. Le dirigeant maintient la gestion et un plan de sauvegarde est élaboré sous contrôle du Tribunal.</td>
+        <td class="proc-timing-cell">6 à 18 mois</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td class="proc-name-cell">Redressement judiciaire</td>
+        <td class="proc-desc-cell">Déclenché après cessation de paiements. Objectif : maintenir l'activité et l'emploi par un plan de redressement ou une cession d'activité.</td>
+        <td class="proc-timing-cell">6 à 18 mois</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td class="proc-name-cell">Liquidation judiciaire</td>
+        <td class="proc-desc-cell">Réalisation des actifs et apurement du passif selon l'ordre de priorité légale des créanciers. Le mandataire judiciaire est l'organe central de la procédure.</td>
+        <td class="proc-timing-cell">Variable</td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td class="proc-name-cell">Cession d'entreprise</td>
+        <td class="proc-desc-cell">Organisation de l'appel d'offres, examen des candidatures et présentation au Tribunal en audience d'adjudication. Supervision jusqu'à la réalisation effective.</td>
+        <td class="proc-timing-cell">3 à 6 mois</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Audit -->
+<section class="section-wrap" id="audit">
+  <div class="section-header">
+    <span class="section-eyebrow">Premier rendez-vous</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="audit-section">
+    <div class="audit-photo">
+      <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg" alt="La Rochelle">
+    </div>
+    <div class="audit-text">
+      <h2 class="section-title">Un audit gratuit<br>et confidentiel</h2>
+      <p class="audit-desc">
+        Avant toute procédure judiciaire, nous réalisons un diagnostic gratuit et confidentiel de votre
+        situation. Cet entretien permet d'évaluer les options disponibles, d'estimer les délais et de
+        vous présenter une recommandation claire sans engagement de votre part.
+      </p>
+      <ul class="audit-steps">
+        <li><span class="step-num">1.</span><span>Analyse des comptes et de la structure juridique.</span></li>
+        <li><span class="step-num">2.</span><span>Cartographie des créanciers et identification des délais.</span></li>
+        <li><span class="step-num">3.</span><span>Présentation des procédures applicables et de leurs effets.</span></li>
+        <li><span class="step-num">4.</span><span>Recommandation sur la stratégie à adopter.</span></li>
+      </ul>
+      <a href="#contact" class="btn-primary">Demander l'audit gratuit</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-wrap" id="contact">
+  <div class="section-header">
+    <span class="section-eyebrow">Contact</span>
+    <div class="section-rule"></div>
+  </div>
+  <h2 class="section-title">Deux cabinets à votre service</h2>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-city">La Rochelle</div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tél.</span>
+        <span class="cinfo-val"><a href="tel:+33546413219">05 46 41 32 19</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Email</span>
+        <span class="cinfo-val"><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tribunal</span>
+        <span class="cinfo-val">Tribunal de Commerce de La Rochelle</span>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-city">Perpignan</div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tél.</span>
+        <span class="cinfo-val"><a href="tel:+33468810997">04 68 81 09 97</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Email</span>
+        <span class="cinfo-val"><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tribunal</span>
+        <span class="cinfo-val">Tribunal de Commerce de Perpignan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">SCP Raymond — Mandataire Judiciaire</span>
+  <span class="footer-legal">Membre CNAJMj · Inscrit au Registre National des Mandataires Judiciaires · Confidentialité garantie</span>
+</footer>
+
+</body>
+</html>

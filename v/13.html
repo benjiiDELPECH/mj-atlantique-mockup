@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP RAYMOND — Mandataire Judiciaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d1117;
+    --amber: #c08442;
+    --stone: #f4f1ec;
+    --white: #fff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Photo layer — full bleed */
+  .hero-photo-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hero-slide.active { opacity: 1; }
+
+  /* LEFT glass half — hard clip at 60% */
+  .glass-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    /* Hard edge — clip-path for a clean straight cut */
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Amber vertical separator line */
+  .split-line {
+    position: absolute;
+    left: 60%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: var(--amber);
+    z-index: 4;
+    opacity: 0.7;
+  }
+
+  /* Back link */
+  .back-link {
+    position: absolute;
+    top: 28px;
+    left: 36px;
+    z-index: 10;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--amber); }
+
+  /* Content in left half */
+  .hero-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+  }
+
+  .firm-flag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .flag-line {
+    width: 28px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .flag-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .hero-headline {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(30px, 3.2vw, 48px);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    max-width: 360px;
+    margin-bottom: 40px;
+  }
+
+  /* Fogg signals — horizontal list */
+  .fogg-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .fogg-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .fogg-key {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .fogg-val {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--amber);
+  }
+
+  /* CTA */
+  .cta-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    background: var(--amber);
+    color: var(--white);
+    border: 1px solid var(--amber);
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8703a; border-color: #a8703a; }
+
+  .btn-ghost {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    background: transparent;
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+  /* RIGHT: photo visible, peek indicator */
+  .hero-right-info {
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .next-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 20px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .dot.active { background: var(--amber); }
+
+  /* Peek: next slide at far right edge — partially visible strip */
+  .next-peek {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 100%;
+    z-index: 3;
+    overflow: hidden;
+    opacity: 0.5;
+  }
+
+  .peek-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .peek-slide.visible { opacity: 1; }
+
+  /* ── SCROLL SECTIONS ── */
+  section { background: var(--stone); }
+
+  /* Profiles */
+  .profiles-section {
+    padding: 96px 80px;
+    background: var(--stone);
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(13,17,23,0.12);
+    border: 1px solid rgba(13,17,23,0.12);
+  }
+
+  .profile-card {
+    background: var(--stone);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+  .profile-card:hover { background: var(--white); }
+
+  .profile-bar {
+    width: 24px;
+    height: 2px;
+    background: var(--amber);
+    margin-bottom: 20px;
+  }
+
+  .profile-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .profile-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(13,17,23,0.6);
+    margin-bottom: 20px;
+  }
+
+  .profile-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(192,132,66,0.3);
+    padding-bottom: 2px;
+  }
+  .profile-link:hover { border-color: var(--amber); }
+
+  /* Audit */
+  .audit-section {
+    padding: 96px 80px;
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .audit-section .section-title { color: var(--white); }
+
+  .audit-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 32px;
+  }
+
+  .audit-steps {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .audit-steps li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  .step-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--amber);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .audit-photo-col {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .audit-photo-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Procedures */
+  .procedures-section {
+    padding: 96px 80px;
+    background: var(--stone);
+  }
+
+  .proc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(13,17,23,0.1);
+    border: 1px solid rgba(13,17,23,0.1);
+  }
+
+  .proc-card {
+    background: var(--stone);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .proc-card:hover { background: var(--white); }
+
+  .proc-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .proc-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .proc-desc {
+    font-size: 12px;
+    line-height: 1.65;
+    color: rgba(13,17,23,0.6);
+  }
+
+  /* Contact */
+  .contact-section {
+    padding: 96px 80px;
+    background: var(--ink);
+  }
+
+  .contact-section .section-title { color: var(--white); margin-bottom: 52px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .contact-card {
+    background: rgba(255,255,255,0.02);
+    padding: 40px;
+  }
+
+  .contact-city {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .cinfo-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .cinfo-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    width: 64px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .cinfo-val {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  .cinfo-val a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+  }
+  .cinfo-val a:hover { color: var(--amber); }
+
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-legal {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 960px) {
+    .hero-content, .glass-left { width: 100%; padding: 48px 32px; }
+    .glass-left { width: 100%; }
+    .split-line { display: none; }
+    .next-peek { display: none; }
+    .profiles-grid { grid-template-columns: 1fr 1fr; }
+    .proc-grid { grid-template-columns: 1fr 1fr; }
+    .audit-section { grid-template-columns: 1fr; gap: 48px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .profiles-section, .audit-section, .procedures-section, .contact-section { padding: 64px 32px; }
+    footer { padding: 24px 32px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+
+  <div class="hero-photo-layer" id="slides">
+    <div class="hero-slide active" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg')" data-city="La Rochelle"></div>
+    <div class="hero-slide" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg')" data-city="La Rochelle"></div>
+    <div class="hero-slide" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg')" data-city="Perpignan"></div>
+  </div>
+
+  <!-- Hard left glass panel -->
+  <div class="glass-left"></div>
+
+  <!-- Amber separator line -->
+  <div class="split-line"></div>
+
+  <!-- Next slide peek strip (right edge) -->
+  <div class="next-peek" id="peek">
+    <div class="peek-slide" id="peek-slide-0" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg')"></div>
+    <div class="peek-slide visible" id="peek-slide-1" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg')"></div>
+    <div class="peek-slide" id="peek-slide-2" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg')"></div>
+  </div>
+
+  <!-- Back -->
+  <a href="../index.html" class="back-link">← Galerie</a>
+
+  <!-- Left content -->
+  <div class="hero-content">
+    <div class="firm-flag">
+      <div class="flag-line"></div>
+      <span class="flag-text">SCP Raymond — Mandataire Judiciaire</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Redressement.<br>
+      Sauvegarde.<br>
+      <em>Liquidation judiciaire.</em>
+    </h1>
+
+    <p class="hero-desc">
+      Mandataires désignés par les Tribunaux de Commerce de La Rochelle et de Perpignan.
+      Membres de la CNAJMj. Premier audit gratuit et confidentiel.
+    </p>
+
+    <div class="fogg-list">
+      <div class="fogg-item">
+        <span class="fogg-key">Accréditation</span>
+        <span class="fogg-val">CNAJMj</span>
+      </div>
+      <div class="fogg-item">
+        <span class="fogg-key">Désignation</span>
+        <span class="fogg-val">Tribunal de Commerce</span>
+      </div>
+      <div class="fogg-item">
+        <span class="fogg-key">Exercice</span>
+        <span class="fogg-val">15 ans +</span>
+      </div>
+      <div class="fogg-item">
+        <span class="fogg-key">Premier RDV</span>
+        <span class="fogg-val">Audit gratuit</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#profiles" class="btn-ghost">Votre situation</a>
+    </div>
+  </div>
+
+  <!-- Right info / dots -->
+  <div class="hero-right-info">
+    <span class="next-label" id="next-label">suivant</span>
+    <div class="carousel-dots">
+      <div class="dot active" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Profiles -->
+<section class="profiles-section" id="profiles">
+  <div class="section-eyebrow">Votre situation</div>
+  <h2 class="section-title">Quel que soit votre rôle<br>dans la procédure</h2>
+
+  <div class="profiles-grid">
+    <div class="profile-card">
+      <div class="profile-bar"></div>
+      <div class="profile-name">Dirigeant</div>
+      <p class="profile-desc">Anticipez la cessation de paiements avec un audit confidentiel. Explorez le mandat ad hoc, la conciliation ou la sauvegarde avant que le Tribunal soit saisi.</p>
+      <a href="#contact" class="profile-link">En savoir plus</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-bar"></div>
+      <div class="profile-name">Salarié</div>
+      <p class="profile-desc">Vos créances salariales sont garanties par l'AGS. Nous vous guidons sur le calendrier, les droits aux indemnités et les recours possibles.</p>
+      <a href="#contact" class="profile-link">Comprendre mes droits</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-bar"></div>
+      <div class="profile-name">Créancier</div>
+      <p class="profile-desc">La déclaration de créance doit respecter des délais stricts. Toute omission ou retard peut entraîner la forclusion de votre droit au recouvrement.</p>
+      <a href="#contact" class="profile-link">Déclarer ma créance</a>
+    </div>
+    <div class="profile-card">
+      <div class="profile-bar"></div>
+      <div class="profile-name">Repreneur</div>
+      <p class="profile-desc">L'offre de reprise doit satisfaire aux critères légaux pour être retenue. Nous vous accompagnons dans sa rédaction et sa présentation au Tribunal.</p>
+      <a href="#contact" class="profile-link">Préparer mon offre</a>
+    </div>
+  </div>
+</section>
+
+<!-- Audit -->
+<section class="audit-section" id="audit">
+  <div>
+    <div class="section-eyebrow">Premier rendez-vous</div>
+    <h2 class="section-title">Audit gratuit<br>et confidentiel</h2>
+    <p class="audit-desc">
+      Avant toute procédure judiciaire, un entretien confidentiel permet d'évaluer précisément
+      la situation financière, d'identifier les options disponibles et de vous conseiller sur
+      la procédure la mieux adaptée à votre cas.
+    </p>
+    <ul class="audit-steps">
+      <li><span class="step-num">1.</span><span>Analyse des bilans et de la structure de l'entreprise.</span></li>
+      <li><span class="step-num">2.</span><span>Identification des créanciers principaux et des délais.</span></li>
+      <li><span class="step-num">3.</span><span>Présentation des procédures applicables et de leurs effets.</span></li>
+      <li><span class="step-num">4.</span><span>Recommandation et feuille de route.</span></li>
+    </ul>
+    <a href="#contact" class="btn-primary">Demander l'audit gratuit</a>
+  </div>
+  <div class="audit-photo-col">
+    <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg" alt="Canigou, Perpignan">
+  </div>
+</section>
+
+<!-- Procedures -->
+<section class="procedures-section" id="procedures">
+  <div class="section-eyebrow">Domaines d'intervention</div>
+  <h2 class="section-title">Les procédures<br>collectives</h2>
+
+  <div class="proc-grid">
+    <div class="proc-card">
+      <div class="proc-num">01</div>
+      <div class="proc-name">Mandat ad hoc</div>
+      <p class="proc-desc">Procédure confidentielle et amiable, avant cessation de paiements. Le mandataire facilite les négociations avec les créanciers.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">02</div>
+      <div class="proc-name">Conciliation</div>
+      <p class="proc-desc">Accord négocié, homologué par le Tribunal, ouvrant droit à des protections légales renforcées pour les nouveaux apporteurs de fonds.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">03</div>
+      <div class="proc-name">Sauvegarde</div>
+      <p class="proc-desc">Procédure judiciaire ouverte avant cessation de paiements. Le dirigeant reste en poste et un plan de sauvegarde est élaboré.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">04</div>
+      <div class="proc-name">Redressement judiciaire</div>
+      <p class="proc-desc">Déclenché après cessation de paiements, avec pour objectif le maintien de l'activité par un plan de redressement ou une cession.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">05</div>
+      <div class="proc-name">Liquidation judiciaire</div>
+      <p class="proc-desc">Réalisation des actifs et remboursement des créanciers selon leur rang de priorité, sous le contrôle du mandataire judiciaire.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">06</div>
+      <div class="proc-name">Cession d'entreprise</div>
+      <p class="proc-desc">Organisation des offres de reprise, présentation au Tribunal et supervision de la transmission dans les formes légales requises.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+  <div class="section-eyebrow">Nous contacter</div>
+  <h2 class="section-title">Deux cabinets à votre service</h2>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-city">La Rochelle</div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tél.</span>
+        <span class="cinfo-val"><a href="tel:+33546413219">05 46 41 32 19</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Email</span>
+        <span class="cinfo-val"><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tribunal</span>
+        <span class="cinfo-val">Tribunal de Commerce de La Rochelle</span>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-city">Perpignan</div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tél.</span>
+        <span class="cinfo-val"><a href="tel:+33468810997">04 68 81 09 97</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Email</span>
+        <span class="cinfo-val"><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></span>
+      </div>
+      <div class="cinfo-row">
+        <span class="cinfo-lbl">Tribunal</span>
+        <span class="cinfo-val">Tribunal de Commerce de Perpignan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">SCP Raymond — Mandataire Judiciaire</span>
+  <span class="footer-legal">Membre CNAJMj · Inscrit au Registre National des Mandataires Judiciaires</span>
+</footer>
+
+<script>
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    const dots = Array.from(document.querySelectorAll('.dot[data-index]'));
+    const peekSlides = Array.from(document.querySelectorAll('.peek-slide'));
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      peekSlides[current].classList.remove('visible');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      // peek = next
+      const peekIndex = (current + 1) % slides.length;
+      peekSlides.forEach(p => p.classList.remove('visible'));
+      peekSlides[peekIndex].classList.add('visible');
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+    function start() { timer = setInterval(next, 9000); }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(parseInt(dot.dataset.index));
+        start();
+      });
+    });
+
+    start();
+  })();
+</script>
+</body>
+</html>

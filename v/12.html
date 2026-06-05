@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP RAYMOND — Mandataire Judiciaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d1117;
+    --amber: #c08442;
+    --stone: #f4f1ec;
+    --white: #fff;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+  }
+
+  /* ── Full viewport ── */
+  .scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Photo carousel */
+  .bg-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bg-slide.active { opacity: 1; }
+
+  /* Subtle vignette overlay to give depth */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(13,17,23,0.55) 100%);
+  }
+
+  /* Back link */
+  .back-link {
+    position: absolute;
+    top: 28px;
+    left: 36px;
+    z-index: 10;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--amber); }
+
+  /* Center glass panel */
+  .panel-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .glass-panel {
+    width: 100%;
+    max-width: 680px;
+    background: rgba(13, 17, 23, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 48px 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Firm identity */
+  .panel-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .brand-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .brand-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+
+  /* Headline */
+  .panel-headline {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .panel-headline em {
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .panel-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  /* Divider */
+  .panel-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+
+  /* 2×2 Fogg grid */
+  .fogg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .fogg-cell {
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .fogg-accent {
+    width: 2px;
+    height: 100%;
+    min-height: 32px;
+    background: var(--amber);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .fogg-body {}
+
+  .fogg-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .fogg-value {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .fogg-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+  }
+
+  /* Profile buttons — 4 in a row */
+  .profile-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .profile-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .profile-btn:hover {
+    background: rgba(192,132,66,0.12);
+    border-color: rgba(192,132,66,0.4);
+  }
+
+  .profile-btn-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  .profile-btn-arrow {
+    font-size: 10px;
+    color: var(--amber);
+  }
+
+  /* Contact row */
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .contact-item {
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .contact-city-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  .contact-detail {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  .contact-detail a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+  }
+  .contact-detail a:hover { color: var(--amber); }
+
+  /* Dots outside panel — bottom center */
+  .carousel-dots {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 28px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .dot.active { background: var(--amber); }
+
+  .dot-city {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="scene">
+
+  <!-- Photos -->
+  <div class="bg-slides" id="slides">
+    <div class="bg-slide active" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg')" data-city="La Rochelle"></div>
+    <div class="bg-slide" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg')" data-city="La Rochelle"></div>
+    <div class="bg-slide" style="background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg')" data-city="Perpignan"></div>
+  </div>
+
+  <div class="vignette"></div>
+
+  <!-- Back -->
+  <a href="../index.html" class="back-link">← Galerie</a>
+
+  <!-- Centered glass panel -->
+  <div class="panel-wrapper">
+    <div class="glass-panel">
+
+      <div class="panel-brand">
+        <div class="brand-rule"></div>
+        <div class="brand-name">SCP Raymond &mdash; Mandataire Judiciaire</div>
+        <div class="brand-rule"></div>
+      </div>
+
+      <h1 class="panel-headline">
+        Procédures collectives.<br>
+        <em>Un accompagnement à la mesure<br>de l'enjeu.</em>
+      </h1>
+
+      <p class="panel-sub">La Rochelle &nbsp;&middot;&nbsp; Perpignan &nbsp;&middot;&nbsp; Désigné par les Tribunaux de Commerce</p>
+
+      <div class="panel-rule"></div>
+
+      <div class="fogg-grid">
+        <div class="fogg-cell">
+          <div class="fogg-accent"></div>
+          <div class="fogg-body">
+            <span class="fogg-label">Accréditation</span>
+            <div class="fogg-value">CNAJMj</div>
+            <div class="fogg-sub">Compagnie nationale</div>
+          </div>
+        </div>
+        <div class="fogg-cell">
+          <div class="fogg-accent"></div>
+          <div class="fogg-body">
+            <span class="fogg-label">Désignation</span>
+            <div class="fogg-value">Tribunaux</div>
+            <div class="fogg-sub">de Commerce</div>
+          </div>
+        </div>
+        <div class="fogg-cell">
+          <div class="fogg-accent"></div>
+          <div class="fogg-body">
+            <span class="fogg-label">Expérience</span>
+            <div class="fogg-value">15+ ans</div>
+            <div class="fogg-sub">d'exercice actif</div>
+          </div>
+        </div>
+        <div class="fogg-cell">
+          <div class="fogg-accent"></div>
+          <div class="fogg-body">
+            <span class="fogg-label">Premier RDV</span>
+            <div class="fogg-value">Audit offert</div>
+            <div class="fogg-sub">sans engagement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-row">
+        <a href="#" class="profile-btn">
+          <span class="profile-btn-name">Dirigeant</span>
+          <span class="profile-btn-arrow">&#8594;</span>
+        </a>
+        <a href="#" class="profile-btn">
+          <span class="profile-btn-name">Salarié</span>
+          <span class="profile-btn-arrow">&#8594;</span>
+        </a>
+        <a href="#" class="profile-btn">
+          <span class="profile-btn-name">Créancier</span>
+          <span class="profile-btn-arrow">&#8594;</span>
+        </a>
+        <a href="#" class="profile-btn">
+          <span class="profile-btn-name">Repreneur</span>
+          <span class="profile-btn-arrow">&#8594;</span>
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-item">
+          <div class="contact-city-name">La Rochelle</div>
+          <div class="contact-detail">
+            <a href="tel:+33546413219">05 46 41 32 19</a><br>
+            <a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-city-name">Perpignan</div>
+          <div class="contact-detail">
+            <a href="tel:+33468810997">04 68 81 09 97</a><br>
+            <a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dots bottom center -->
+  <div class="carousel-dots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <span class="dot-city" id="dot-city">La Rochelle</span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.bg-slide'));
+    const dots = Array.from(document.querySelectorAll('.dot[data-index]'));
+    const dotCity = document.getElementById('dot-city');
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      dotCity.textContent = slides[current].dataset.city;
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+
+    function start() { timer = setInterval(next, 9000); }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(parseInt(dot.dataset.index));
+        start();
+      });
+    });
+
+    start();
+  })();
+</script>
+</body>
+</html>
