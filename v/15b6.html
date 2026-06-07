@@ -201,31 +201,29 @@
 
   /* ═══ MOBILE — hamburger + empilement 1 colonne ═══ */
   /* cachés par défaut (desktop) */
-  .nav-burger { display: none; }
-  #burger-toggle { display: none; }
-  .mobile-menu { display: none; list-style: none; }
+  /* ═══ MENU BAR BLEU — sous le carrousel (comme l'ancien site) ═══ */
+  .menu-bar {
+    background: #1f3a63;
+    display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
+    border-bottom: 3px solid var(--amber);
+    position: sticky; top: 0; z-index: 30;
+  }
+  .menu-bar a {
+    color: #fff; height: 46px; padding: 0 20px;
+    display: flex; align-items: center;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-left: 1px solid rgba(255,255,255,0.12);
+    transition: background .12s;
+  }
+  .menu-bar a:first-child { border-left: none; }
+  .menu-bar a:hover { background: rgba(255,255,255,0.13); }
+  .menu-bar a.active { background: #16304d; }
 
   @media (max-width: 900px) {
     html, body { overflow-x: hidden; }
     nav { padding: 0 16px; min-height: 56px; }
     .nav-firm { font-size: 19px; }
-    .nav-menu, .back-link { display: none; }   /* liens cachés sur mobile */
-    .nav-burger {
-      display: flex; flex-direction: column; justify-content: center; gap: 5px;
-      width: 30px; height: 30px; cursor: pointer; border: none; background: none; padding: 0;
-    }
-    .nav-burger span { display:block; height: 2.5px; width: 26px; background: var(--ink); }
-
-    /* menu déroulant mobile (checkbox hack, sans JS) */
-    #burger-toggle:checked ~ .mobile-menu {
-      display: block; position: absolute; top: 56px; left: 0; right: 0; z-index: 40;
-      background: var(--ink); padding: 8px 0;
-    }
-    .mobile-menu a {
-      display: block; padding: 13px 20px; color: #fff; text-decoration: none;
-      font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
+    .menu-bar a { height: 42px; padding: 0 13px; font-size: 11px; letter-spacing: 0.05em; }
 
     .page-grid { grid-template-columns: 1fr; }
     .col-right { display: none; }
@@ -244,36 +242,13 @@
 </head>
 <body>
 
-<!-- MENU BRUTAL -->
+<!-- EN-TÊTE : nom du cabinet -->
 <nav>
   <div class="nav-firm">SCP Raymond<span>Mandataire Judiciaire</span></div>
-  <ul class="nav-menu">
-    <li><a href="#" class="active">Accueil</a></li>
-    <li><a href="#">Étude</a></li>
-    <li><a href="#">Dossier</a></li>
-    <li><a href="#">Actif</a></li>
-    <li><a href="#">Reprise</a></li>
-    <li><a href="#">Salarié</a></li>
-    <li><a href="#">Dirigeant</a></li>
-    <li><a href="#">Passif Créancier</a></li>
-  </ul>
   <a href="../index.html" class="back-link">← Galerie</a>
-  <!-- Hamburger mobile (checkbox hack, sans JS) -->
-  <input type="checkbox" id="burger-toggle">
-  <label class="nav-burger" for="burger-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
-  <ul class="mobile-menu">
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Étude</a></li>
-    <li><a href="#">Dossier</a></li>
-    <li><a href="#">Actif</a></li>
-    <li><a href="#">Reprise</a></li>
-    <li><a href="#">Salarié</a></li>
-    <li><a href="#">Dirigeant</a></li>
-    <li><a href="#">Passif Créancier</a></li>
-  </ul>
 </nav>
 
-<!-- BANDEAU PHOTO — l'identité du cabinet (les 2 ressorts) -->
+<!-- CARROUSEL / BANDEAU PHOTO -->
 <div class="hero-band">
   <div class="hb-cell">
     <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg" alt="La Rochelle">
@@ -288,6 +263,18 @@
     <div class="hb-cap">Perpignan — Le Canigou</div>
   </div>
 </div>
+
+<!-- MENU BLEU — sous le carrousel (comme l'ancien site) -->
+<nav class="menu-bar">
+  <a href="#" class="active">Accueil</a>
+  <a href="#">Étude</a>
+  <a href="#">Dossier</a>
+  <a href="#">Actif</a>
+  <a href="#">Reprise</a>
+  <a href="#">Salarié</a>
+  <a href="#">Dirigeant</a>
+  <a href="#">Passif Créancier</a>
+</nav>
 
 <div class="page-grid">
 
