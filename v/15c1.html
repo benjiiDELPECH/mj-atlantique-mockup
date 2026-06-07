@@ -9,76 +9,120 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  /* VARIANTE A — Bleu Marine & Laiton (maritime / institutionnel) */
   :root {
-    --ink: #0f1b2d;
-    --amber: #b0863a;
-    --stone: #f5f2ea;
-    --mid: #51607a;
+    --ink: #111318;
+    --amber: #7a5820;
+    --stone: #f4f1ec;
+    --mid: #5a6476;
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--stone); overflow-x: hidden; }
 
-  /* NAV */
+  /* NAV — MENU BRUTAL : nom massif + liens capitales + filet épais */
   nav {
     background: var(--stone);
-    border-bottom: 3px solid var(--ink);
-    padding: 14px 32px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    position: sticky; top: 0; z-index: 20;
+    border-bottom: 4px solid var(--ink);
+    padding: 0 32px;
+    display: flex; align-items: stretch; justify-content: space-between;
+    position: sticky; top: 0; z-index: 30; min-height: 64px;
   }
-  .back-link { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(15,27,45,0.4); text-decoration: none; }
+  .nav-firm {
+    font-family: 'EB Garamond', serif; font-size: 24px; font-weight: 600;
+    display: flex; align-items: center; letter-spacing: 0.3px;
+  }
+  .nav-firm span { display:block; font-family:'Inter'; font-size:9px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber); margin-top:2px; }
+  .nav-menu { display:flex; align-items:stretch; list-style:none; }
+  .nav-menu a {
+    display:flex; align-items:center; height:100%; padding:0 13px;
+    font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink); text-decoration:none; position:relative; white-space:nowrap;
+    border-left:1px solid rgba(17,19,24,0.13);
+  }
+  .nav-menu li:last-child a { border-right:1px solid rgba(17,19,24,0.13); }
+  .nav-menu a::after {
+    content:''; position:absolute; left:0; right:0; bottom:0; height:4px;
+    background:var(--amber); transform:scaleY(0); transform-origin:bottom;
+    transition:transform .14s ease;
+  }
+  .nav-menu a:hover { background:#fff; }
+  .nav-menu a:hover::after { transform:scaleY(1); }
+  .nav-menu a.active::after { transform:scaleY(1); }
+  .back-link { display:flex; align-items:center; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(17,19,24,0.32); text-decoration: none; padding-left:16px; }
   .back-link:hover { color: var(--amber); }
-  .nav-firm { font-family: 'EB Garamond', serif; font-size: 18px; font-weight: 500; }
-  .nav-tagline { font-size: 10px; letter-spacing: 0.09em; color: rgba(15,27,45,0.45); text-transform: uppercase; text-align: right; }
 
-  /* ── BANDEAU HORIZONTAL (HERO CARROUSEL) ───────────────── */
-  .hero { position: relative; width: 100%; border-bottom: 3px solid var(--ink); background: var(--ink); }
-  .hero-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
-  .hero-track::-webkit-scrollbar { display: none; }
-  .hero-slide { position: relative; flex: 0 0 100%; scroll-snap-align: start; height: clamp(128px, 14vw, 200px); }
-  .hero-slide img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(55%) brightness(0.92); display: block; }
-  .hero-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,27,45,0.78) 0%, rgba(15,27,45,0.25) 48%, rgba(15,27,45,0.05) 100%); }
-  .hero-cap { position: absolute; left: 0; bottom: 0; z-index: 2; padding: 16px clamp(20px,4vw,48px); max-width: 600px; color: var(--stone); }
-  .hero-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
-  .hero-title { font-family: 'EB Garamond', serif; font-size: clamp(16px, 2vw, 25px); font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; }
-  .hero-sub { font-size: 11px; font-style: italic; color: rgba(245,242,234,0.72); margin-top: 5px; }
-  /* contrôles */
-  .hero-dots { position: absolute; bottom: 18px; right: clamp(24px,4vw,56px); z-index: 3; display: flex; gap: 9px; }
-  .hero-dot { width: 9px; height: 9px; border-radius: 50%; border: 1px solid rgba(245,242,234,0.7); background: transparent; cursor: pointer; padding: 0; transition: background .2s; }
-  .hero-dot.is-active { background: var(--amber); border-color: var(--amber); }
-  .hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border: 1px solid rgba(245,242,234,0.4); background: rgba(15,27,45,0.35); color: var(--stone); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, border-color .15s; }
-  .hero-arrow:hover { background: var(--amber); border-color: var(--amber); color: var(--ink); }
-  .hero-arrow.prev { left: clamp(16px,2vw,24px); }
-  .hero-arrow.next { right: clamp(16px,2vw,24px); }
-
-  /* ── RECHERCHE DANS LE HEADER (entreprise / déclaration de créance) — équivalent moderne de /anonym/mandat/search ── */
-  .nav-firm-block { text-align: right; }
-  .nav-search { flex: 1 1 380px; display: flex; max-width: 540px; }
-  .nav-search-input { flex: 1 1 auto; min-width: 0; padding: 9px 13px; border: 1px solid rgba(15,27,45,0.3); border-right: none; background: #fff; font-family: inherit; font-size: 12.5px; color: var(--ink); }
-  .nav-search-input::placeholder { color: rgba(15,27,45,0.45); }
-  .nav-search-input:focus { outline: none; border-color: var(--amber); }
-  .nav-search-btn { flex: 0 0 auto; padding: 9px 18px; background: var(--ink); color: var(--stone); border: 1px solid var(--ink); font-size: 10.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background .15s; }
-  .nav-search-btn:hover { background: var(--amber); border-color: var(--amber); color: var(--ink); }
-  @media (max-width: 860px) { .nav-search { order: 3; flex-basis: 100%; max-width: none; } .nav-tagline { display: none; } }
+  /* BANDEAU PHOTO — triptyque (personnalité / ancrage local, comme l'original) */
+  /* CARROUSEL ANIMÉ — plein largeur, crossfade des 3 photos (ça bouge) */
+  .hero-band {
+    position: relative; height: 200px; overflow: hidden;
+    border-bottom: 3px solid var(--amber);
+  }
+  .cslide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    animation: cfade 18s infinite;
+    will-change: opacity, transform;
+  }
+  .cs1 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg'); background-position: center 32%; animation-delay: 0s; }
+  .cs2 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg'); background-position: center 45%; animation-delay: 6s; }
+  .cs3 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg'); background-position: center 30%; animation-delay: 12s; }
+  /* chaque photo : fondu + léger zoom (Ken Burns) sur sa fenêtre active */
+  @keyframes cfade {
+    0%   { opacity: 0; transform: scale(1.0); }
+    4%   { opacity: 1; }
+    30%  { opacity: 1; transform: scale(1.06); }
+    36%  { opacity: 0; }
+    100% { opacity: 0; transform: scale(1.06); }
+  }
+  /* voile sombre haut/bas pour lisibilité du nom + légende */
+  .hero-band::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: linear-gradient(to bottom, rgba(13,20,33,0.45) 0%, transparent 30%, transparent 60%, rgba(13,20,33,0.55) 100%);
+  }
+  .hb-brand {
+    position: absolute; top: 16px; left: 22px; z-index: 4;
+    font-family: 'EB Garamond', serif; font-size: 25px; font-weight: 600; color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8); line-height: 1.1;
+  }
+  .hb-brand span { display: block; font-family: 'Inter'; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-top: 3px; }
+  .hb-back { position: absolute; top: 18px; right: 22px; z-index: 4; color: rgba(255,255,255,0.85); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
+  .hb-back:hover { color: #fff; }
+  /* légendes qui défilent avec les photos */
+  .c-caps { position: absolute; left: 22px; bottom: 12px; z-index: 4; height: 16px; }
+  .c-cap {
+    position: absolute; left: 0; bottom: 0; white-space: nowrap;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.8); opacity: 0; animation: cfade 18s infinite;
+  }
+  .c-cap.n1 { animation-delay: 0s; }
+  .c-cap.n2 { animation-delay: 6s; }
+  .c-cap.n3 { animation-delay: 12s; }
 
   /* 3-COLUMN NEWSPAPER GRID */
   .page-grid {
     display: grid;
     grid-template-columns: 220px 1fr 220px;
-    border-bottom: 1px solid rgba(15,27,45,0.1);
+    min-height: 100vh;
+    border-bottom: 1px solid rgba(17,19,24,0.13);
   }
 
   /* Left narrow column */
-  .col-left { border-right: 1px solid rgba(15,27,45,0.12); padding: 48px 28px; background: var(--stone); }
-  .col-left-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(15,27,45,0.08); }
+  .col-left {
+    border-right: 1px solid rgba(17,19,24,0.13);
+    padding: 48px 28px;
+    background: var(--stone);
+  }
+  .col-left-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .col-left-section:last-child { border-bottom: none; margin-bottom: 0; }
-  .sidebar-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(15,27,45,0.4); margin-bottom: 14px; }
+  .sidebar-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(17,19,24,0.35); margin-bottom: 14px; }
   .sidebar-year { font-family: 'EB Garamond', serif; font-size: 72px; font-weight: 400; color: var(--ink); line-height: 0.88; letter-spacing: -0.03em; margin-bottom: 8px; }
   .sidebar-since { font-family: 'EB Garamond', serif; font-size: 12px; font-style: italic; color: var(--mid); }
-  .sidebar-cred { font-size: 11px; color: var(--mid); line-height: 1.65; padding: 8px 0; border-bottom: 1px solid rgba(15,27,45,0.06); }
+  .sidebar-cred { font-size: 11px; color: var(--mid); line-height: 1.65; padding: 8px 0; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .sidebar-cred:last-of-type { border-bottom: none; }
   .sidebar-cred strong { color: var(--ink); font-weight: 500; display: block; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
+  .sidebar-photo { width: 100%; overflow: hidden; border: 1px solid rgba(17,19,24,0.13); margin-top: 16px; }
+  .sidebar-photo img { display: block; width: 100%; filter: grayscale(30%); }
+  .sidebar-photo-cap { padding: 6px 8px; font-size: 9px; font-style: italic; color: rgba(17,19,24,0.4); border-top: 1px solid rgba(17,19,24,0.13); }
 
   /* Main center column */
   .col-main { padding: 48px 48px; min-width: 0; }
@@ -87,120 +131,181 @@
     font-family: 'EB Garamond', serif;
     font-size: clamp(34px, 3.8vw, 52px);
     font-weight: 400; line-height: 1.1; color: var(--ink);
-    letter-spacing: -0.01em;
-    border-bottom: 3px solid var(--ink); padding-bottom: 20px; margin-bottom: 28px;
+    margin-bottom: 4px; letter-spacing: -0.01em;
+    border-bottom: 3px solid var(--amber); padding-bottom: 20px; margin-bottom: 28px;
   }
   .main-desc { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--mid); margin-bottom: 36px; }
-  .main-section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(15,27,45,0.4); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(15,27,45,0.1); }
+  /* TITRE BRUTAL des portes */
+  .main-section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(17,19,24,0.13); }
+  .main-section-title { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 20px; }
 
-  /* PORTES D'ENTRÉE */
-  .doors { display: flex; flex-direction: column; margin-bottom: 40px; border: 1px solid rgba(15,27,45,0.18); }
-  .door-row { display: block; position: relative; width: 100%; padding: 20px 22px; padding-right: 116px; border-bottom: 1px solid rgba(15,27,45,0.12); text-decoration: none; color: inherit; cursor: pointer; transition: background .12s, padding-left .15s; }
+  /* PORTES D'ENTRÉE — BRUTAL : gros titres, blocs hauts, impact */
+  .doors { display: flex; flex-direction: column; margin-bottom: 44px; border-top: 1px solid rgba(17,19,24,0.13); }
+  .door-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto;
+    gap: 24px; align-items: center; width: 100%;
+    padding: 26px 26px;
+    border-bottom: 1px solid rgba(17,19,24,0.13);
+    text-decoration: none; color: inherit;
+    cursor: pointer; position: relative;
+    transition: background .12s, padding-left .15s;
+  }
   .door-row:last-child { border-bottom: none; }
-  .door-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--amber); transform: scaleY(0); transition: transform .15s ease; }
-  .door-row:hover { background: #fffdf6; padding-left: 30px; }
-  .door-row:hover::before { transform: scaleY(1); }
-  .door-role { display: block; font-family: 'EB Garamond', serif; font-size: 27px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 6px; }
-  .door-text { display: block; font-size: 13px; line-height: 1.6; color: var(--mid); max-width: 660px; }
-  .door-action { position: absolute; top: 22px; right: 22px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); white-space: nowrap; display: flex; align-items: center; gap: 7px; transition: gap .15s; }
-  .door-row:hover .door-action { gap: 11px; }
-  @media (max-width: 768px) { .door-row { padding-right: 22px; } .door-action { position: static; margin-top: 10px; } }
-  .door-arrow { font-size: 15px; }
+  .door-row::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform .15s ease;
+  }
+  .door-row:hover { background: #fffdf8; padding-left: 38px; }
+  .door-row:hover::before { transform: scaleX(1); }
+  .door-main { min-width: 0; display: block; }
+  .door-role { display: block; font-family: 'EB Garamond', serif; font-size: 36px; font-weight: 600; color: var(--ink); line-height: 1; margin-bottom: 8px; }
+  .door-text { display: block; font-size: 13.5px; line-height: 1.55; color: var(--mid); max-width: 460px; }
+  .door-action {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--amber); white-space: nowrap;
+    display: flex; align-items: center; gap: 9px;
+    transition: gap .15s;
+  }
+  .door-row:hover .door-action { gap: 14px; }
+  .door-arrow { font-size: 22px; }
 
-  /* Procedures 2-col */
-  .proc-2col { columns: 2; column-gap: 40px; column-rule: 1px solid rgba(15,27,45,0.08); }
-  .proc-item { break-inside: avoid; padding: 10px 0; border-bottom: 1px solid rgba(15,27,45,0.06); }
+  /* Procedures 2-col in main */
+  .proc-2col { columns: 2; column-gap: 40px; column-rule: 1px solid rgba(17,19,24,0.13); }
+  .proc-item { break-inside: avoid; padding: 10px 0; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .proc-name { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--ink); }
   .proc-desc { font-size: 11px; line-height: 1.6; color: var(--mid); margin-top: 3px; }
 
+  .main-photo { overflow: hidden; border: 1px solid rgba(17,19,24,0.13); margin: 32px 0; }
+  .main-photo img { display: block; width: 100%; filter: grayscale(30%); }
+  .main-photo-cap { padding: 8px 10px; font-size: 10px; font-style: italic; color: rgba(17,19,24,0.4); border-top: 1px solid rgba(17,19,24,0.13); background: rgba(17,19,24,0.02); }
+
   .audit-steps { list-style: none; margin: 16px 0 24px; }
-  .audit-steps li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(15,27,45,0.06); font-size: 12px; color: var(--mid); line-height: 1.55; }
+  .audit-steps li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(17,19,24,0.13); font-size: 12px; color: var(--mid); line-height: 1.55; }
   .step-num { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--amber); flex-shrink: 0; width: 18px; }
 
-  .btn-primary { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 12px 26px; background: var(--ink); color: var(--stone); border: 1px solid var(--ink); transition: background .15s; }
-  .btn-primary:hover { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .btn-primary { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 12px 26px; background: var(--ink); color: var(--stone); border: 1px solid var(--ink); }
+  .btn-primary:hover { background: #2a3040; }
 
-  /* Right narrow column */
-  .col-right { border-left: 1px solid rgba(15,27,45,0.12); padding: 48px 28px; }
-  .col-right-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(15,27,45,0.08); }
+  /* Right narrow column — contacts */
+  .col-right {
+    border-left: 1px solid rgba(17,19,24,0.13);
+    padding: 48px 28px;
+  }
+  .col-right-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .col-right-section:last-child { border-bottom: none; margin-bottom: 0; }
-  .contact-city { font-family: 'EB Garamond', serif; font-size: 22px; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(15,27,45,0.1); }
+  .contact-city { font-family: 'EB Garamond', serif; font-size: 22px; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .cinfo-row { margin-bottom: 10px; }
-  .cinfo-lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,27,45,0.4); margin-bottom: 2px; }
+  .cinfo-lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(17,19,24,0.35); margin-bottom: 2px; }
   .cinfo-val { font-size: 12px; color: var(--mid); line-height: 1.5; }
   .cinfo-val a { color: var(--mid); text-decoration: none; }
   .cinfo-val a:hover { color: var(--amber); }
 
-  footer { border-top: 1px solid rgba(15,27,45,0.12); padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; background: var(--stone); }
-  .footer-brand { font-family: 'EB Garamond', serif; font-size: 13px; color: rgba(15,27,45,0.45); }
-  .footer-legal { font-size: 10px; color: rgba(15,27,45,0.35); font-style: italic; }
+  /* Footer */
+  footer { border-top: 1px solid rgba(17,19,24,0.13); padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; background: var(--stone); }
+  .footer-brand { font-family: 'EB Garamond', serif; font-size: 13px; color: rgba(17,19,24,0.4); }
+  .footer-legal { font-size: 10px; color: rgba(17,19,24,0.3); font-style: italic; }
 
-  @media (max-width: 1100px) { .page-grid { grid-template-columns: 180px 1fr; } .col-right { display: none; } }
+  @media (max-width: 1100px) {
+    .page-grid { grid-template-columns: 180px 1fr; }
+    .col-right { display: none; }
+  }
   @media (max-width: 768px) {
     .page-grid { grid-template-columns: 1fr; }
-    .col-left { border-right: none; border-bottom: 1px solid rgba(15,27,45,0.1); }
+    .col-left { border-right: none; border-bottom: 1px solid rgba(17,19,24,0.13); }
     .col-main { padding: 32px 24px; }
     .proc-2col { columns: 1; }
-    .hero-arrow { display: none; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* COLONNE IDENTITÉ — fond bordeaux plein (signature forte) */
+  .col-left { background: #1f3a63; border-right-color: rgba(255,255,255,0.14); }
+  .col-left .sidebar-label { color: rgba(255,255,255,0.55); }
+  .col-left .sidebar-year { color: #fff; }
+  .col-left .sidebar-since { color: rgba(255,255,255,0.72); }
+  .col-left .sidebar-cred { color: rgba(255,255,255,0.72); border-bottom-color: rgba(255,255,255,0.12); }
+  .col-left .sidebar-cred strong { color: #fff; }
+  .col-left .col-left-section { border-bottom-color: rgba(255,255,255,0.15); }
+
+  /* ═══ MOBILE — hamburger + empilement 1 colonne ═══ */
+  /* cachés par défaut (desktop) */
+  /* ═══ MENU BAR BLEU — sous le carrousel (comme l'ancien site) ═══ */
+  .menu-bar {
+    background: #fff;
+    display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
+    border-bottom: 3px solid var(--amber);
+    position: sticky; top: 0; z-index: 30;
+  }
+  .menu-bar a {
+    color: var(--ink); height: 46px; padding: 0 20px;
+    display: flex; align-items: center;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-left: 1px solid rgba(17,19,24,0.13);
+    transition: color .12s, background .12s;
+  }
+  .menu-bar a:first-child { border-left: none; }
+  .menu-bar a:hover { background: var(--stone); color: var(--amber); }
+  .menu-bar a.active { color: var(--amber); }
+
+  @media (max-width: 900px) {
+    html, body { overflow-x: hidden; }
+    nav { padding: 0 16px; min-height: 56px; }
+    .nav-firm { font-size: 19px; }
+    .menu-bar a { height: 42px; padding: 0 13px; font-size: 11px; letter-spacing: 0.05em; }
+
+    /* mobile : contenu (portes) AVANT la colonne identité */
+    .page-grid { display: flex; flex-direction: column; }
+    .col-main { order: 1; }
+    .col-left { order: 2; }
+    .col-right { display: none; }
+    .col-left { border-right: none; border-top: 3px solid var(--amber); padding: 28px 22px; }
+    .col-main { padding: 28px 20px; }
+    .proc-2col { columns: 1; }
+    .hero-band { height: 130px; }
+    .hb-cap { padding: 16px 10px 7px; font-size: 8px; letter-spacing: 0.12em; }
+    .main-headline { font-size: 30px; }
+    .door-role { font-size: 30px; }
+    .door-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 18px; }
+    .door-action { align-self: flex-start; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="../index.html" class="back-link">← Galerie</a>
-  <form class="nav-search" onsubmit="return false" role="search">
-    <input class="nav-search-input" type="text" placeholder="Rechercher une entreprise — nom, enseigne ou SIREN" aria-label="Rechercher une entreprise pour déclarer une créance">
-    <button class="nav-search-btn" type="submit">Rechercher</button>
-  </form>
-  <div class="nav-firm-block">
-    <div class="nav-firm">SCP Raymond</div>
-    <div class="nav-tagline">Mandataire Judiciaire &mdash; La Rochelle &middot; Perpignan</div>
+<!-- CARROUSEL ANIMÉ — plein largeur, défile entre les 3 photos -->
+<div class="hero-band">
+  <div class="cslide cs1"></div>
+  <div class="cslide cs2"></div>
+  <div class="cslide cs3"></div>
+  <div class="hb-brand">SCP Raymond<span>Mandataire Judiciaire — La Rochelle · Perpignan</span></div>
+  <a href="../index.html" class="hb-back">← Galerie</a>
+  <div class="c-caps">
+    <span class="c-cap n1">La Rochelle</span>
+    <span class="c-cap n2">Étude Raymond</span>
+    <span class="c-cap n3">Perpignan — Le Canigou</span>
   </div>
-</nav>
+</div>
 
-<!-- BANDEAU HORIZONTAL — carrousel d'images -->
-<section class="hero" aria-roledescription="carrousel" aria-label="Images du cabinet">
-  <div class="hero-track" id="heroTrack">
-    <figure class="hero-slide">
-      <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg" alt="Tour de la Lanterne — La Rochelle">
-      <figcaption class="hero-cap">
-        <div class="hero-eyebrow">La Rochelle — Siège Atlantique</div>
-        <div class="hero-title">Quinze ans aux côtés des entreprises<br>en procédure collective.</div>
-        <div class="hero-sub">Tour de la Lanterne — Charente-Maritime</div>
-      </figcaption>
-    </figure>
-    <figure class="hero-slide">
-      <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg" alt="Le Canigou — Perpignan">
-      <figcaption class="hero-cap">
-        <div class="hero-eyebrow">Perpignan — Pyrénées-Orientales</div>
-        <div class="hero-title">Une présence locale,<br>deux ressorts judiciaires.</div>
-        <div class="hero-sub">Le Canigou — Pyrénées-Orientales</div>
-      </figcaption>
-    </figure>
-    <figure class="hero-slide">
-      <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg" alt="Sceau de la juridiction">
-      <figcaption class="hero-cap">
-        <div class="hero-eyebrow">Mandat judiciaire</div>
-        <div class="hero-title">Désignés par les Tribunaux<br>de Commerce.</div>
-        <div class="hero-sub">Membre CNAJMj — depuis 2009</div>
-      </figcaption>
-    </figure>
-  </div>
-  <button class="hero-arrow prev" id="heroPrev" aria-label="Image précédente">‹</button>
-  <button class="hero-arrow next" id="heroNext" aria-label="Image suivante">›</button>
-  <div class="hero-dots" id="heroDots" role="tablist"></div>
-</section>
+<!-- MENU BLEU — sous le carrousel (comme l'ancien site) -->
+<nav class="menu-bar">
+  <a href="#" class="active">Accueil</a>
+  <a href="#">L'Étude</a>
+  <a href="#">Dossiers</a>
+  <a href="#">Actifs à vendre</a>
+  <a href="#">Reprise</a>
+  <a href="#">Contact</a>
+</nav>
 
 <div class="page-grid">
 
+  <!-- LEFT COLUMN: credentials -->
   <aside class="col-left">
     <div class="col-left-section">
       <div class="sidebar-label">En exercice depuis</div>
       <div class="sidebar-year">2009</div>
       <div class="sidebar-since">Quinze ans d'exercice continu</div>
     </div>
+
     <div class="col-left-section">
       <div class="sidebar-label">Accréditations</div>
       <div class="sidebar-cred"><strong>Inscription</strong>CNAJMj — Compagnie Nationale des Administrateurs Judiciaires et Mandataires Judiciaires</div>
@@ -208,20 +313,58 @@
       <div class="sidebar-cred"><strong>Désigné par</strong>Tribunal de Commerce de Perpignan</div>
       <div class="sidebar-cred"><strong>Audit</strong>Premier entretien gratuit et confidentiel</div>
     </div>
+
+    <div class="col-left-section">
+      <div class="sidebar-label">Premier contact</div>
+      <div class="sidebar-cred"><strong>Entretien gratuit</strong>45 min, en présentiel ou en visioconférence. Sans engagement.</div>
+      <div class="sidebar-cred"><strong>Confidentiel</strong>Couvert par le secret professionnel du mandataire.</div>
+    </div>
+
+    <div class="col-left-section">
+      <div class="sidebar-label">Honoraires</div>
+      <div class="sidebar-cred" style="border:none;padding-top:0;">Les mandataires ne sont rémunérés que sur désignation du Tribunal ou de son Président.</div>
+    </div>
   </aside>
 
+  <!-- CENTER COLUMN: main content -->
   <main class="col-main">
+    <!-- PORTES D'ENTRÉE EN PREMIER — accès direct sans scroll -->
+    <div class="main-section-label">Vous êtes — accès direct</div>
+    <div class="doors" role="navigation" aria-label="Accès par profil">
+      <a href="#" class="door-row">
+        <span class="door-main">
+          <span class="door-role">Dirigeant</span>
+          <span class="door-text">Mon entreprise est en difficulté. Mandat ad hoc, conciliation, sauvegarde — un audit confidentiel identifie les options.</span>
+        </span>
+        <span class="door-action">Accéder <span class="door-arrow">→</span></span>
+      </a>
+      <a href="#" class="door-row">
+        <span class="door-main">
+          <span class="door-role">Salarié</span>
+          <span class="door-text">Mes créances salariales sont garanties par l'AGS quelle que soit l'issue. Calendrier, montants et démarches.</span>
+        </span>
+        <span class="door-action">Accéder <span class="door-arrow">→</span></span>
+      </a>
+      <a href="#" class="door-row">
+        <span class="door-main">
+          <span class="door-role">Créancier</span>
+          <span class="door-text">Déclarer ma créance — délai de forclusion strict. Un retard peut éteindre définitivement le droit au remboursement.</span>
+        </span>
+        <span class="door-action">Accéder <span class="door-arrow">→</span></span>
+      </a>
+      <a href="#" class="door-row">
+        <span class="door-main">
+          <span class="door-role">Repreneur</span>
+          <span class="door-text">Consulter les actifs à la cession. L'offre de reprise doit satisfaire aux exigences formelles du Tribunal.</span>
+        </span>
+        <span class="door-action">Accéder <span class="door-arrow">→</span></span>
+      </a>
+    </div>
+
+    <!-- Accroche + présentation, après les portes -->
     <div class="main-eyebrow">Procédures collectives — La Rochelle &middot; Perpignan</div>
     <h1 class="main-headline">Quand l'entreprise est en difficulté,<br>chaque décision compte.</h1>
     <p class="main-desc">SCP Raymond accompagne depuis 2009 les dirigeants, salariés, créanciers et repreneurs impliqués dans les procédures collectives. Désignés par les Tribunaux de Commerce de La Rochelle et de Perpignan, nos mandataires judiciaires apportent une expertise technique et une présence locale à chaque étape de la procédure.</p>
-
-    <div class="main-section-label">Accès direct — sélectionnez votre situation</div>
-    <nav class="doors">
-      <a href="#" class="door-row"><span class="door-role">Dirigeant</span><span class="door-text">Mon entreprise est en difficulté. Mandat ad hoc, conciliation, sauvegarde — des alternatives existent. Un audit confidentiel identifie les options.</span><span class="door-action">Accéder <span class="door-arrow">→</span></span></a>
-      <a href="#" class="door-row"><span class="door-role">Salarié</span><span class="door-text">Mes créances salariales sont garanties par l'AGS quelle que soit l'issue. Calendrier, montants et démarches à effectuer.</span><span class="door-action">Accéder <span class="door-arrow">→</span></span></a>
-      <a href="#" class="door-row"><span class="door-role">Créancier</span><span class="door-text">Déclarer ma créance — délai de forclusion strict. Un retard peut éteindre définitivement le droit au remboursement.</span><span class="door-action">Accéder <span class="door-arrow">→</span></span></a>
-      <a href="#" class="door-row"><span class="door-role">Repreneur</span><span class="door-text">Consulter les actifs à la cession. L'offre de reprise doit satisfaire aux exigences formelles du Tribunal — nous vous guidons.</span><span class="door-action">Accéder <span class="door-arrow">→</span></span></a>
-    </nav>
 
     <div class="main-section-label">Les procédures collectives</div>
     <div class="proc-2col">
@@ -245,6 +388,7 @@
     <a href="#contact" class="btn-primary">Demander l'audit gratuit</a>
   </main>
 
+  <!-- RIGHT COLUMN: contacts -->
   <aside class="col-right" id="contact">
     <div class="col-right-section">
       <div class="sidebar-label">Contact</div>
@@ -253,12 +397,14 @@
       <div class="cinfo-row"><div class="cinfo-lbl">Email</div><div class="cinfo-val"><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div></div>
       <div class="cinfo-row"><div class="cinfo-lbl">Tribunal</div><div class="cinfo-val">Tribunal de Commerce de La Rochelle</div></div>
     </div>
+
     <div class="col-right-section">
       <div class="contact-city">Perpignan</div>
       <div class="cinfo-row"><div class="cinfo-lbl">Téléphone</div><div class="cinfo-val"><a href="tel:+33468810997">04 68 81 09 97</a></div></div>
       <div class="cinfo-row"><div class="cinfo-lbl">Email</div><div class="cinfo-val"><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></div></div>
       <div class="cinfo-row"><div class="cinfo-lbl">Tribunal</div><div class="cinfo-val">Tribunal de Commerce de Perpignan</div></div>
     </div>
+
     <div class="col-right-section">
       <div class="sidebar-label">Accréditation</div>
       <div style="font-size:11px;color:var(--mid);line-height:1.7;">Membre CNAJMj. Inscrit au Registre National des Mandataires Judiciaires. Confidentialité garantie.</div>
@@ -271,47 +417,5 @@
   <span class="footer-brand">SCP Raymond — Mandataire Judiciaire</span>
   <span class="footer-legal">Membre CNAJMj &middot; Inscrit au Registre National &middot; Confidentialité garantie</span>
 </footer>
-
-<script>
-  (function () {
-    var track = document.getElementById('heroTrack');
-    var slides = track ? track.querySelectorAll('.hero-slide') : [];
-    var dotsWrap = document.getElementById('heroDots');
-    if (!track || !slides.length) return;
-    var idx = 0, timer = null;
-    // build dots
-    slides.forEach(function (_, i) {
-      var d = document.createElement('button');
-      d.className = 'hero-dot' + (i === 0 ? ' is-active' : '');
-      d.setAttribute('aria-label', 'Image ' + (i + 1));
-      d.addEventListener('click', function () { go(i); });
-      dotsWrap.appendChild(d);
-    });
-    var dots = dotsWrap.querySelectorAll('.hero-dot');
-    function render() {
-      track.scrollTo({ left: slides[idx].offsetLeft, behavior: 'smooth' });
-      dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
-    }
-    function go(i) { idx = (i + slides.length) % slides.length; render(); restart(); }
-    function next() { go(idx + 1); }
-    function prev() { go(idx - 1); }
-    function restart() { clearInterval(timer); timer = setInterval(next, 5500); }
-    document.getElementById('heroNext').addEventListener('click', next);
-    document.getElementById('heroPrev').addEventListener('click', prev);
-    var hero = document.querySelector('.hero');
-    hero.addEventListener('mouseenter', function () { clearInterval(timer); });
-    hero.addEventListener('mouseleave', restart);
-    // sync idx when user scrolls/swipes manually
-    var st;
-    track.addEventListener('scroll', function () {
-      clearTimeout(st);
-      st = setTimeout(function () {
-        var n = Math.round(track.scrollLeft / track.clientWidth);
-        if (n !== idx) { idx = n; dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); }); }
-      }, 120);
-    });
-    restart();
-  })();
-</script>
 </body>
 </html>
