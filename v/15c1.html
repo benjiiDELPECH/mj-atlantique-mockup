@@ -53,7 +53,7 @@
   /* BANDEAU PHOTO — triptyque (personnalité / ancrage local, comme l'original) */
   /* CARROUSEL ANIMÉ — plein largeur, crossfade des 3 photos (ça bouge) */
   .hero-band {
-    position: relative; height: 200px; overflow: hidden;
+    position: relative; height: 175px; overflow: hidden;
     border-bottom: 3px solid var(--amber);
   }
   .cslide {
@@ -63,9 +63,9 @@
     animation: cfade 18s infinite;
     will-change: opacity, transform;
   }
-  .cs1 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg'); background-position: center 32%; animation-delay: 0s; }
-  .cs2 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg'); background-position: center 45%; animation-delay: 6s; }
-  .cs3 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg'); background-position: center 30%; animation-delay: 12s; }
+  .cs1 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg'); background-position: center 60%; animation-delay: 0s; }
+  .cs2 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg'); background-position: center 50%; animation-delay: 6s; }
+  .cs3 { background-image: url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg'); background-position: center 55%; animation-delay: 12s; }
   /* chaque photo : fondu + léger zoom (Ken Burns) sur sa fenêtre active */
   @keyframes cfade {
     0%   { opacity: 0; transform: scale(1.0); }
@@ -125,7 +125,7 @@
   .sidebar-photo-cap { padding: 6px 8px; font-size: 9px; font-style: italic; color: rgba(17,19,24,0.4); border-top: 1px solid rgba(17,19,24,0.13); }
 
   /* Main center column */
-  .col-main { padding: 48px 48px; min-width: 0; }
+  .col-main { padding: 34px 44px; min-width: 0; }
   .main-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
   .main-headline {
     font-family: 'EB Garamond', serif;
@@ -136,15 +136,15 @@
   }
   .main-desc { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--mid); margin-bottom: 36px; }
   /* TITRE BRUTAL des portes */
-  .main-section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(17,19,24,0.13); }
+  .main-section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 0; padding-bottom: 12px; border-bottom: 1px solid rgba(17,19,24,0.13); }
   .main-section-title { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 20px; }
 
   /* PORTES D'ENTRÉE — BRUTAL : gros titres, blocs hauts, impact */
-  .doors { display: flex; flex-direction: column; margin-bottom: 44px; border-top: 1px solid rgba(17,19,24,0.13); }
+  .doors { display: flex; flex-direction: column; margin-bottom: 32px; }
   .door-row {
     display: grid; grid-template-columns: minmax(0,1fr) auto;
     gap: 24px; align-items: center; width: 100%;
-    padding: 26px 26px;
+    padding: 18px 4px;
     border-bottom: 1px solid rgba(17,19,24,0.13);
     text-decoration: none; color: inherit;
     cursor: pointer; position: relative;
@@ -155,11 +155,11 @@
     content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
     background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform .15s ease;
   }
-  .door-row:hover { background: #fffdf8; padding-left: 38px; }
+  .door-row:hover { background: #fffdf8; padding-left: 16px; }
   .door-row:hover::before { transform: scaleX(1); }
   .door-main { min-width: 0; display: block; }
-  .door-role { display: block; font-family: 'EB Garamond', serif; font-size: 36px; font-weight: 600; color: var(--ink); line-height: 1; margin-bottom: 8px; }
-  .door-text { display: block; font-size: 13.5px; line-height: 1.55; color: var(--mid); max-width: 460px; }
+  .door-role { display: block; font-family: 'EB Garamond', serif; font-size: 31px; font-weight: 600; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+  .door-text { display: block; font-size: 13.5px; line-height: 1.5; color: var(--mid); max-width: 480px; }
   .door-action {
     font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--amber); white-space: nowrap;
