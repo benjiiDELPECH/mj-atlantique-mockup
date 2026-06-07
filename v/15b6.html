@@ -54,7 +54,17 @@
   .hero-band {
     display: grid; grid-template-columns: repeat(3, 1fr);
     height: 150px; border-bottom: 3px solid var(--amber);
+    position: relative;
   }
+  /* nom du cabinet en overlay sur le carrousel (remplace l'en-tête) */
+  .hb-brand {
+    position: absolute; top: 14px; left: 20px; z-index: 4;
+    font-family: 'EB Garamond', serif; font-size: 23px; font-weight: 600; color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7); line-height: 1.1;
+  }
+  .hb-brand span { display: block; font-family: 'Inter'; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: 3px; }
+  .hb-back { position: absolute; top: 16px; right: 20px; z-index: 4; color: rgba(255,255,255,0.85); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 5px rgba(0,0,0,0.7); }
+  .hb-back:hover { color: #fff; }
   .hb-cell { position: relative; overflow: hidden; }
   .hb-cell + .hb-cell { border-left: 2px solid var(--stone); }
   .hb-cell img {
@@ -242,14 +252,10 @@
 </head>
 <body>
 
-<!-- EN-TÊTE : nom du cabinet -->
-<nav>
-  <div class="nav-firm">SCP Raymond<span>Mandataire Judiciaire</span></div>
-  <a href="../index.html" class="back-link">← Galerie</a>
-</nav>
-
-<!-- CARROUSEL / BANDEAU PHOTO -->
+<!-- CARROUSEL / BANDEAU PHOTO (nom en overlay) -->
 <div class="hero-band">
+  <div class="hb-brand">SCP Raymond<span>Mandataire Judiciaire — La Rochelle · Perpignan</span></div>
+  <a href="../index.html" class="hb-back">← Galerie</a>
   <div class="hb-cell">
     <img src="https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg" alt="La Rochelle">
     <div class="hb-cap">La Rochelle</div>
@@ -308,11 +314,7 @@
 
   <!-- CENTER COLUMN: main content -->
   <main class="col-main">
-    <div class="main-eyebrow">Procédures collectives — La Rochelle &middot; Perpignan</div>
-    <h1 class="main-headline">Quand l'entreprise est en difficulté,<br>chaque décision compte.</h1>
-    <p class="main-desc">SCP Raymond accompagne depuis 2009 les dirigeants, salariés, créanciers et repreneurs impliqués dans les procédures collectives. Désignés par les Tribunaux de Commerce de La Rochelle et de Perpignan, nos mandataires judiciaires apportent une expertise technique et une présence locale à chaque étape de la procédure.</p>
-
-    <!-- PORTES D'ENTRÉE — BRUTAL : gros titres, accès direct -->
+    <!-- PORTES D'ENTRÉE EN PREMIER — accès direct sans scroll -->
     <div class="main-section-label">Vous êtes — accès direct</div>
     <div class="doors" role="navigation" aria-label="Accès par profil">
       <a href="#" class="door-row">
@@ -345,6 +347,10 @@
       </a>
     </div>
 
+    <!-- Accroche + présentation, après les portes -->
+    <div class="main-eyebrow">Procédures collectives — La Rochelle &middot; Perpignan</div>
+    <h1 class="main-headline">Quand l'entreprise est en difficulté,<br>chaque décision compte.</h1>
+    <p class="main-desc">SCP Raymond accompagne depuis 2009 les dirigeants, salariés, créanciers et repreneurs impliqués dans les procédures collectives. Désignés par les Tribunaux de Commerce de La Rochelle et de Perpignan, nos mandataires judiciaires apportent une expertise technique et une présence locale à chaque étape de la procédure.</p>
 
     <div class="main-section-label">Les procédures collectives</div>
     <div class="proc-2col">
