@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCP RAYMOND — Mandataire Judiciaire</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:  #0d2340;
+  --ink:   #1a1f2e;
+  --mid:   #4a5568;
+  --faint: #6b7280;
+  --amber: #7a5820;
+  --line:  #ddd8cf;
+  --bg:    #f4f1ec;
+  --white: #fff;
+  --nav-h: 52px;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);
+  font-family:'Inter',system-ui,sans-serif;color:var(--ink);
+  -webkit-font-smoothing:antialiased}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;inset:0 0 auto;height:var(--nav-h);z-index:200;
+  background:var(--navy);display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-seal{width:26px;height:26px;border:1px solid rgba(255,255,255,.4);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,.8)}
+.tb-name{font-family:'EB Garamond',serif;font-size:16px;font-weight:600;color:#fff;letter-spacing:.2px}
+.tb-name span{font-family:'Inter';font-size:9px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-top:1px}
+.tb-nav{display:flex;align-items:center}
+.tb-nav a{font-size:12px;color:rgba(255,255,255,.6);text-decoration:none;padding:0 14px;height:var(--nav-h);display:flex;align-items:center;transition:color .12s}
+.tb-nav a:hover{color:#fff}
+.tb-back{font-size:11px;color:rgba(255,255,255,.45);text-decoration:none;padding-left:18px;margin-left:6px;border-left:1px solid rgba(255,255,255,.12)}
+.tb-back:hover{color:rgba(255,255,255,.85)}
+
+/* ── SPLIT ── */
+.split{display:flex;height:100vh;padding-top:var(--nav-h)}
+
+/* ═══ GAUCHE — LE CHARME : photo + crédibilité ═══ */
+.charme{
+  flex:1 1 56%;position:relative;overflow:hidden;
+}
+.ph-track{position:absolute;inset:0}
+/* Photo désaturée — sépia léger, ne jure plus en couleur (Latham) */
+.ph{position:absolute;inset:0;background-size:cover;opacity:0;transition:opacity 1.4s ease;
+  filter:grayscale(78%) sepia(14%) contrast(1.02)}
+.ph.on{opacity:1}
+.ph1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 35%}
+.ph2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 45%}
+.ph3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 30%}
+/* overlay chaud — dialogue avec le crème de droite */
+.charme::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(40,32,20,.5) 0%,rgba(40,32,20,.32) 40%,rgba(26,20,12,.8) 100%);
+}
+.charme-in{
+  position:relative;z-index:2;height:100%;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:44px 48px 32px;
+}
+/* haut : désignation Tribunal (Reputed, message maître) */
+.cr-top{}
+.cr-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--amber);margin-bottom:22px;
+}
+.cr-kicker::before{content:'';width:24px;height:1px;background:var(--amber)}
+.cr-h1{
+  font-family:'EB Garamond',serif;font-size:clamp(30px,3.4vw,46px);font-weight:600;
+  color:#fff;line-height:1.18;letter-spacing:-.3px;
+}
+.cr-h1 em{font-style:italic;font-weight:400;color:rgba(255,255,255,.8)}
+.cr-sub{
+  font-size:14px;font-weight:400;color:rgba(255,255,255,.6);
+  line-height:1.7;max-width:420px;margin-top:18px;
+}
+/* bas : crédibilité Earned + caption */
+.cr-bottom{}
+.cr-creds{
+  display:flex;gap:0;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;margin-bottom:14px;
+}
+.cr-cell{padding-right:26px;margin-right:26px;border-right:1px solid rgba(255,255,255,.12)}
+.cr-cell:last-child{border-right:none;margin-right:0;padding-right:0}
+.cr-cell-n{font-family:'EB Garamond',serif;font-size:19px;font-weight:600;color:#fff;line-height:1}
+.cr-cell-l{font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px}
+.cr-foot{display:flex;align-items:center;justify-content:space-between}
+.cr-cap{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cr-dots{display:flex;gap:6px}
+.cr-dot{width:22px;height:2px;background:rgba(255,255,255,.3);border:none;padding:0;cursor:pointer;transition:background .25s}
+.cr-dot.on{background:rgba(255,255,255,.85)}
+
+/* ═══ DROITE — LA BORNE : menu fonctionnel des 4 portes ═══ */
+.borne{
+  flex:0 0 44%;max-width:560px;
+  background:#efe9df;border-left:1px solid #d8d0c2;
+  display:flex;flex-direction:column;
+}
+.borne-hd{
+  padding:24px 36px 16px;border-bottom:1px solid var(--line);
+}
+.borne-lbl{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--faint)}
+.borne-q{font-family:'EB Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.1}
+
+/* Menu : 4 portes en hyperliens — sale & fonctionnel mais rigoureux */
+.menu{flex:1;display:flex;flex-direction:column}
+.door{
+  flex:1;display:flex;align-items:center;gap:18px;
+  padding:0 36px;text-decoration:none;color:inherit;
+  border-bottom:1px solid var(--line);
+  position:relative;transition:background .12s;
+}
+.door:hover{background:#e6ded1}
+/* barre gauche navy au hover — repère net, pas "flèche de merde" */
+.door::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--navy);transform:scaleY(0);transition:transform .15s ease;
+}
+.door:hover::before{transform:scaleY(1)}
+.door-ico{
+  width:40px;height:40px;flex-shrink:0;
+  border:1px solid var(--line);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+.door-ico svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.door-txt{flex:1;min-width:0}
+.door-t{font-family:'EB Garamond',serif;font-size:21px;font-weight:600;color:var(--ink);line-height:1.1}
+.door-s{font-size:12.5px;font-weight:400;color:var(--mid);margin-top:3px;line-height:1.4}
+.door-go{
+  font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--faint);
+  flex-shrink:0;display:flex;align-items:center;gap:6px;transition:color .12s,gap .12s;
+}
+.door:hover .door-go{color:var(--navy);gap:9px}
+.door-chev{font-size:15px}
+
+/* Pied : CTA + contacts */
+.borne-ft{
+  border-top:1px solid #d8d0c2;padding:16px 36px;
+  background:#e8e0d3;
+}
+.btn-rdv{
+  display:block;width:100%;padding:12px;text-align:center;
+  background:var(--amber);color:#fff;
+  font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:opacity .15s;margin-bottom:14px;
+}
+.btn-rdv:hover{opacity:.87}
+.ft-contacts{display:flex;gap:28px}
+.ft-c{flex:1}
+.ft-city{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+.ft-phone{font-size:13px;font-weight:500;color:var(--ink)}
+.ft-mail{font-size:11px;color:var(--mid)}
+.ft-mail a{color:var(--mid);text-decoration:none}
+.ft-mail a:hover{color:var(--ink);text-decoration:underline}
+
+@media(max-width:900px){
+  .split{flex-direction:column;height:auto;overflow:auto}
+  .charme{min-height:340px}
+  .borne{flex:none;max-width:none;width:100%;border-left:none;border-top:1px solid var(--line)}
+  .door{min-height:88px}
+  html,body{overflow:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="tb-brand">
+    <div class="tb-seal">⚖</div>
+    <div class="tb-name">SCP RAYMOND<span>Mandataire Judiciaire</span></div>
+  </div>
+  <nav class="tb-nav">
+    <a href="#">Dossier</a>
+    <a href="#">Actif à vendre</a>
+    <a href="#">Reprise</a>
+    <a href="#">Procédures</a>
+    <a class="tb-back" href="../index.html">← Galerie</a>
+  </nav>
+</header>
+
+<div class="split">
+
+  <!-- ═══ GAUCHE : CHARME ═══ -->
+  <div class="charme">
+    <div class="ph-track">
+      <div class="ph ph1 on"></div>
+      <div class="ph ph2"></div>
+      <div class="ph ph3"></div>
+    </div>
+    <div class="charme-in">
+      <div class="cr-top">
+        <div class="cr-kicker">Mandataire désigné par la justice</div>
+        <h1 class="cr-h1">Désignée par le<br><em>Tribunal de Commerce</em></h1>
+        <p class="cr-sub">SCP RAYMOND accompagne les entreprises, leurs salariés et leurs créanciers à chaque stade de la procédure collective — à La Rochelle et à Perpignan.</p>
+      </div>
+      <div class="cr-bottom">
+        <div class="cr-creds">
+          <div class="cr-cell"><div class="cr-cell-n">CNAJMj</div><div class="cr-cell-l">Inscription officielle</div></div>
+          <div class="cr-cell"><div class="cr-cell-n">15 ans</div><div class="cr-cell-l">d'exercice</div></div>
+          <div class="cr-cell"><div class="cr-cell-n">2</div><div class="cr-cell-l">ressorts</div></div>
+        </div>
+        <div class="cr-foot">
+          <span class="cr-cap" id="cap">La Rochelle</span>
+          <div class="cr-dots">
+            <button class="cr-dot on" onclick="go(0)"></button>
+            <button class="cr-dot" onclick="go(1)"></button>
+            <button class="cr-dot" onclick="go(2)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DROITE : BORNE — 4 portes ═══ -->
+  <div class="borne">
+    <div class="borne-hd">
+      <div class="borne-lbl">Accès direct</div>
+      <div class="borne-q">Vous êtes…</div>
+    </div>
+
+    <nav class="menu">
+      <a href="#" class="door">
+        <div class="door-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <div class="door-txt">
+          <div class="door-t">Dirigeant</div>
+          <div class="door-s">Mon entreprise est en difficulté</div>
+        </div>
+        <span class="door-go">Entrer <span class="door-chev">→</span></span>
+      </a>
+
+      <a href="#" class="door">
+        <div class="door-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg></div>
+        <div class="door-txt">
+          <div class="door-t">Salarié</div>
+          <div class="door-s">Mes salaires, mes droits dans la procédure</div>
+        </div>
+        <span class="door-go">Entrer <span class="door-chev">→</span></span>
+      </a>
+
+      <a href="#" class="door">
+        <div class="door-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div>
+        <div class="door-txt">
+          <div class="door-t">Créancier</div>
+          <div class="door-s">Déclarer une créance — délai légal 2 mois</div>
+        </div>
+        <span class="door-go">Entrer <span class="door-chev">→</span></span>
+      </a>
+
+      <a href="#" class="door">
+        <div class="door-ico"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L21 8l-3-3"/></svg></div>
+        <div class="door-txt">
+          <div class="door-t">Repreneur</div>
+          <div class="door-s">Consulter les actifs à la cession</div>
+        </div>
+        <span class="door-go">Entrer <span class="door-chev">→</span></span>
+      </a>
+    </nav>
+
+    <div class="borne-ft">
+      <a href="#" class="btn-rdv">Prendre rendez-vous — audit gratuit</a>
+      <div class="ft-contacts">
+        <div class="ft-c">
+          <div class="ft-city">La Rochelle</div>
+          <div class="ft-phone">05 46 41 32 19</div>
+          <div class="ft-mail"><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div>
+        </div>
+        <div class="ft-c">
+          <div class="ft-city">Perpignan</div>
+          <div class="ft-phone">04 68 81 09 97</div>
+          <div class="ft-mail"><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const caps=['La Rochelle','La Rochelle','Le Canigou — Perpignan'];
+const phs=document.querySelectorAll('.ph');
+const dots=document.querySelectorAll('.cr-dot');
+const cap=document.getElementById('cap');
+let cur=0,t;
+function go(n){
+  phs[cur].classList.remove('on');dots[cur].classList.remove('on');
+  cur=n;
+  phs[cur].classList.add('on');dots[cur].classList.add('on');
+  cap.textContent=caps[cur];
+  clearInterval(t);t=setInterval(()=>go((cur+1)%3),9000);
+}
+t=setInterval(()=>go((cur+1)%3),9000);
+</script>
+</body>
+</html>
