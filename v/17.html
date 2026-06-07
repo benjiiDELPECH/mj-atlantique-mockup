@@ -52,12 +52,21 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .menu a.on{background:var(--blue-d)}
 
 /* ── CARROUSEL ── */
-.car{position:relative;height:200px;overflow:hidden;background:var(--blue-d)}
-.car-t{display:flex;height:100%;transition:transform .6s ease;will-change:transform}
-.car-s{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat}
-.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 45%}
-.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 40%}
-.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 50%}
+/* Carrousel : 3 images côte à côte (triptyque). Chaque cellule ~ratio 1.6 → proche
+   des ratios réels des photos (1.33–2.24) → cover montre le sujet sans rogner brutalement */
+.car{position:relative;height:240px;overflow:hidden;background:var(--blue-d);
+  display:grid;grid-template-columns:repeat(3,1fr)}
+.car-cell{position:relative;overflow:hidden}
+.car-cell+.car-cell{border-left:2px solid var(--blue-d)}
+.car-cell-img{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;
+  transition:transform 7s ease}
+.car:hover .car-cell-img{transform:scale(1.05)}
+.ci1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 30%}
+.ci2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 45%}
+.ci3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 50%}
+.car-cell-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 12px 8px;
+  font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;
+  background:linear-gradient(to top,rgba(0,0,0,.6),transparent)}
 .car-cap{position:absolute;left:16px;bottom:10px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
 .car-dots{position:absolute;right:16px;bottom:12px;display:flex;gap:6px}
 .car-dots button{width:22px;height:3px;border:none;padding:0;background:rgba(255,255,255,.4);cursor:pointer}
@@ -166,19 +175,11 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
   <a href="#">Passif Créancier</a>
 </nav>
 
-<!-- CARROUSEL -->
+<!-- BANDEAU PHOTO — triptyque (images entières, pas rognées) -->
 <div class="car">
-  <div class="car-t" id="ct">
-    <div class="car-s cs1"></div>
-    <div class="car-s cs2"></div>
-    <div class="car-s cs3"></div>
-  </div>
-  <div class="car-cap" id="cc">La Rochelle</div>
-  <div class="car-dots">
-    <button class="on" onclick="go(0)"></button>
-    <button onclick="go(1)"></button>
-    <button onclick="go(2)"></button>
-  </div>
+  <div class="car-cell"><div class="car-cell-img ci1"></div><div class="car-cell-cap">La Rochelle</div></div>
+  <div class="car-cell"><div class="car-cell-img ci2"></div><div class="car-cell-cap">Étude Raymond</div></div>
+  <div class="car-cell"><div class="car-cell-img ci3"></div><div class="car-cell-cap">Perpignan — Le Canigou</div></div>
 </div>
 
 <!-- BANDEAU CRÉDIBILITÉ -->
@@ -206,7 +207,7 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
     <div class="portes">
       <a href="#" class="porte">
         <div class="porte-top">
-          <div class="porte-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg></div>
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></div>
           <div><div class="porte-cat">Chef d'entreprise</div><div class="porte-t">Dirigeant</div></div>
         </div>
         <div class="porte-d">Mon entreprise est en difficulté. Mandat ad hoc, conciliation, sauvegarde — un audit confidentiel identifie les options.</div>
@@ -215,7 +216,7 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
 
       <a href="#" class="porte">
         <div class="porte-top">
-          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg></div>
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div><div class="porte-cat">Employé de l'entreprise</div><div class="porte-t">Salarié</div></div>
         </div>
         <div class="porte-d">Mes salaires sont garantis par l'AGS quelle que soit l'issue. Déclarez vos créances salariales dans les délais.</div>
@@ -224,7 +225,7 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
 
       <a href="#" class="porte">
         <div class="porte-top">
-          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div>
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h5"/></svg></div>
           <div><div class="porte-cat">Fournisseur · prêteur · bailleur</div><div class="porte-t">Créancier</div></div>
         </div>
         <div class="porte-d">L'entreprise me doit de l'argent. Déclarer ma créance — délai légal de 2 mois à compter du jugement d'ouverture.</div>
@@ -233,7 +234,7 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
 
       <a href="#" class="porte">
         <div class="porte-top">
-          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L21 8l-3-3"/></svg></div>
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L21 8l-3-3"/></svg></div>
           <div><div class="porte-cat">Acquéreur potentiel</div><div class="porte-t">Repreneur</div></div>
         </div>
         <div class="porte-d">Je cherche une entreprise à reprendre. Consultez les actifs disponibles à la cession dans nos deux ressorts.</div>
@@ -273,13 +274,5 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
   <span>Membre CNAJMj · Inscrit au Registre National · Confidentialité garantie</span>
 </footer>
 
-<script>
-const caps=['La Rochelle','Étude Raymond','Le Canigou — Perpignan'];
-const ct=document.getElementById('ct'),cc=document.getElementById('cc');
-const dots=document.querySelectorAll('.car-dots button');
-let cur=0,t;
-function go(n){dots[cur].classList.remove('on');cur=n;ct.style.transform=`translateX(-${cur*100}%)`;dots[cur].classList.add('on');cc.textContent=caps[cur];clearInterval(t);t=setInterval(()=>go((cur+1)%3),5000);}
-t=setInterval(()=>go((cur+1)%3),5000);
-</script>
 </body>
 </html>
