@@ -119,11 +119,11 @@
   }
   .main-desc { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--mid); margin-bottom: 36px; }
   /* TITRE BRUTAL des portes */
-  .main-section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--ink); }
+  .main-section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(17,19,24,0.15); }
   .main-section-title { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 20px; }
 
   /* PORTES D'ENTRÉE — BRUTAL : gros titres, blocs hauts, impact */
-  .doors { display: flex; flex-direction: column; margin-bottom: 44px; border: 2px solid var(--ink); }
+  .doors { display: flex; flex-direction: column; margin-bottom: 44px; border-top: 1px solid rgba(17,19,24,0.14); }
   .door-row {
     display: grid; grid-template-columns: minmax(0,1fr) auto;
     gap: 24px; align-items: center; width: 100%;
@@ -213,21 +213,21 @@
   /* cachés par défaut (desktop) */
   /* ═══ MENU BAR BLEU — sous le carrousel (comme l'ancien site) ═══ */
   .menu-bar {
-    background: #1f3a63;
+    background: #fff;
     display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
     border-bottom: 3px solid var(--amber);
     position: sticky; top: 0; z-index: 30;
   }
   .menu-bar a {
-    color: #fff; height: 46px; padding: 0 20px;
+    color: var(--ink); height: 46px; padding: 0 20px;
     display: flex; align-items: center;
     font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; border-left: 1px solid rgba(255,255,255,0.12);
-    transition: background .12s;
+    text-decoration: none; border-left: 1px solid rgba(17,19,24,0.1);
+    transition: color .12s, background .12s;
   }
   .menu-bar a:first-child { border-left: none; }
-  .menu-bar a:hover { background: rgba(255,255,255,0.13); }
-  .menu-bar a.active { background: #16304d; }
+  .menu-bar a:hover { background: var(--stone); color: var(--amber); }
+  .menu-bar a.active { color: var(--amber); }
 
   @media (max-width: 900px) {
     html, body { overflow-x: hidden; }
