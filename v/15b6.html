@@ -235,9 +235,12 @@
     .nav-firm { font-size: 19px; }
     .menu-bar a { height: 42px; padding: 0 13px; font-size: 11px; letter-spacing: 0.05em; }
 
-    .page-grid { grid-template-columns: 1fr; }
+    /* mobile : contenu (portes) AVANT la colonne identité */
+    .page-grid { display: flex; flex-direction: column; }
+    .col-main { order: 1; }
+    .col-left { order: 2; }
     .col-right { display: none; }
-    .col-left { border-right: none; border-bottom: 3px solid var(--amber); padding: 28px 22px; }
+    .col-left { border-right: none; border-top: 3px solid var(--amber); padding: 28px 22px; }
     .col-main { padding: 28px 20px; }
     .proc-2col { columns: 1; }
     .hero-band { height: 130px; }
