@@ -52,6 +52,21 @@
   .hero-arrow.prev { left: clamp(16px,2vw,24px); }
   .hero-arrow.next { right: clamp(16px,2vw,24px); }
 
+  /* ── BANDEAU RECHERCHE D'ENTREPRISE (déclarer une créance) — équivalent moderne de /anonym/mandat/search ── */
+  .search-band { background: var(--stone); border-bottom: 1px solid rgba(15,27,45,0.12); }
+  .search-inner { max-width: 1180px; margin: 0 auto; padding: 30px clamp(24px,4vw,48px); }
+  .search-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+  .search-title { font-family: 'EB Garamond', serif; font-size: clamp(22px,2.4vw,30px); font-weight: 400; color: var(--ink); }
+  .search-sub { font-size: 13px; line-height: 1.6; color: var(--mid); margin-top: 6px; max-width: 720px; }
+  .search-form { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .search-input { flex: 1 1 360px; min-width: 0; padding: 13px 16px; border: 1px solid rgba(15,27,45,0.28); background: #fff; font-family: inherit; font-size: 14px; color: var(--ink); }
+  .search-input:focus { outline: none; border-color: var(--amber); }
+  .search-select { padding: 13px 16px; border: 1px solid rgba(15,27,45,0.28); background: #fff; font-family: inherit; font-size: 13px; color: var(--ink); }
+  .search-btn { padding: 13px 26px; background: var(--ink); color: var(--stone); border: 1px solid var(--ink); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background .15s; }
+  .search-btn:hover { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .search-hint { margin-top: 11px; font-size: 11px; font-style: italic; color: rgba(15,27,45,0.5); }
+  @media (max-width: 768px) { .search-form { flex-direction: column; } .search-input, .search-select, .search-btn { width: 100%; flex-basis: auto; } }
+
   /* 3-COLUMN NEWSPAPER GRID */
   .page-grid {
     display: grid;
@@ -176,6 +191,25 @@
   <button class="hero-arrow prev" id="heroPrev" aria-label="Image précédente">‹</button>
   <button class="hero-arrow next" id="heroNext" aria-label="Image suivante">›</button>
   <div class="hero-dots" id="heroDots" role="tablist"></div>
+</section>
+
+<!-- BANDEAU RECHERCHE — fonction centrale du site réel (/anonym/mandat/search), version moderne -->
+<section class="search-band" aria-label="Recherche d'entreprise pour déclarer une créance">
+  <div class="search-inner">
+    <div class="search-eyebrow">Passif · Créancier</div>
+    <h2 class="search-title">Déclarer une créance — recherchez l'entreprise</h2>
+    <p class="search-sub">Saisissez le nom, l'enseigne ou le numéro SIREN de l'entreprise concernée pour accéder à votre déclaration de créance en ligne. <strong>Délai de forclusion strict</strong> : deux mois après la publication au BODACC.</p>
+    <form class="search-form" onsubmit="return false">
+      <input class="search-input" type="text" placeholder="Nom, enseigne ou n° SIREN de l'entreprise" aria-label="Nom, enseigne ou SIREN">
+      <select class="search-select" aria-label="Type de mandat">
+        <option>Tous les mandats</option>
+        <option>Mandats en cours</option>
+        <option>Mandats clos</option>
+      </select>
+      <button class="search-btn" type="submit">Rechercher →</button>
+    </form>
+    <div class="search-hint">Recherche anonyme — aucune création de compte n'est requise pour consulter un dossier ou déclarer.</div>
+  </div>
 </section>
 
 <div class="page-grid">
