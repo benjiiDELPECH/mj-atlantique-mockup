@@ -52,15 +52,13 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .menu a.on{background:var(--blue-d)}
 
 /* ── CARROUSEL ── */
-/* CARROUSEL — MÊME remplissage que l'ancien site : image à 100% de largeur,
-   hauteur naturelle qui déborde, on voit le HAUT (bandeau fin), + flèches/points */
-.car{position:relative;height:118px;overflow:hidden;background:var(--blue-d)}
+/* CARROUSEL pro — image cadrée sur son SUJET (cover + point focal), bandeau qui respire */
+.car{position:relative;height:230px;overflow:hidden;background:var(--blue-d)}
 .car-track{display:flex;height:100%;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-.car-slide{flex:0 0 100%;height:100%;background-size:100% auto;background-repeat:no-repeat;
-  background-position:center top;position:relative}
-.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg')}
-.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg')}
-.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg')}
+.car-slide{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat;position:relative}
+.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 42%}     /* tours de La Rochelle */
+.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 50%}   /* la tortue */
+.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 40%} /* le massif */
 .car-cap{position:absolute;left:18px;bottom:12px;z-index:3;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7)}
 /* flèches */
 .car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;
