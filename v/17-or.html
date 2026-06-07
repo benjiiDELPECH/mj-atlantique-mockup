@@ -63,7 +63,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold-l);outline-off
 
 /* ── CARROUSEL ── */
 /* CARROUSEL pro — image cadrée sur son SUJET (cover + point focal), bandeau qui respire */
-.car{position:relative;height:230px;overflow:hidden;background:var(--blue-d)}
+.car{position:relative;height:300px;overflow:hidden;background:var(--blue-d)}
 .car-track{display:flex;height:100%;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 .car-slide{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat;position:relative}
 .cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 42%}     /* tours de La Rochelle */
@@ -125,8 +125,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold-l);outline-off
 .porte-cat{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
 .porte-t{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);line-height:1.05}
 .porte-d{font-size:12.5px;color:var(--mid);line-height:1.55;flex:1}
-.porte-go{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:6px}
-.porte:hover .porte-go{gap:9px}
+.porte-go{margin-top:14px;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid var(--gold-l);padding-bottom:3px;transition:gap .12s,border-color .12s}
+.porte:hover .porte-go{gap:9px;border-color:var(--gold)}
 
 /* colonne droite — contact / audit */
 .aside{display:flex;flex-direction:column;gap:16px}

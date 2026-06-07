@@ -3,23 +3,30 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SCP RAYMOND — Mandataire Judiciaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --blue:   #1e447e;   /* bleu franc institutionnel (menu) */
   --blue-d: #163763;   /* bleu foncé */
   --blue-l: #eaf0f8;   /* bleu très clair (fonds, hover) */
-  --gold:   #9a6f28;   /* doré (accent, en-tête ancien) */
+  --gold:   #9a6f28;   /* doré décoratif (lisérés) */
+  --gold-d: #7e5a1d;   /* doré foncé — texte blanc lisible (WCAG AA) */
   --gold-l: #d4ac48;
   --ink:    #1a2230;
   --mid:    #4a5568;
   --bg:     #eef1f5;   /* gris clair portail */
   --line:   #d4dae3;
   --white:  #fff;
+  --serif:  'Spectral', Georgia, 'Times New Roman', serif;
+  --sans:   'Inter', -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
 }
 html{-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
-  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);
+  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold-l);outline-offset:2px}
 
 /* ── EN-TÊTE ── */
 .head{
@@ -28,14 +35,15 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
   padding:0 24px;height:58px;
 }
 .head-brand{display:flex;align-items:center;gap:12px}
-.head-seal{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
-.head-name{font-size:17px;font-weight:700;letter-spacing:.3px;line-height:1.1}
-.head-name span{display:block;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:1px}
+.head-seal{width:36px;height:36px;border:1.5px solid var(--gold-l);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-l);padding-bottom:1px}
+.head-name{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.3px;line-height:1.1}
+.head-name span{display:block;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:1px}
 .head-phones{display:flex;gap:24px}
 .head-phone{font-size:12px;color:rgba(255,255,255,.75);text-align:right}
 .head-phone strong{display:block;font-size:15px;color:#fff;font-weight:700}
-.head-back{font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;margin-left:18px}
+.head-back{font-size:11px;color:rgba(255,255,255,.65);text-decoration:none;margin-left:18px}
 
 /* ── MENU BLEU ── */
 .menu{
@@ -77,12 +85,12 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .hero-top{max-width:620px}
 .hero-kick{display:inline-flex;align-items:center;gap:9px;
   font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
-.hero-kick::before{content:"🛡";font-size:15px;line-height:1}
-.hero-h{font-size:30px;font-weight:800;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.45)}
-.hero-h em{font-style:normal;color:var(--gold-l)}
-.hero-sub{font-size:13.5px;font-weight:400;color:rgba(255,255,255,.82);margin-top:10px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.hero-kick::before{content:"";width:26px;height:2px;background:var(--gold-l);display:block}
+.hero-h{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.18;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.hero-h em{font-style:italic;color:var(--gold-l)}
+.hero-sub{font-size:13.5px;font-weight:400;color:rgba(255,255,255,.85);margin-top:12px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .hero-stats{display:flex;gap:34px;flex-wrap:wrap}
-.hero-stat-n{font-size:26px;font-weight:800;color:var(--gold-l);line-height:1}
+.hero-stat-n{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--gold-l);line-height:1}
 .hero-stat-l{font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:5px}
 
 .car-cap{position:absolute;right:18px;bottom:46px;z-index:3;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.7)}
@@ -106,20 +114,20 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .porte-ico{width:40px;height:40px;background:var(--blue);flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .porte-ico svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .porte-cat{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
-.porte-t{font-size:20px;font-weight:800;color:var(--ink);line-height:1}
+.porte-t{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);line-height:1.05}
 .porte-d{font-size:12.5px;color:var(--mid);line-height:1.55;flex:1}
-.porte-go{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:6px}
-.porte:hover .porte-go{gap:9px}
+.porte-go{margin-top:14px;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid var(--gold-l);padding-bottom:3px;transition:gap .12s,border-color .12s}
+.porte:hover .porte-go{gap:9px;border-color:var(--gold)}
 
 /* colonne droite — contact / audit */
 .aside{display:flex;flex-direction:column;gap:16px}
 .box{background:var(--white);border:1px solid var(--line)}
 .box-h{background:var(--blue);color:#fff;padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
 .box-b{padding:16px}
-.audit-big{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.audit-big{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .audit-sub{font-size:12.5px;color:var(--mid);line-height:1.6;margin-bottom:14px}
-.btn{display:block;background:var(--gold);color:#fff;text-align:center;padding:13px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .12s}
-.btn:hover{background:var(--gold-l);color:var(--ink)}
+.btn{display:block;background:var(--gold-d);color:#fff;text-align:center;padding:13px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .12s}
+.btn:hover{background:var(--gold);color:#fff}
 .city{padding:12px 0;border-bottom:1px solid var(--line)}
 .city:last-child{border-bottom:none;padding-bottom:0}
 .city-n{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
@@ -133,7 +141,7 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .proc-n{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
 .proc-d{font-size:11.5px;color:var(--mid);line-height:1.5}
 
-footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;padding:16px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer{background:var(--blue-d);color:rgba(255,255,255,.7);font-size:11px;padding:16px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
 @media(max-width:860px){
   .head{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
@@ -156,8 +164,8 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
 <!-- EN-TÊTE -->
 <header class="head">
   <div class="head-brand">
-    <div class="head-seal">⚖</div>
-    <div class="head-name">SCP RAYMOND<span>Mandataire Judiciaire</span></div>
+    <div class="head-seal">R</div>
+    <div class="head-name">Delphine RAYMOND<span>SCP · Mandataire Judiciaire</span></div>
   </div>
   <div class="head-phones">
     <div class="head-phone">La Rochelle<strong>05 46 41 32 19</strong></div>
