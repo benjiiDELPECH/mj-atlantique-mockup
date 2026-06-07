@@ -52,14 +52,25 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
 .menu a.on{background:var(--blue-d)}
 
 /* ── CARROUSEL ── */
-/* Bandeau carrousel FIN, comme l'ancien site : pleine largeur, images qui défilent en fondu */
-.car{position:relative;height:96px;overflow:hidden;background:var(--blue-d)}
-.car-s{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;opacity:0;
-  animation:cfade 18s infinite}
-.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 28%;animation-delay:0s}
-.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 45%;animation-delay:6s}
-.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 42%;animation-delay:12s}
-@keyframes cfade{0%{opacity:0}3%{opacity:1}30%{opacity:1}36%{opacity:0}100%{opacity:0}}
+/* CARROUSEL — image qui glisse, avec flèches + points visibles */
+.car{position:relative;height:185px;overflow:hidden;background:var(--blue-d)}
+.car-track{display:flex;height:100%;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.car-slide{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat;position:relative}
+.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 38%}
+.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 48%}
+.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 45%}
+.car-cap{position:absolute;left:18px;bottom:12px;z-index:3;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+/* flèches */
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+  width:38px;height:38px;border:none;cursor:pointer;
+  background:rgba(22,55,99,.6);color:#fff;font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;transition:background .15s}
+.car-arrow:hover{background:rgba(22,55,99,.9)}
+.car-prev{left:0}.car-next{right:0}
+/* points */
+.car-dots{position:absolute;bottom:12px;right:16px;z-index:4;display:flex;gap:7px}
+.car-dots button{width:26px;height:4px;border:none;padding:0;cursor:pointer;background:rgba(255,255,255,.45)}
+.car-dots button.on{background:#fff}
 .car-cap{position:absolute;left:16px;bottom:10px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
 .car-dots{position:absolute;right:16px;bottom:12px;display:flex;gap:6px}
 .car-dots button{width:22px;height:3px;border:none;padding:0;background:rgba(255,255,255,.4);cursor:pointer}
@@ -168,11 +179,20 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
   <a href="#">Passif Créancier</a>
 </nav>
 
-<!-- BANDEAU CARROUSEL — fin, défile en fondu (comme l'ancien site) -->
+<!-- CARROUSEL — glisse, flèches + points -->
 <div class="car">
-  <div class="car-s cs1"></div>
-  <div class="car-s cs2"></div>
-  <div class="car-s cs3"></div>
+  <div class="car-track" id="ct">
+    <div class="car-slide cs1"><span class="car-cap">La Rochelle</span></div>
+    <div class="car-slide cs2"><span class="car-cap">Étude Raymond</span></div>
+    <div class="car-slide cs3"><span class="car-cap">Perpignan — Le Canigou</span></div>
+  </div>
+  <button class="car-arrow car-prev" onclick="go(cur-1)" aria-label="Précédent">‹</button>
+  <button class="car-arrow car-next" onclick="go(cur+1)" aria-label="Suivant">›</button>
+  <div class="car-dots">
+    <button class="on" onclick="go(0)" aria-label="1"></button>
+    <button onclick="go(1)" aria-label="2"></button>
+    <button onclick="go(2)" aria-label="3"></button>
+  </div>
 </div>
 
 <!-- BANDEAU CRÉDIBILITÉ -->
@@ -267,5 +287,18 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;paddi
   <span>Membre CNAJMj · Inscrit au Registre National · Confidentialité garantie</span>
 </footer>
 
+<script>
+const ct=document.getElementById('ct');
+const dots=document.querySelectorAll('.car-dots button');
+let cur=0,timer;
+function go(n){
+  cur=(n+3)%3;
+  ct.style.transform='translateX(-'+(cur*100)+'%)';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  clearInterval(timer);
+  timer=setInterval(()=>go(cur+1),4000);
+}
+timer=setInterval(()=>go(cur+1),4000);
+</script>
 </body>
 </html>
