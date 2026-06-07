@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCP RAYMOND — Mandataire Judiciaire</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:   #1e447e;   /* bleu franc institutionnel (menu) */
+  --blue-d: #163763;   /* bleu foncé */
+  --blue-l: #eaf0f8;   /* bleu très clair (fonds, hover) */
+  --gold:   #9a6f28;   /* doré (accent, en-tête ancien) */
+  --gold-l: #d4ac48;
+  --ink:    #1a2230;
+  --mid:    #4a5568;
+  --bg:     #eef1f5;   /* gris clair portail */
+  --line:   #d4dae3;
+  --white:  #fff;
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ── EN-TÊTE ── */
+.head{
+  background:var(--blue-d);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:58px;
+}
+.head-brand{display:flex;align-items:center;gap:12px}
+.head-seal{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.head-name{font-size:17px;font-weight:700;letter-spacing:.3px;line-height:1.1}
+.head-name span{display:block;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:1px}
+.head-phones{display:flex;gap:24px}
+.head-phone{font-size:12px;color:rgba(255,255,255,.75);text-align:right}
+.head-phone strong{display:block;font-size:15px;color:#fff;font-weight:700}
+.head-back{font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;margin-left:18px}
+
+/* ── MENU BLEU ── */
+.menu{
+  background:var(--blue);
+  display:flex;flex-wrap:wrap;border-bottom:3px solid var(--gold);
+}
+.menu a{
+  color:#fff;text-decoration:none;
+  padding:13px 18px;font-size:12.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+  border-left:1px solid rgba(255,255,255,.12);transition:background .12s;
+}
+.menu a:first-child{border-left:none}
+.menu a:hover{background:var(--blue-d)}
+.menu a.on{background:var(--blue-d)}
+
+/* ── HERO / CARROUSEL ── */
+.car{position:relative;height:380px;overflow:hidden;background:var(--blue-d)}
+.car-t{display:flex;height:100%;transition:transform .6s ease;will-change:transform}
+.car-s{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat}
+.cs1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 45%}
+.cs2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 40%}
+.cs3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 50%}
+
+/* voile dégradé navy pour lisibilité du texte overlay */
+.car-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(105deg,
+    rgba(22,55,99,.92) 0%,
+    rgba(22,55,99,.78) 38%,
+    rgba(22,55,99,.30) 70%,
+    rgba(22,55,99,.10) 100%),
+    linear-gradient(to top,rgba(22,55,99,.85) 0%,rgba(22,55,99,0) 45%);
+}
+
+/* contenu overlay (crédibilité) */
+.hero-in{position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:30px 32px 22px;color:#fff;pointer-events:none}
+.hero-in a,.hero-in button{pointer-events:auto}
+.hero-top{max-width:620px}
+.hero-kick{display:inline-flex;align-items:center;gap:9px;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+.hero-kick::before{content:"🛡";font-size:15px;line-height:1}
+.hero-h{font-size:30px;font-weight:800;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.hero-h em{font-style:normal;color:var(--gold-l)}
+.hero-sub{font-size:13.5px;font-weight:400;color:rgba(255,255,255,.82);margin-top:10px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap}
+.hero-stat-n{font-size:26px;font-weight:800;color:var(--gold-l);line-height:1}
+.hero-stat-l{font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:5px}
+
+.car-cap{position:absolute;right:18px;bottom:46px;z-index:3;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.car-dots{position:absolute;right:18px;bottom:18px;z-index:3;display:flex;gap:6px}
+.car-dots button{width:24px;height:3px;border:none;padding:0;background:rgba(255,255,255,.4);cursor:pointer}
+.car-dots button.on{background:#fff}
+
+/* ── ZONE PRINCIPALE ── */
+.main{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 320px;gap:24px}
+.section-h{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue)}
+
+/* 4 portes — gros boutons francs */
+.portes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.porte{
+  background:var(--white);border:1px solid var(--line);border-left:4px solid var(--blue);
+  padding:18px 20px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;transition:background .12s,box-shadow .12s;
+}
+.porte:hover{background:var(--blue-l);box-shadow:0 2px 10px rgba(30,68,126,.12)}
+.porte-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.porte-ico{width:40px;height:40px;background:var(--blue);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.porte-ico svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.porte-cat{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
+.porte-t{font-size:20px;font-weight:800;color:var(--ink);line-height:1}
+.porte-d{font-size:12.5px;color:var(--mid);line-height:1.55;flex:1}
+.porte-go{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:6px}
+.porte:hover .porte-go{gap:9px}
+
+/* colonne droite — contact / audit */
+.aside{display:flex;flex-direction:column;gap:16px}
+.box{background:var(--white);border:1px solid var(--line)}
+.box-h{background:var(--blue);color:#fff;padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.box-b{padding:16px}
+.audit-big{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.audit-sub{font-size:12.5px;color:var(--mid);line-height:1.6;margin-bottom:14px}
+.btn{display:block;background:var(--gold);color:#fff;text-align:center;padding:13px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .12s}
+.btn:hover{background:var(--gold-l);color:var(--ink)}
+.city{padding:12px 0;border-bottom:1px solid var(--line)}
+.city:last-child{border-bottom:none;padding-bottom:0}
+.city-n{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.city-r{font-size:12.5px;color:var(--mid);line-height:1.6}
+.city-r a{color:var(--blue);text-decoration:none}
+
+/* procédures — bande dense en bas */
+.proc-wrap{max-width:1200px;margin:0 auto;padding:0 24px 28px}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.proc{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--gold);padding:12px 14px}
+.proc-n{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.proc-d{font-size:11.5px;color:var(--mid);line-height:1.5}
+
+footer{background:var(--blue-d);color:rgba(255,255,255,.55);font-size:11px;padding:16px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media(max-width:860px){
+  .head{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
+  .head-phones{gap:14px}
+  .menu a{padding:11px 13px;font-size:11px}
+  .car{height:auto;min-height:340px}
+  .hero-in{padding:22px 18px 16px}
+  .hero-h{font-size:22px}
+  .hero-sub{font-size:12.5px}
+  .hero-stats{gap:22px}
+  .hero-stat-n{font-size:21px}
+  .main{grid-template-columns:1fr;padding:16px}
+  .portes{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- EN-TÊTE -->
+<header class="head">
+  <div class="head-brand">
+    <div class="head-seal">⚖</div>
+    <div class="head-name">SCP RAYMOND<span>Mandataire Judiciaire</span></div>
+  </div>
+  <div class="head-phones">
+    <div class="head-phone">La Rochelle<strong>05 46 41 32 19</strong></div>
+    <div class="head-phone">Perpignan<strong>04 68 81 09 97</strong></div>
+    <a href="../index.html" class="head-back">← Galerie</a>
+  </div>
+</header>
+
+<!-- MENU BLEU -->
+<nav class="menu">
+  <a href="#" class="on">Accueil</a>
+  <a href="#">Étude</a>
+  <a href="#">Dossier</a>
+  <a href="#">Actif à vendre</a>
+  <a href="#">Reprise</a>
+  <a href="#">Salarié</a>
+  <a href="#">Dirigeant</a>
+  <a href="#">Passif Créancier</a>
+</nav>
+
+<!-- HERO / CARROUSEL -->
+<div class="car">
+  <div class="car-t" id="ct">
+    <div class="car-s cs1"></div>
+    <div class="car-s cs2"></div>
+    <div class="car-s cs3"></div>
+  </div>
+  <div class="car-veil"></div>
+
+  <!-- OVERLAY CRÉDIBILITÉ -->
+  <div class="hero-in">
+    <div class="hero-top">
+      <div class="hero-kick">Mandataire désigné par la justice</div>
+      <h1 class="hero-h">Désignée par <em>ordonnance du Tribunal de Commerce</em></h1>
+      <div class="hero-sub">Inscrite sur les listes officielles du CNAJMj — La Rochelle &amp; Perpignan</div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-n">15 ans</div><div class="hero-stat-l">d'exercice</div></div>
+      <div><div class="hero-stat-n">2</div><div class="hero-stat-l">ressorts</div></div>
+      <div><div class="hero-stat-n">Gratuit</div><div class="hero-stat-l">1er entretien</div></div>
+    </div>
+  </div>
+
+  <div class="car-cap" id="cc">La Rochelle</div>
+  <div class="car-dots">
+    <button class="on" onclick="go(0)"></button>
+    <button onclick="go(1)"></button>
+    <button onclick="go(2)"></button>
+  </div>
+</div>
+
+<!-- ZONE PRINCIPALE -->
+<div class="main">
+
+  <!-- 4 portes -->
+  <div>
+    <div class="section-h">Accès direct — sélectionnez votre situation</div>
+    <div class="portes">
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg></div>
+          <div><div class="porte-cat">Chef d'entreprise</div><div class="porte-t">Dirigeant</div></div>
+        </div>
+        <div class="porte-d">Mon entreprise est en difficulté. Mandat ad hoc, conciliation, sauvegarde — un audit confidentiel identifie les options.</div>
+        <div class="porte-go">Espace dirigeant →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg></div>
+          <div><div class="porte-cat">Employé de l'entreprise</div><div class="porte-t">Salarié</div></div>
+        </div>
+        <div class="porte-d">Mes salaires sont garantis par l'AGS quelle que soit l'issue. Déclarez vos créances salariales dans les délais.</div>
+        <div class="porte-go">Espace salarié →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div>
+          <div><div class="porte-cat">Fournisseur · prêteur · bailleur</div><div class="porte-t">Créancier</div></div>
+        </div>
+        <div class="porte-d">L'entreprise me doit de l'argent. Déclarer ma créance — délai légal de 2 mois à compter du jugement d'ouverture.</div>
+        <div class="porte-go">Déclarer ma créance →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L21 8l-3-3"/></svg></div>
+          <div><div class="porte-cat">Acquéreur potentiel</div><div class="porte-t">Repreneur</div></div>
+        </div>
+        <div class="porte-d">Je cherche une entreprise à reprendre. Consultez les actifs disponibles à la cession dans nos deux ressorts.</div>
+        <div class="porte-go">Consulter les actifs →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- colonne droite -->
+  <aside class="aside">
+    <div class="box">
+      <div class="box-h">Premier rendez-vous</div>
+      <div class="box-b">
+        <div class="audit-big">Entretien gratuit</div>
+        <div class="audit-sub">45 min, en présentiel ou en visioconférence. Sans engagement. Les mandataires ne sont rémunérés que sur désignation du Tribunal.</div>
+        <a href="#" class="btn">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-h">Nous contacter</div>
+      <div class="box-b">
+        <div class="city">
+          <div class="city-n">La Rochelle</div>
+          <div class="city-r">Le Bastion — 81, rue du Rempart Saint-Claude, 17000<br>05 46 41 32 19 · <a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div>
+        </div>
+        <div class="city">
+          <div class="city-n">Perpignan</div>
+          <div class="city-r">04 68 81 09 97 · <a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span>© 2026 SCP RAYMOND — Mandataire Judiciaire · La Rochelle &amp; Perpignan</span>
+  <span>Membre CNAJMj · Inscrit au Registre National · Confidentialité garantie</span>
+</footer>
+
+<script>
+const caps=['La Rochelle','Étude Raymond','Le Canigou — Perpignan'];
+const ct=document.getElementById('ct'),cc=document.getElementById('cc');
+const dots=document.querySelectorAll('.car-dots button');
+let cur=0,t;
+function go(n){dots[cur].classList.remove('on');cur=n;ct.style.transform=`translateX(-${cur*100}%)`;dots[cur].classList.add('on');cc.textContent=caps[cur];clearInterval(t);t=setInterval(()=>go((cur+1)%3),5000);}
+t=setInterval(()=>go((cur+1)%3),5000);
+</script>
+</body>
+</html>
