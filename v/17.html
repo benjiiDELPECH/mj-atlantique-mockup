@@ -58,9 +58,12 @@ body{font-family:-apple-system,'Segoe UI',Roboto,system-ui,sans-serif;
   display:grid;grid-template-columns:repeat(3,1fr)}
 .car-cell{position:relative;overflow:hidden}
 .car-cell+.car-cell{border-left:2px solid var(--blue-d)}
-.car-cell-img{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;
-  transition:transform 7s ease}
-.car:hover .car-cell-img{transform:scale(1.05)}
+/* mouvement permanent doux (Ken Burns) — ça bouge sans recouper */
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.1)}}
+.car-cell-img{position:absolute;inset:-2%;background-size:cover;background-repeat:no-repeat;
+  animation:kenburns 15s ease-in-out infinite alternate}
+.car-cell:nth-child(2) .car-cell-img{animation-delay:-5s}
+.car-cell:nth-child(3) .car-cell-img{animation-delay:-10s}
 .ci1{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');background-position:center 30%}
 .ci2{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');background-position:center 45%}
 .ci3{background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');background-position:center 50%}
