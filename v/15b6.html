@@ -33,9 +33,9 @@
   .nav-firm span { display:block; font-family:'Inter'; font-size:9px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber); margin-top:2px; }
   .nav-menu { display:flex; align-items:stretch; list-style:none; }
   .nav-menu a {
-    display:flex; align-items:center; height:100%; padding:0 18px;
-    font-size:12px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;
-    color:var(--ink); text-decoration:none; position:relative;
+    display:flex; align-items:center; height:100%; padding:0 13px;
+    font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink); text-decoration:none; position:relative; white-space:nowrap;
     border-left:1px solid rgba(17,19,24,0.12);
   }
   .nav-menu li:last-child a { border-right:1px solid rgba(17,19,24,0.12); }
@@ -53,7 +53,7 @@
   /* BANDEAU PHOTO — triptyque (personnalité / ancrage local, comme l'original) */
   .hero-band {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    height: 210px; border-bottom: 3px solid var(--amber);
+    height: 150px; border-bottom: 3px solid var(--amber);
   }
   .hb-cell { position: relative; overflow: hidden; }
   .hb-cell + .hb-cell { border-left: 2px solid var(--stone); }
@@ -249,12 +249,13 @@
   <div class="nav-firm">SCP Raymond<span>Mandataire Judiciaire</span></div>
   <ul class="nav-menu">
     <li><a href="#" class="active">Accueil</a></li>
-    <li><a href="#">L'Étude</a></li>
-    <li><a href="#">Dossiers</a></li>
-    <li><a href="#">Actifs</a></li>
+    <li><a href="#">Étude</a></li>
+    <li><a href="#">Dossier</a></li>
+    <li><a href="#">Actif</a></li>
     <li><a href="#">Reprise</a></li>
-    <li><a href="#">Procédures</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#">Salarié</a></li>
+    <li><a href="#">Dirigeant</a></li>
+    <li><a href="#">Passif Créancier</a></li>
   </ul>
   <a href="../index.html" class="back-link">← Galerie</a>
   <!-- Hamburger mobile (checkbox hack, sans JS) -->
@@ -262,12 +263,13 @@
   <label class="nav-burger" for="burger-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
   <ul class="mobile-menu">
     <li><a href="#">Accueil</a></li>
-    <li><a href="#">L'Étude</a></li>
-    <li><a href="#">Dossiers</a></li>
-    <li><a href="#">Actifs à vendre</a></li>
+    <li><a href="#">Étude</a></li>
+    <li><a href="#">Dossier</a></li>
+    <li><a href="#">Actif</a></li>
     <li><a href="#">Reprise</a></li>
-    <li><a href="#">Procédures</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#">Salarié</a></li>
+    <li><a href="#">Dirigeant</a></li>
+    <li><a href="#">Passif Créancier</a></li>
   </ul>
 </nav>
 
