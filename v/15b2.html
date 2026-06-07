@@ -58,7 +58,7 @@
   .sidebar-photo-cap { padding: 6px 8px; font-size: 9px; font-style: italic; color: rgba(17,19,24,0.4); border-top: 1px solid rgba(17,19,24,0.08); }
 
   /* Main center column */
-  .col-main { padding: 48px 48px; }
+  .col-main { padding: 48px 48px; min-width: 0; }
   .main-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
   .main-headline {
     font-family: 'EB Garamond', serif;
@@ -72,10 +72,10 @@
   .main-section-title { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 20px; }
 
   /* PORTES D'ENTRÉE — 4 accès cliquables (affordance forte) */
-  .doors { margin-bottom: 40px; border: 1px solid rgba(17,19,24,0.18); }
+  .doors { display: flex; flex-direction: column; margin-bottom: 40px; border: 1px solid rgba(17,19,24,0.18); }
   .door-row {
-    display: grid; grid-template-columns: 130px 1fr auto;
-    gap: 22px; align-items: center;
+    display: grid; grid-template-columns: 130px minmax(0,1fr) auto;
+    gap: 22px; align-items: center; width: 100%;
     padding: 18px 22px;
     border-bottom: 1px solid rgba(17,19,24,0.12);
     text-decoration: none; color: inherit;
