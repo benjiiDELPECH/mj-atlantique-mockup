@@ -7,17 +7,19 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:  #0d2340;
+  --navy:  #1f3a63;   /* couleur réelle de l'étude — bleu marine */
   --ink:   #1a1f2e;
-  --mid:   #4a5568;
-  --faint: #6b7280;
-  --amber: #7a5820;
-  --line:  #d1cdc6;
-  --bg:    #edeae4;
+  --mid:   #44506a;
+  --faint: #5d6679;
+  --amber: #7a5820;   /* unique accent — or/bronze (bordures, fond bouton) */
+  --gold:  #d4b06a;   /* même or, éclairci pour texte/icônes sur navy (WCAG AA) */
+  --line:  #d6d1c8;
+  --bg:    #edeae4;   /* crème */
+  --cream: #f3efe7;   /* crème claire */
   --white: #fff;
   --sb-w:  264px;
   --nav-h: 48px;
-  --car-h: 120px;
+  --car-h: 150px;
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);
   font-family:'Inter',system-ui,sans-serif;color:var(--ink);
@@ -88,7 +90,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
 .sc-email a:hover{color:var(--ink)}
 
 /* Bloc CNAJMj mis en avant — prominence (Fogg p80) */
-.ib-cred{background:#f5f3ef;border-left:2px solid var(--navy)}
+.ib-cred{background:var(--cream);border-left:3px solid var(--amber)}
 .cred-link{
   color:var(--ink);font-weight:500;font-size:13px;line-height:1.4;
   text-decoration:none;border-bottom:1px solid var(--line);
@@ -122,25 +124,25 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
 .car-slide{
   flex:0 0 100%;height:100%;
   background-size:cover;
+  background-repeat:no-repeat;
 }
-/* Positions affinées par image pour éviter les coupes moches */
+/* Cadrage affiné par image : sujet centré, pas de coupe moche */
 .cs-1{
   background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tour.jpg');
-  background-position:center 35%;   /* montre le haut des tours */
+  background-position:center 55%;   /* tours de La Rochelle bien dans le cadre */
 }
 .cs-2{
   background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/tortue.jpg');
-  background-position:center 45%;
+  background-position:center 50%;   /* sujet centré */
 }
 .cs-3{
   background-image:url('https://www.mj-atlantique.fr/assets/5.3.7-4.3.1/ctx/pj/bandeau/35/76259/le_canigou.jpeg');
-  background-position:center 30%;   /* montre le sommet du Canigou */
+  background-position:center 60%;   /* massif du Canigou cadré sous la crête */
 }
-/* overlay minimal — ne tue pas l'image */
+/* overlay minimal — lisibilité de la légende sans tuer l'image */
 .car::after{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to right,rgba(13,35,64,.15) 0%,transparent 40%),
-             linear-gradient(to top,rgba(13,35,64,.3) 0%,transparent 50%);
+  background:linear-gradient(to top,rgba(31,58,99,.42) 0%,transparent 46%);
 }
 .car-ui{
   position:absolute;bottom:10px;right:14px;z-index:2;
@@ -157,42 +159,44 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
 }
 .car-dot.on{background:rgba(255,255,255,.9)}
 
-/* ── BANDEAU HÉRO — message maître : désignation Tribunal (Reputed) ── */
+/* ── BANDEAU HÉRO — message maître : désignation Tribunal (signal de crédibilité) ── */
 .hero-band{
   background:var(--navy);
-  padding:20px 28px;
-  display:flex;align-items:center;gap:22px;
+  padding:22px 28px;
+  display:flex;align-items:center;gap:24px;
   flex-shrink:0;
-  border-bottom:2px solid var(--amber);
+  position:relative;
+  border-top:3px solid var(--amber);
+  border-bottom:1px solid rgba(0,0,0,.15);
 }
 .hero-seal{
-  width:60px;height:60px;flex-shrink:0;
-  border:1px solid rgba(255,255,255,.3);border-radius:50%;
+  width:64px;height:64px;flex-shrink:0;
+  border:1.5px solid var(--gold);border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   position:relative;
 }
-.hero-seal svg{width:30px;height:30px;stroke:var(--amber);fill:none;stroke-width:1.3}
+.hero-seal svg{width:32px;height:32px;stroke:var(--gold);fill:none;stroke-width:1.4}
 .hero-seal::after{
   content:'';position:absolute;inset:5px;
-  border:1px solid rgba(255,255,255,.12);border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);border-radius:50%;
 }
 .hero-txt{flex:1}
 .hero-kicker{
-  font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--amber);margin-bottom:6px;
+  font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:7px;
 }
 .hero-title{
   font-family:'EB Garamond',serif;font-size:23px;font-weight:600;
-  color:#fff;line-height:1.25;
+  color:#fff;line-height:1.28;
 }
-.hero-title em{font-style:italic;color:rgba(255,255,255,.75)}
+.hero-title em{font-style:italic;color:rgba(255,255,255,.82)}
 .hero-meta{
   display:flex;gap:0;flex-shrink:0;
 }
-.hero-stat{padding:0 18px;border-left:1px solid rgba(255,255,255,.12);text-align:center}
+.hero-stat{padding:0 20px;border-left:1px solid rgba(255,255,255,.16);text-align:center}
 .hero-stat:first-child{border-left:none}
-.hero-stat-n{font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:#fff;line-height:1}
-.hero-stat-l{font-size:8.5px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.hero-stat-n{font-family:'EB Garamond',serif;font-size:24px;font-weight:600;color:var(--gold);line-height:1}
+.hero-stat-l{font-size:8.5px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:5px}
 
 /* ── ZONE PRINCIPALE — titre + cards ── */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
@@ -217,7 +221,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
   position:relative;overflow:hidden;
   transition:border-color .15s,box-shadow .15s;
 }
-.role:hover{border-color:#9a9590;box-shadow:0 2px 12px rgba(13,35,64,.07)}
+.role:hover{border-color:var(--navy);box-shadow:0 3px 14px rgba(31,58,99,.10)}
 /* Barre top navy au hover */
 .role::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;

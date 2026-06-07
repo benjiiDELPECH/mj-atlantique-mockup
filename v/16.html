@@ -7,14 +7,17 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:  #0d2340;
-  --ink:   #1a1f2e;
-  --mid:   #4a5568;
-  --faint: #6b7280;
-  --amber: #7a5820;
-  --line:  #ddd8cf;
-  --bg:    #f4f1ec;
-  --white: #fff;
+  /* ── Palette unifiée : 5 couleurs seulement ── */
+  --navy:  #1f3a63;            /* bleu foncé — fonds sombres, borne */
+  --amber: #7a5820;            /* or/bronze — SEUL accent (CTA, actif, hover clé) */
+  --cream: #f3efe7;            /* fond clair */
+  --ink:   #1a1d24;            /* texte foncé */
+  --white: #fff;              /* texte sur fond sombre */
+  /* dérivés (pas de nouvelles couleurs : ink atténué + navy translucide) */
+  --mid:   rgba(26,29,36,.66); /* texte secondaire sur clair (AA) */
+  --faint: rgba(26,29,36,.64); /* labels/légendes sur clair (AA) */
+  --line:  rgba(31,58,99,.14); /* bordure unique subtile (teinte navy) */
+  --bg:    var(--cream);
   --nav-h: 52px;
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);
@@ -54,7 +57,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
 /* overlay rigoureux — lisible, pas criard */
 .charme::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(13,35,64,.55) 0%,rgba(13,35,64,.35) 40%,rgba(13,35,64,.82) 100%);
+  background:linear-gradient(to bottom,rgba(31,58,99,.58) 0%,rgba(31,58,99,.40) 40%,rgba(31,58,99,.85) 100%);
 }
 .charme-in{
   position:relative;z-index:2;height:100%;
@@ -113,11 +116,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
   border-bottom:1px solid var(--line);
   position:relative;transition:background .12s;
 }
-.door:hover{background:#faf9f6}
-/* barre gauche navy au hover — repère net, pas "flèche de merde" */
+.door:hover{background:var(--cream)}
+/* barre gauche amber au hover — repère net, l'accent unique */
 .door::before{
   content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--navy);transform:scaleY(0);transition:transform .15s ease;
+  background:var(--amber);transform:scaleY(0);transition:transform .15s ease;
 }
 .door:hover::before{transform:scaleY(1)}
 .door-ico{
@@ -133,7 +136,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);
   font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--faint);
   flex-shrink:0;display:flex;align-items:center;gap:6px;transition:color .12s,gap .12s;
 }
-.door:hover .door-go{color:var(--navy);gap:9px}
+.door:hover .door-go{color:var(--amber);gap:9px}
 .door-chev{font-size:15px}
 
 /* Pied : CTA + contacts */
