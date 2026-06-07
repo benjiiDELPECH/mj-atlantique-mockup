@@ -30,21 +30,22 @@ body{font-family:var(--sans);
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold-l);outline-offset:2px}
 
 /* ── EN-TÊTE ── */
+/* EN-TÊTE DORÉ — fidèle à la signature du site mj-atlantique.fr */
 .head{
-  background:var(--blue-d);color:#fff;
+  background:linear-gradient(180deg,#ece0b1,#d8c27c);color:var(--blue-d);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;height:58px;
+  padding:10px 24px;min-height:66px;border-bottom:3px solid var(--blue);
 }
 .head-brand{display:flex;align-items:center;gap:12px}
-.head-seal{width:36px;height:36px;border:1.5px solid var(--gold-l);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-l);padding-bottom:1px}
-.head-name{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.3px;line-height:1.1}
-.head-name span{display:block;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:1px}
-.head-phones{display:flex;gap:24px}
-.head-phone{font-size:12px;color:rgba(255,255,255,.75);text-align:right}
-.head-phone strong{display:block;font-size:15px;color:#fff;font-weight:700}
-.head-back{font-size:11px;color:rgba(255,255,255,.65);text-decoration:none;margin-left:18px}
+.head-mark{font-family:var(--serif);line-height:1.04}
+.hm-mj{font-size:30px;font-weight:700;color:var(--blue-d);letter-spacing:.3px}
+.hm-dom{font-size:21px;font-weight:600;color:var(--blue)}
+.hm-and{font-size:16px;font-style:italic;font-weight:500;color:var(--blue-d);margin:0 5px}
+.head-sub{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2px;color:var(--blue-d);margin-top:4px;opacity:.9}
+.head-phones{display:flex;gap:24px;align-items:center}
+.head-phone{font-size:12px;color:var(--blue-d);text-align:right;opacity:.85}
+.head-phone strong{display:block;font-size:15px;color:var(--blue-d);font-weight:700;opacity:1}
+.head-back{font-size:11px;color:var(--blue);text-decoration:none;margin-left:18px;font-weight:600}
 
 /* ── MENU BLEU ── */
 .menu{
@@ -153,6 +154,7 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.7);font-size:11px;paddin
 
 @media(max-width:860px){
   .head{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
+  .hm-mj{font-size:23px}.hm-dom{font-size:15px}.hm-and{font-size:13px}.head-sub{font-size:10px}
   .head-phones{gap:14px}
   .menu a{padding:11px 13px;font-size:11px}
   .cred-main{border-right:none}
@@ -167,8 +169,10 @@ footer{background:var(--blue-d);color:rgba(255,255,255,.7);font-size:11px;paddin
 <!-- EN-TÊTE -->
 <header class="head">
   <div class="head-brand">
-    <div class="head-seal">R</div>
-    <div class="head-name">Delphine RAYMOND<span>SCP · Mandataire Judiciaire</span></div>
+    <div class="head-mark">
+      <span class="hm-mj">mj</span><span class="hm-dom">-atlantique.fr</span><span class="hm-and">et</span><span class="hm-mj">mj</span><span class="hm-dom">-perpignan.fr</span>
+      <span class="head-sub">SCP Delphine RAYMOND · Mandataire Judiciaire · La Rochelle &amp; Perpignan</span>
+    </div>
   </div>
   <div class="head-phones">
     <div class="head-phone">La Rochelle<strong>05 46 41 32 19</strong></div>
