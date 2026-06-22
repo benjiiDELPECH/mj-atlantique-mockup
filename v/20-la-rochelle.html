@@ -78,6 +78,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy-l);outline-off
 .hero-door svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .hero-door b{display:block;font-size:14px;font-weight:700;letter-spacing:.2px}
 .hero-door em{display:block;font-style:normal;font-size:11.5px;font-weight:500;opacity:.95;margin-top:1px}
+.hero-door .door-arrow{margin-left:auto;width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;opacity:.92;transition:transform .15s}
+.hero-door:hover .door-arrow{transform:translateX(4px)}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;transition:.14s}
 .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .btn-w{background:#fff;color:var(--navy)}.btn-w:hover{background:rgba(255,255,255,.85)}
@@ -190,10 +192,10 @@ footer a{color:rgba(255,255,255,.85)}
     <p class="hero-sub">Au service des entreprises en difficulté — prévention amiable et procédures collectives, sur les ressorts de La Rochelle (17) et Perpignan (66).</p>
     <div class="hero-doors-lead">Accès direct — vous êtes :</div>
     <div class="hero-doors">
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/dirigeant"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg><span><b>Dirigeant</b><em>Entreprise en difficulté</em></span></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/salarie"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><span><b>Salarié</b><em>Créances salariales · AGS</em></span></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/creancier/passif-creancier"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span><b>Créancier</b><em>Déclarer ma créance</em></span></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/anonym/actif/search"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3"/></svg><span><b>Repreneur</b><em>Actifs à céder</em></span></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/dirigeant"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg><span><b>Dirigeant</b><em>Entreprise en difficulté</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/salarie"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><span><b>Salarié</b><em>Créances salariales · AGS</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/creancier/passif-creancier"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span><b>Créancier</b><em>Déclarer ma créance</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/anonym/actif/search"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3"/></svg><span><b>Repreneur</b><em>Actifs à céder</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
     </div>
   </div>
