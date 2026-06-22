@@ -63,11 +63,21 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy-l);outline-off
 .hero-wordmark{font-size:29px;font-weight:800;line-height:1.1;letter-spacing:-.3px}
 .hero-wordmark span{display:block;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:8px}
 .hero-main{position:relative;padding-left:50px}
-.hero-kick{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px}
+.hero-kick{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.5);margin-bottom:20px}
 .hero-h{font-size:54px;font-weight:800;line-height:1.05;letter-spacing:-.5px;max-width:760px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
 .hero-h em{font-style:normal;font-weight:500;display:block;font-size:22px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:14px}
-.hero-sub{font-size:15px;font-weight:500;color:rgba(255,255,255,.85);margin-top:22px;max-width:560px}
+.hero-sub{font-size:15px;font-weight:500;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5);margin-top:22px;max-width:560px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+/* 4 portes d'entrée compactes dans le hero (accès direct par profil vers le backoffice) */
+.hero-doors-lead{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.5);margin-top:28px;margin-bottom:12px}
+.hero-doors{display:flex;flex-wrap:wrap;gap:10px;max-width:540px}
+.hero-door{display:flex;align-items:center;gap:11px;flex:1 1 calc(50% - 10px);min-width:215px;
+  padding:12px 15px;border:1.5px solid rgba(255,255,255,.45);border-radius:9px;background:rgba(3,12,52,.55);
+  color:#fff;text-decoration:none;transition:.14s}
+.hero-door:hover{background:#fff;color:var(--navy);border-color:#fff}
+.hero-door svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.hero-door b{display:block;font-size:14px;font-weight:700;letter-spacing:.2px}
+.hero-door em{display:block;font-style:normal;font-size:11.5px;font-weight:500;opacity:.95;margin-top:1px}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;transition:.14s}
 .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .btn-w{background:#fff;color:var(--navy)}.btn-w:hover{background:rgba(255,255,255,.85)}
@@ -107,8 +117,10 @@ section.soft{background:var(--soft)}
 .faq summary:hover{background:var(--soft)}
 .faq-b{padding:0 22px 20px;font-size:14px;color:var(--mid);line-height:1.7}
 .contacts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.contact{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--navy);padding:26px}
-.contact.secondary{border-top-color:var(--line);background:var(--soft)}
+.contact{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:6px;overflow:hidden}
+.contact-photo{height:148px;background-size:cover;background-position:center;position:relative}
+.contact-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,22,86,.06) 35%,rgba(0,22,86,.34))}
+.contact-body{padding:22px 26px 26px}
 .contact-c{font-size:19px;font-weight:700;color:var(--navy)}
 .contact-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin:2px 0 14px}
 .contact-l{font-size:14px;color:var(--mid);line-height:1.8}
@@ -119,7 +131,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
 footer a{color:rgba(255,255,255,.85)}
 .wink{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.5)}
 .wink b{color:#fff;font-weight:700}
+/* bande immersive pleine page (100vh) + parallaxe — accent de crédibilité façon mjassocies */
+.band{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
+.band-bg{position:absolute;left:0;right:0;top:-30%;height:160%;background:url('img/hero-justice.jpg') center 42% / cover no-repeat;will-change:transform}
+.band-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,0,70,.66),rgba(2,0,70,.80))}
+.band-in{position:relative;max-width:960px;margin:0 auto;padding:0 28px;text-align:center;color:#fff}
+.band-kick{font-size:12px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:24px;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+.band-q{font-size:33px;font-weight:300;line-height:1.42;letter-spacing:-.3px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.band-q strong{font-weight:700}
+.band-sep{width:54px;height:3px;background:rgba(255,255,255,.5);margin:30px auto 0}
 @media(max-width:900px){
+  .band{min-height:78vh}.band-q{font-size:23px}
   .head-in{height:auto;flex-direction:column;align-items:flex-start;padding:12px 20px;gap:10px}
   .nav{flex-wrap:wrap;gap:2px}.nav a{padding:7px 9px;font-size:11px}
   .hero{min-height:auto;padding:90px 0 130px}.hero-h{font-size:34px}.hero-h em{font-size:16px}
@@ -156,7 +178,7 @@ footer a{color:rgba(255,255,255,.85)}
 </div></section>
 
 <section class="hero">
-  <div class="hero-bg"></div><div class="hero-veil"></div>
+  <div class="hero-bg" data-parallax></div><div class="hero-veil"></div>
   <div class="hero-in">
     <div class="hero-id">
       <div class="hero-seal">DR</div>
@@ -165,9 +187,13 @@ footer a{color:rgba(255,255,255,.85)}
     <div class="hero-main">
     <div class="hero-kick">Mandataire judiciaire désigné par la justice</div>
     <h1 class="hero-h">Mandataires Judiciaires<em>La Rochelle · Perpignan</em></h1>
-    <p class="hero-sub">Au service des entreprises en difficulté sur le ressort de La Rochelle et de la Charente-Maritime (17) — dans un cadre préventif, amiable et judiciaire. Notre étude est également présente à Perpignan.</p>
-    <div class="hero-cta">
-      <a href="https://www.mj-atlantique.fr/accueil" class="btn btn-w"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Accéder à mon espace</a>
+    <p class="hero-sub">Au service des entreprises en difficulté — prévention amiable et procédures collectives, sur les ressorts de La Rochelle (17) et Perpignan (66).</p>
+    <div class="hero-doors-lead">Accès direct — vous êtes :</div>
+    <div class="hero-doors">
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/dirigeant"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg><span><b>Dirigeant</b><em>Entreprise en difficulté</em></span></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/salarie"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><span><b>Salarié</b><em>Créances salariales · AGS</em></span></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/creancier/passif-creancier"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span><b>Créancier</b><em>Déclarer ma créance</em></span></a>
+      <a class="hero-door" href="https://www.mj-atlantique.fr/anonym/actif/search"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3"/></svg><span><b>Repreneur</b><em>Actifs à céder</em></span></a>
     </div>
     </div>
   </div>
@@ -223,6 +249,16 @@ footer a{color:rgba(255,255,255,.85)}
   </div>
 </section>
 
+<section class="band" id="mission" aria-label="Notre mission">
+  <div class="band-bg" data-parallax></div>
+  <div class="band-veil"></div>
+  <div class="band-in">
+    <div class="band-kick">Au service des entreprises depuis 2007</div>
+    <p class="band-q">Mandataires judiciaires <strong>désignés par le Tribunal</strong> — au service des entreprises en difficulté et de leurs salariés, dans un cadre préventif, amiable et judiciaire.</p>
+    <div class="band-sep"></div>
+  </div>
+</section>
+
 <div class="cta-band"><div class="wrap">
   <div><h3>Biens &amp; actifs à céder</h3><p>Fonds de commerce, matériels et biens immobiliers à la vente sur nos deux ressorts (La Rochelle &amp; Perpignan).</p></div>
   <a href="https://www.mj-atlantique.fr/anonym/actif/search" class="btn btn-w"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Consulter les actifs</a>
@@ -240,10 +276,10 @@ footer a{color:rgba(255,255,255,.85)}
 
 <section class="soft" id="contacts">
   <div class="wrap">
-    <div class="sec-head"><div class="sec-kick">Nous contacter</div><h2 class="sec-h">L'étude de La Rochelle</h2><p class="sec-lead">Établissement principal de la SCP Delphine Raymond, pour le ressort de la Charente-Maritime.</p></div>
+    <div class="sec-head"><div class="sec-kick">Nos implantations</div><h2 class="sec-h">Nos deux études</h2><p class="sec-lead">La SCP Delphine Raymond intervient sur deux ressorts : La Rochelle (Charente-Maritime, 17) et Perpignan (Pyrénées-Orientales, 66).</p></div>
     <div class="contacts">
-      <div class="contact"><div class="contact-c">La Rochelle</div><div class="contact-tag">Établissement principal · 17</div><div class="contact-l">81 rue du Rempart Saint-Claude, 17000 La Rochelle<br>Tél. <a href="tel:+33546413219"><strong>05 46 41 32 19</strong></a><br><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div></div>
-      <div class="contact secondary"><div class="contact-c">Perpignan</div><div class="contact-tag">Établissement secondaire · 66</div><div class="contact-l">26 rue Mailly, 66000 Perpignan<br>Tél. <a href="tel:+33468810997"><strong>04 68 81 09 97</strong></a><br><a href="https://www.mj-perpignan.fr/accueil">Voir l'étude de Perpignan →</a></div></div>
+      <div class="contact"><div class="contact-photo" style="background-image:url('img/tour.jpg')"></div><div class="contact-body"><div class="contact-c">La Rochelle</div><div class="contact-tag">Établissement principal · 17</div><div class="contact-l">81 rue du Rempart Saint-Claude, 17000 La Rochelle<br>Tél. <a href="tel:+33546413219"><strong>05 46 41 32 19</strong></a><br><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div></div></div>
+      <div class="contact"><div class="contact-photo" style="background-image:url('img/le_canigou.jpeg')"></div><div class="contact-body"><div class="contact-c">Perpignan</div><div class="contact-tag">Établissement secondaire · 66</div><div class="contact-l">26 rue Mailly, 66000 Perpignan<br>Tél. <a href="tel:+33468810997"><strong>04 68 81 09 97</strong></a><br><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a><br><a href="https://www.mj-perpignan.fr/accueil">Voir l'étude de Perpignan →</a></div></div></div>
     </div>
   </div>
 </section>
@@ -255,12 +291,26 @@ footer a{color:rgba(255,255,255,.85)}
 </div></footer>
 
 <script>
-  // Parallaxe façon mjassocies (Enfold avia, ratio 0.3) : l'image suit le scroll à 30% de la vitesse
-  const heroBg = document.querySelector('.hero-bg');
+  // Parallaxe façon mjassocies (Enfold avia) : les calques [data-parallax] dérivent au scroll.
+  // Respecte prefers-reduced-motion (coupe l'effet pour qui le demande) — accessibilité.
+  const layers = document.querySelectorAll('[data-parallax]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ticking = false;
-  function parallax(){ heroBg.style.transform = `translate3d(0, ${window.scrollY * 0.3}px, 0)`; ticking = false; }
-  addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(parallax); ticking = true; } }, { passive:true });
-  parallax();
+  function parallax(){
+    const vh = innerHeight;
+    layers.forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      if(r.bottom < -60 || r.top > vh + 60) return;
+      const delta = ((r.top + r.height/2) - vh/2) * 0.16;
+      el.style.transform = `translate3d(0, ${delta}px, 0)`;
+    });
+    ticking = false;
+  }
+  if(!reduce){
+    addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(parallax); ticking = true; } }, { passive:true });
+    addEventListener('resize', parallax, { passive:true });
+    parallax();
+  }
 </script>
 </body>
 </html>
