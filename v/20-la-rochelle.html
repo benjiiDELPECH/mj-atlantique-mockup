@@ -142,8 +142,16 @@ footer a{color:rgba(255,255,255,.85)}
 .band-q{font-size:33px;font-weight:300;line-height:1.42;letter-spacing:-.3px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .band-q strong{font-weight:700}
 .band-sep{width:54px;height:3px;background:rgba(255,255,255,.5);margin:30px auto 0}
+/* section "Votre interlocutrice" — photo + bio (crédibilité humaine, critère 3.1) */
+.founder{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center}
+.founder-photo{width:280px;height:350px;background-size:cover;background-position:center 18%;border-radius:8px;box-shadow:0 16px 40px rgba(0,22,86,.16)}
+.founder-role{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy-l);margin:6px 0 16px}
+.founder-bio{font-size:15.5px;color:var(--mid);line-height:1.75;max-width:620px}
+.founder-reassure{margin-top:14px;font-size:14px;color:var(--ink)}
+.founder-reassure strong{color:var(--navy)}
 @media(max-width:900px){
   .band{min-height:78vh}.band-q{font-size:23px}
+  .founder{grid-template-columns:1fr;gap:24px}.founder-photo{width:200px;height:250px}
   .head-in{height:auto;flex-direction:column;align-items:flex-start;padding:12px 20px;gap:10px}
   .nav{flex-wrap:wrap;gap:2px}.nav a{padding:7px 9px;font-size:11px}
   .hero{min-height:auto;padding:90px 0 130px}.hero-h{font-size:34px}.hero-h em{font-size:16px}
@@ -258,6 +266,21 @@ footer a{color:rgba(255,255,255,.85)}
     <div class="band-kick">Au service des entreprises depuis 2007</div>
     <p class="band-q">Mandataires judiciaires <strong>désignés par le Tribunal</strong> — au service des entreprises en difficulté et de leurs salariés, dans un cadre préventif, amiable et judiciaire.</p>
     <div class="band-sep"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="founder">
+      <div class="founder-photo" style="background-image:url('img/delphine.jpg')" role="img" aria-label="Portrait de Delphine Raymond, mandataire judiciaire"></div>
+      <div class="founder-text">
+        <div class="sec-kick">Votre interlocutrice</div>
+        <h2 class="sec-h">Delphine Raymond</h2>
+        <div class="founder-role">Mandataire judiciaire · Titulaire de la SCP</div>
+        <p class="founder-bio">Delphine Raymond dirige la SCP qui porte son nom, fondée en 2007. Inscrite sur la liste nationale des mandataires judiciaires, elle intervient avec une équipe de 10 collaborateurs sur les ressorts de La Rochelle (Charente-Maritime) et de Perpignan (Pyrénées-Orientales) — dans un cadre préventif, amiable et judiciaire.</p>
+        <p class="founder-reassure">Le premier entretien est <strong>confidentiel et sans engagement</strong>.</p>
+      </div>
+    </div>
   </div>
 </section>
 
