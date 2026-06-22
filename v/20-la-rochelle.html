@@ -53,11 +53,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy-l);outline-off
 /* voile LÉGER et aérien sur toute la photo (façon mjassocies) — la coupole reste lumineuse */
 .hero-veil{position:absolute;inset:0;background:rgba(6,26,82,.36)}
 .hero-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 28px;width:100%;color:#fff;
-  display:grid;grid-template-columns:.82fr 1.18fr;gap:50px;align-items:center}
+  display:grid;grid-template-columns:.82fr 1.18fr;gap:50px;align-items:start}
 /* colonne gauche : LÉGER surcroît de teinte (pas un bloc plein) + simple trait de séparation — la photo transparaît des deux côtés */
 .hero-id{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .hero-id::before{content:'';position:absolute;top:-1000px;bottom:-1000px;left:-100vw;right:-25px;
-  background:rgba(6,20,74,.42);border-right:1px solid rgba(255,255,255,.22);z-index:0}
+  background:rgba(6,18,68,.62);border-right:1px solid rgba(255,255,255,.22);z-index:0}
 .hero-seal,.hero-wordmark{position:relative;z-index:1}
 .hero-seal{width:96px;height:96px;border:2px solid rgba(255,255,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;letter-spacing:1px}
 .hero-wordmark{font-size:29px;font-weight:800;line-height:1.1;letter-spacing:-.3px}
