@@ -149,9 +149,22 @@ footer a{color:rgba(255,255,255,.85)}
 .founder-bio{font-size:15.5px;color:var(--mid);line-height:1.75;max-width:620px}
 .founder-reassure{margin-top:14px;font-size:14px;color:var(--ink)}
 .founder-reassure strong{color:var(--navy)}
+/* bloc « dirigeant / audit gratuit » — priorité éditoriale n°1 du cabinet (volet amiable) */
+.amiable{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:44px 46px}
+.amiable .sec-kick{color:rgba(255,255,255,.6)}
+.amiable h2{font-size:27px;font-weight:800;line-height:1.2;margin-top:10px;letter-spacing:-.3px}
+.amiable-p{font-size:15px;color:rgba(255,255,255,.85);line-height:1.7;margin-top:16px;max-width:560px}
+.amiable-pts{list-style:none;margin:18px 0 0;display:flex;flex-direction:column;gap:10px}
+.amiable-pts li{font-size:14px;color:rgba(255,255,255,.9);padding-left:26px;position:relative}
+.amiable-pts li::before{content:'';position:absolute;left:0;top:5px;width:13px;height:8px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+.amiable-cta{margin-top:26px}
+.amiable-trust{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:28px;text-align:center}
+.amiable-trust .big{font-size:30px;font-weight:800;letter-spacing:1px}
+.amiable-trust p{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.6;margin-top:10px}
 @media(max-width:900px){
   .band{min-height:78vh}.band-q{font-size:23px}
   .founder{grid-template-columns:1fr;gap:24px}.founder-photo{width:200px;height:250px}
+  .amiable{grid-template-columns:1fr;gap:24px;padding:30px 24px}
   .head-in{height:auto;flex-direction:column;align-items:flex-start;padding:12px 20px;gap:10px}
   .nav{flex-wrap:wrap;gap:2px}.nav a{padding:7px 9px;font-size:11px}
   .hero{min-height:auto;padding:90px 0 130px}.hero-h{font-size:34px}.hero-h em{font-size:16px}
@@ -213,6 +226,28 @@ footer a{color:rgba(255,255,255,.85)}
     <div><div class="hs-n">17 · 66</div><div class="hs-l">La Rochelle &amp; Perpignan</div></div>
     <div><div class="hs-n">Gratuit</div><div class="hs-l">1er entretien d'audit</div></div>
   </div></div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="amiable">
+      <div class="amiable-main">
+        <div class="sec-kick">Entreprise en difficulté ?</div>
+        <h2>N'attendez pas : le premier entretien d'audit est gratuit</h2>
+        <p class="amiable-p">Mandat ad hoc, conciliation, sauvegarde, redressement — plus tôt vous agissez, plus les options sont nombreuses. L'étude reçoit chaque dirigeant pour un audit confidentiel de sa situation et lui présente les outils adaptés.</p>
+        <ul class="amiable-pts">
+          <li>Entretien de 45 min à 1 h, en présentiel ou en visioconférence</li>
+          <li>Vous êtes reçu par le mandataire ou son principal collaborateur</li>
+          <li>Confidentiel — c'est le seul cadre où le dirigeant garde la main</li>
+        </ul>
+        <a class="btn btn-w amiable-cta" href="https://www.mj-atlantique.fr/anonym/contact/envoi"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Demander un entretien</a>
+      </div>
+      <div class="amiable-trust">
+        <div class="big">Gratuit</div>
+        <p>Les mandataires ne sont rémunérés que si une procédure est ouverte sur désignation du Tribunal. L'audit, lui, ne vous coûte rien.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section>
