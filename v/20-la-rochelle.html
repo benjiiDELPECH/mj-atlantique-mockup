@@ -47,7 +47,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:2px;b
 .actu-col a{color:var(--navy);text-decoration:underline}
 .actu-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy-l);margin-bottom:6px}
 @media(max-width:760px){.actu-grid{grid-template-columns:1fr;gap:14px}}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
+.hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
 .hero-bg{position:absolute;left:0;right:0;top:-11%;height:122%;
   background:url('img/hero-galerie.jpg') center 48% / cover no-repeat;will-change:transform}
 /* voile LÉGER et aérien sur toute la photo (façon mjassocies) — la coupole reste lumineuse */
@@ -195,11 +195,6 @@ footer a{color:rgba(255,255,255,.85)}
   </div>
 </header>
 
-<section class="actu"><div class="wrap actu-grid">
-  <div class="actu-col"><span class="actu-tag">Avis aux créanciers</span><br>Les déclarations de créances et les éventuelles contestations sont traitées via votre <strong>espace créancier</strong>. Merci de privilégier le courriel — les demandes par téléphone ne peuvent pas être traitées dans les délais utiles.</div>
-  <div class="actu-col"><span class="actu-tag">Procédures en cours</span><br>L'espace dédié à chaque procédure est accessible avec vos identifiants. Pour les avis en cours et les actifs à céder, <a href="https://www.mj-atlantique.fr/accueil">consultez nos actualités</a> ou <a href="mailto:contact@mj-atlantique.fr">contactez l'étude de La Rochelle</a>.</div>
-</div></section>
-
 <section class="hero">
   <div class="hero-bg" data-parallax></div><div class="hero-veil"></div>
   <div class="hero-in">
@@ -333,6 +328,11 @@ footer a{color:rgba(255,255,255,.85)}
     <details class="faq"><summary>Comment le mandataire judiciaire est-il rémunéré ?</summary><div class="faq-b">Sa rémunération est fixée par la partie réglementaire du Code de commerce (sauvegarde, redressement, liquidation). Pour la conciliation et le mandat ad hoc, par le Président du Tribunal après accord du débiteur. Le premier entretien d'audit est gratuit.</div></details>
   </div>
 </section>
+
+<section class="actu"><div class="wrap actu-grid">
+  <div class="actu-col"><span class="actu-tag">Avis aux créanciers</span><br>Les déclarations de créances et les éventuelles contestations sont traitées via votre <strong>espace créancier</strong>. Merci de privilégier le courriel — les demandes par téléphone ne peuvent pas être traitées dans les délais utiles.</div>
+  <div class="actu-col"><span class="actu-tag">Procédures en cours</span><br>L'espace dédié à chaque procédure est accessible avec vos identifiants. Pour les avis en cours et les actifs à céder, <a href="https://www.mj-atlantique.fr/accueil">consultez nos actualités</a> ou <a href="mailto:contact@mj-atlantique.fr">contactez l'étude de La Rochelle</a>.</div>
+</div></section>
 
 <section class="soft" id="contacts">
   <div class="wrap">
