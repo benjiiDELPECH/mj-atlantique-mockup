@@ -15,11 +15,13 @@ que vous puissiez départager sur le ressenti :
 
 **▸ Direction A — chaleureuse**
 👉 https://benjiidelpech.github.io/mj-atlantique-mockup/
-Titre affirmé, photo du tribunal lumineuse, sensation accueillante.
+Titre affirmé, photo du tribunal lumineuse, accès direct par profil, sensation
+accueillante.
 
-**▸ Direction B — sobre / institutionnelle**
-👉 https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-2.html
-Titre fin en capitales, escalier monumental, plus proche de mjassocies.eu.
+**▸ Direction B — élégante / institutionnelle**
+👉 https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-3.html
+Hero en deux colonnes avec voile bleu transparent, monogramme et titre en
+capitales fines — dans l'esprit épuré de mjassocies.eu.
 
 (Les deux s'ouvrent sur ordinateur comme sur mobile.)
 
