@@ -224,34 +224,32 @@ footer a{color:rgba(255,255,255,.85)}
   .hero-strip-in{gap:26px}
 }
 @media(max-width:560px){.grid4{grid-template-columns:1fr}}
-/* === DIRECTION ÉLÉGANTE — hero bichromie navy façon mjassocies === */
+/* === DIRECTION ÉLÉGANTE — recette mjassocies "fondBleuTransparent" ===
+   Photo EN COULEUR + voile navy #001656 plat à 60% : l'architecture transparaît. */
 .head{position:absolute;top:0;left:0;right:0;background:transparent;z-index:40}
-.hero-mja{position:relative;min-height:100vh;display:flex;background:var(--navy-d);overflow:hidden}
-.hero-mja .hero-split{display:grid;grid-template-columns:37% 63%;width:100%}
-.hero-panel{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:0 7%;background:var(--navy-d)}
-.hero-panel::after{content:'';position:absolute;top:18%;bottom:18%;right:0;width:1px;background:rgba(255,255,255,.18)}
-.hero-mono{font-family:Georgia,'Times New Roman',serif;font-size:104px;font-weight:400;letter-spacing:8px;line-height:1;color:#fff;padding-left:6px}
+.hero-mja{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
+.hero-bg-mja{position:absolute;inset:0;background:url('v/img/hero-tribunal-spp.jpg') center 42% / cover no-repeat;filter:brightness(1.06) contrast(1.02) saturate(1.05);will-change:transform}
+.hero-tint{position:absolute;inset:0;background:rgba(0,22,86,.60)}
+.hero-mja-in{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:38% 62%;align-items:center;color:#fff}
+.hero-panel{position:relative;padding-right:7%}
+.hero-panel::after{content:'';position:absolute;top:6%;bottom:6%;right:0;width:1px;background:rgba(255,255,255,.22)}
+.hero-mono{font-family:Georgia,'Times New Roman',serif;font-size:106px;font-weight:400;letter-spacing:8px;line-height:1;padding-left:6px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
 .hero-mono-rule{width:62px;height:1px;background:var(--gold-soft);margin:24px 0 20px}
-.hero-panel-name{font-size:21px;font-weight:600;letter-spacing:.6px;color:#fff;line-height:1.3}
-.hero-panel-sub{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:10px}
-.hero-photo{position:relative;overflow:hidden}
-.hero-photo .hero-bg-mja{position:absolute;inset:-6%;background:url('v/img/hero-tribunal-spp.jpg') center 45%/cover no-repeat;filter:grayscale(.85) contrast(.98) brightness(1.3) saturate(1.1);will-change:transform}
-/* voile bleu LÉGER (l'architecture transparaît, façon mjassocies) + dégradé bas pour lisibilité du titre */
-.hero-photo .hero-tint{position:absolute;inset:0;background:linear-gradient(178deg, rgba(6,26,96,.40) 0%, rgba(10,34,104,.30) 38%, rgba(8,28,92,.46) 70%, rgba(1,12,52,.74) 100%)}
-.hero-cap{position:absolute;left:8%;right:8%;bottom:13%;z-index:3;color:#fff}
-.hero-h-mja{font-size:60px;font-weight:300;text-transform:uppercase;letter-spacing:4px;line-height:1.05;text-shadow:0 2px 22px rgba(0,0,0,.45)}
+.hero-panel-name{font-size:21px;font-weight:600;letter-spacing:.6px;line-height:1.3;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.hero-panel-sub{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:10px}
+.hero-cap{padding-left:8%}
+.hero-h-mja{font-size:60px;font-weight:300;text-transform:uppercase;letter-spacing:4px;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.4)}
 .hero-h-mja b{display:block;font-weight:300}
-.hero-cities{margin-top:18px;font-size:13.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.86)}
-.hero-cap-sub{margin-top:20px;font-size:14.5px;font-weight:400;line-height:1.6;max-width:540px;color:rgba(255,255,255,.8)}
+.hero-cities{margin-top:18px;font-size:13.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.hero-cap-sub{margin-top:20px;font-size:14.5px;font-weight:400;line-height:1.6;max-width:520px;color:rgba(255,255,255,.86);text-shadow:0 1px 8px rgba(0,0,0,.3)}
 @media(max-width:860px){
   .hero-mja{min-height:auto}
-  .hero-mja .hero-split{grid-template-columns:1fr}
-  .hero-panel{padding:118px 8% 34px;align-items:flex-start}
+  .hero-mja-in{grid-template-columns:1fr;padding:120px 8% 72px;gap:38px}
+  .hero-panel{padding-right:0}
   .hero-panel::after{display:none}
-  .hero-mono{font-size:72px}
-  .hero-photo{min-height:60vh}
-  .hero-cap{bottom:9%}
-  .hero-h-mja{font-size:36px;letter-spacing:2px}
+  .hero-mono{font-size:74px}
+  .hero-cap{padding-left:0}
+  .hero-h-mja{font-size:38px;letter-spacing:2px}
 }
 </style>
 </head>
@@ -277,21 +275,19 @@ footer a{color:rgba(255,255,255,.85)}
 
 
 <section class="hero-mja">
-  <div class="hero-split">
+  <div class="hero-bg-mja" data-parallax></div>
+  <div class="hero-tint"></div>
+  <div class="hero-mja-in">
     <div class="hero-panel">
       <div class="hero-mono">DR</div>
       <div class="hero-mono-rule"></div>
       <div class="hero-panel-name">SCP Delphine Raymond</div>
       <div class="hero-panel-sub">Mandataire judiciaire</div>
     </div>
-    <div class="hero-photo">
-      <div class="hero-bg-mja" data-parallax></div>
-      <div class="hero-tint"></div>
-      <div class="hero-cap">
-        <h1 class="hero-h-mja">Mandataire<b>judiciaire</b></h1>
-        <div class="hero-cities">La Rochelle (17) — Perpignan (66)</div>
-        <p class="hero-cap-sub">Désignée par les tribunaux pour la prévention et le traitement des difficultés des entreprises.</p>
-      </div>
+    <div class="hero-cap">
+      <h1 class="hero-h-mja">Mandataire<b>judiciaire</b></h1>
+      <div class="hero-cities">La Rochelle (17) — Perpignan (66)</div>
+      <p class="hero-cap-sub">Désignée par les tribunaux pour la prévention et le traitement des difficultés des entreprises.</p>
     </div>
   </div>
 </section>
