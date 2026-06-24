@@ -1,0 +1,190 @@
+/* =============================================================================
+   CHARTE GRAPHIQUE — SCP Delphine RAYMOND (MJ Atlantique / MJ Perpignan)
+   À destination d'Atlantic Log (Gemweb 4.3.0 / Apache Tapestry).
+
+   RÔLE : feuille de thème par étude. Posée sur le template Gemweb standard,
+   elle applique l'identité "marine profond + or filet + grands titres Spectral"
+   (cf. maquette de référence v/17-or-v3.html) SANS toucher au markup Tapestry.
+
+   MÉCANISME : tout passe par des variables CSS (:root) + des surcharges des
+   sélecteurs natifs Gemweb. Aucun framework utilitaire requis (Tailwind/Daisy
+   sont inopérants ici : ils génèrent du CSS pour un markup qu'on n'écrit pas).
+
+   CHARGEMENT : à inclure APRÈS app/config/css/styles.css (le bundle Bootstrap 3
+   + thème). Quelques !important ciblés neutralisent les valeurs du thème de
+   démo. Idéalement, ce fichier REMPLACE la portion "thème client" de styles.css.
+
+   STATUT : v1 — calée sur les sélecteurs observés sur pascual-beatrice.fr (même
+   template Gemweb). À VALIDER sur l'instance réelle de MJ Atlantique : certains
+   sélecteurs de page (hero, blocs webinfo) peuvent varier légèrement.
+   Points marqués [À CONFIRMER] = à vérifier avec Atlantic Log.
+
+   POLICES : Spectral (titres) + Inter (texte) via Google Fonts. Si la CSP de
+   Gemweb bloque fonts.googleapis.com [À CONFIRMER], héberger les .woff2 en local
+   et remplacer le @import par des @font-face.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---- 1. TOKENS (source unique de la charte) -------------------------------- */
+:root{
+  --mj-navy-d: #0a1c38;   /* marine profond — hero, nav border, footer, icônes */
+  --mj-navy:   #102a52;   /* marine — bandes, fonds pleins */
+  --mj-blue:   #1e447e;   /* bleu accent — liens, survols */
+  --mj-blue-l: #eef2f8;   /* fond bleuté très clair */
+  --mj-gold:   #b8923f;   /* or — filets et accents UNIQUEMENT */
+  --mj-gold-l: #cda955;
+  --mj-ink:    #15203a;   /* texte courant */
+  --mj-mid:    #51607a;   /* texte secondaire */
+  --mj-bg:     #f6f7fa;   /* fond de page sobre */
+  --mj-line:   #dfe4ec;   /* filets / bordures claires */
+  --mj-white:  #fff;
+  --mj-serif:  'Spectral', Georgia, 'Times New Roman', serif;
+  --mj-sans:   'Inter', -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
+/* ---- 2. BASE --------------------------------------------------------------- */
+body{
+  font-family:var(--mj-sans);
+  color:var(--mj-ink);
+  background:var(--mj-bg);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.boxed-content-title{ font-family:var(--mj-serif); }
+a{ color:var(--mj-blue); }
+a:hover{ color:var(--mj-navy-d); }
+
+/* ---- 3. NAVIGATION (.main-navigation) -------------------------------------- */
+.main-navigation{
+  background:var(--mj-white);
+  border-bottom:2px solid var(--mj-navy-d) !important;  /* sobre, plus de double-filet bleu */
+}
+.main-navigation .navbarFlex a h1{
+  color:var(--mj-navy-d) !important;
+  font-family:var(--mj-serif);
+  text-decoration:none !important;
+}
+/* liens de menu */
+.main-navigation .navbar-nav > li > a,
+.main-navigation .navbar-nav > li > a.dropdown-toggle{
+  color:var(--mj-navy-d);
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  font-size:12.5px;
+}
+.main-navigation .navbar-nav > li > a:hover,
+.main-navigation .navbar-nav > li > a.active{
+  color:var(--mj-blue);
+  border-bottom:2px solid var(--mj-gold);
+}
+/* bandeau de connexion espace (loginform) — boutons carrés marine */
+#loginform .input-group-addon{ background:var(--mj-navy-d); color:#fff; border-color:var(--mj-navy-d); }
+#loginform button[type="submit"],
+.t-beaneditor-submit{
+  background:var(--mj-navy-d); color:#fff; border:none; border-radius:0;
+  text-transform:uppercase; font-weight:700; letter-spacing:.5px; padding:9px 14px;
+}
+#loginform button[type="submit"]:hover,
+.t-beaneditor-submit:hover{ background:var(--mj-blue); }
+
+/* ---- 4. HERO (.pictureBcg) — l'effet institutionnel ------------------------ */
+/* Modèle Gemweb : image de fond en z-index:-1 derrière la présentation + carrés.
+   On la rend plus présente et on pose un voile marine en dégradé pour la
+   lisibilité et la gravité (façon mjassocies.eu).
+   [À CONFIRMER] le préfixe de page (.accueil-accueil) sur l'instance MJ. */
+.pictureBcg{ position:relative; }
+.accueil-accueil section.pictureBcg img,
+section.pictureBcg img{
+  opacity:1 !important;                 /* plus de délavé 40% : photo pleine */
+  height:90dvh; width:100%; object-fit:cover; object-position:center 38%;
+  z-index:-2;
+}
+/* voile marine profond, gauche → droite (texte/carrés restent lisibles) */
+.accueil-accueil section.pictureBcg::after,
+section.pictureBcg::after{
+  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(105deg,
+     rgba(8,22,46,.92) 0%, rgba(10,28,56,.78) 42%, rgba(10,28,56,.35) 100%);
+}
+/* titres de présentation posés sur le hero */
+section.presentation h1{
+  font-family:var(--mj-serif); color:#fff; font-weight:600;
+  font-size:clamp(34px,5vw,64px); line-height:1.05; letter-spacing:.2px;
+}
+section.presentation h3{
+  font-family:var(--mj-serif); color:rgba(255,255,255,.88); font-weight:400;
+  font-size:clamp(16px,2vw,22px); margin-top:14px;
+}
+/* filet or au-dessus du titre (signature mjassocies) */
+section.presentation h1::before{
+  content:''; display:block; width:46px; height:2px;
+  background:var(--mj-gold); margin-bottom:18px;
+}
+
+/* ---- 5. LES CARRÉS (.espace-gros-carres .boxed-content) -------------------- */
+/* Composant NATIF Gemweb = "carrés en porte d'entrée" VALIDÉS par le client.
+   On reprend le rendu de la maquette v3 : carte blanche, filet marine en tête,
+   coins droits (radius 0), icône + titre marine, survol relevé + accent or. */
+.espace-gros-carres a .boxed-content{
+  background:var(--mj-white) !important;
+  border:1px solid var(--mj-line) !important;
+  border-top:3px solid var(--mj-navy-d) !important;
+  border-radius:0 !important;
+  box-shadow:0 1px 2px rgba(10,28,56,.05);
+  transition:box-shadow .14s, transform .14s, border-color .14s;
+}
+.espace-gros-carres a .boxed-content:hover{
+  background:var(--mj-white) !important;
+  border-top-color:var(--mj-gold) !important;
+  box-shadow:0 12px 32px rgba(10,28,56,.13);
+  transform:translateY(-2px);
+}
+/* couleurs de contenu (le thème de démo force du blanc → on remet du marine) */
+.espace-gros-carres a .boxed-content i,
+.espace-gros-carres a .boxed-content .boxed-content-title,
+.espace-gros-carres a .boxed-content h2,
+.espace-gros-carres a .boxed-content span{ color:var(--mj-navy-d) !important; }
+.espace-gros-carres a .boxed-content p{ color:var(--mj-mid) !important; }
+.espace-gros-carres a .boxed-content:hover i,
+.espace-gros-carres a .boxed-content:hover .boxed-content-title,
+.espace-gros-carres a .boxed-content:hover h2{ color:var(--mj-blue) !important; }
+/* icône Font Awesome : sobre, pas 6rem */
+.espace-gros-carres a .boxed-content i,
+.boxed-content > i{ font-size:2.4rem !important; color:var(--mj-navy-d) !important; }
+.boxed-content .boxed-content-title{ font-size:22px; font-weight:600; }
+
+/* ---- 6. TITRES DE BLOCS (webinfo-*) --------------------------------------- */
+/* le thème de démo met tout en bleu #153994 souligné ; on uniformise marine. */
+[class*="webinfo-"] h1,
+[class*="webinfo-"] h3{ color:var(--mj-navy-d) !important; text-decoration:none !important; }
+
+/* ---- 7. BOUTONS GÉNÉRIQUES (Bootstrap + Gemweb) --------------------------- */
+.btn-primary,
+a.btn-primary{
+  background:var(--mj-navy-d); border-color:var(--mj-navy-d); border-radius:0;
+  text-transform:uppercase; font-weight:700; letter-spacing:.6px;
+}
+.btn-primary:hover,
+.btn-primary:focus{ background:var(--mj-blue); border-color:var(--mj-blue); }
+/* accent or réservé à l'action principale type "Prendre rendez-vous" [À CONFIRMER classe] */
+.btn-gold,
+.btn-rdv{ background:var(--mj-gold) !important; color:#1b1402 !important; border:none; border-radius:0; }
+.btn-gold:hover,
+.btn-rdv:hover{ background:var(--mj-gold-l) !important; }
+
+/* ---- 8. FORMULAIRES -------------------------------------------------------- */
+.form-control{ border-radius:0; border-color:var(--mj-line); }
+.form-control:focus{ border-color:var(--mj-blue); box-shadow:0 0 0 2px var(--mj-blue-l); }
+
+/* ---- 9. FOOTER ------------------------------------------------------------- */
+footer{ background:var(--mj-navy-d); color:rgba(255,255,255,.78); }
+footer section a{ color:rgba(255,255,255,.9); }
+footer section div.logoGrid{ font-family:var(--mj-serif); color:#fff; }
+.copyright{ background:#06122a !important; color:rgba(255,255,255,.6); }
+.copyright a{ color:rgba(255,255,255,.85); }
+
+/* ---- 10. BANDE "ACTUS / BIENS À CÉDER" (cartes photo) [À CONFIRMER] -------- */
+/* Si l'instance MJ expose des cartes type owl-carousel / .item, leur donner le
+   traitement photographique "NOS ÉTUDES" (voile marine + titre serif). À caler
+   sur les sélecteurs réels une fois l'instance MJ accessible. */

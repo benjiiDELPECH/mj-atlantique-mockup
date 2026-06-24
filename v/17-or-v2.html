@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delphine RAYMOND — Mandataire Judiciaire · La Rochelle &amp; Perpignan</title>
+<!--
+  v17-or-v2 — variante fonctionnelle (look identique au 17-or validé).
+  3 fixes seulement :
+   1) "Accéder à mon espace" = bouton permanent (plus de menu au survol → marche sur mobile)
+   2) Les 4 portes remontées ABOVE-THE-FOLD (juste sous le bandeau crédibilité)
+   3) Carrousel réduit (300→190px) et descendu (ambiance, plus barrière à l'action)
+  Aucune décision de goût touchée (photos, accroche, couleurs : identiques).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:   #1e447e;
+  --blue-d: #163763;
+  --blue-l: #eaf0f8;
+  --gold:   #9a6f28;
+  --gold-d: #7e5a1d;
+  --gold-l: #d4ac48;
+  --ink:    #1a2230;
+  --mid:    #4a5568;
+  --bg:     #eef1f5;
+  --line:   #d4dae3;
+  --white:  #fff;
+  --serif:  'Spectral', Georgia, 'Times New Roman', serif;
+  --sans:   'Inter', -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);
+  background-color:var(--bg);
+  background-image:radial-gradient(circle, rgba(30,68,126,.045) 1px, transparent 1.3px);
+  background-size:20px 20px;
+  color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold-l);outline-offset:2px}
+
+/* ── EN-TÊTE DORÉ ── */
+.head{
+  background:linear-gradient(180deg,#ece0b1,#d8c27c);color:var(--blue-d);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 24px;min-height:66px;border-bottom:3px solid var(--blue);
+}
+.head-brand{display:flex;align-items:center;gap:12px}
+.head-mark{font-family:var(--serif);line-height:1.04}
+.hm-mj{font-size:30px;font-weight:700;color:var(--blue-d);letter-spacing:.3px}
+.hm-dom{font-size:21px;font-weight:600;color:var(--blue)}
+.hm-and{font-size:16px;font-style:italic;font-weight:500;color:var(--blue-d);margin:0 5px}
+.head-sub{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2px;color:var(--blue-d);margin-top:4px;opacity:.9}
+.head-phones{display:flex;gap:24px;align-items:center}
+.head-phone{font-size:12px;color:var(--blue-d);text-align:right;opacity:.85}
+.head-phone strong{display:block;font-size:15px;color:var(--blue-d);font-weight:700;opacity:1}
+.head-back{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600}
+.head-right{display:flex;align-items:center;gap:18px}
+/* FIX 1 — bouton permanent (plus de dropdown au survol) */
+.access-btn{display:inline-flex;align-items:center;gap:7px;background:var(--blue-d);color:#fff;border:none;cursor:pointer;
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:9px 13px;text-decoration:none}
+.access-btn:hover{background:var(--blue)}
+.access-btn svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── MENU BLEU ── */
+.menu{background:var(--blue);display:flex;flex-wrap:wrap;border-bottom:3px solid var(--gold)}
+.menu a{color:#fff;text-decoration:none;padding:13px 18px;font-size:12.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+  border-left:1px solid rgba(255,255,255,.12);transition:background .12s}
+.menu a:first-child{border-left:none}
+.menu a:hover{background:var(--blue-d)}
+.menu a.on{background:var(--blue-d)}
+
+/* ── BANDEAU CRÉDIBILITÉ ── */
+.cred{background:var(--blue-d);color:#fff;display:flex;align-items:stretch;flex-wrap:wrap;border-bottom:1px solid rgba(0,0,0,.2)}
+.cred-main{flex:1;min-width:300px;display:flex;align-items:center;gap:16px;padding:14px 24px;border-right:1px solid rgba(255,255,255,.12)}
+.cred-seal{width:42px;height:42px;border:1.5px solid var(--gold-l);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold-l)}
+.cred-seal svg{width:23px;height:23px}
+.cred-kick{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-l);margin-bottom:3px}
+.cred-txt{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1.25}
+.cred-txt small{display:block;font-size:11.5px;font-weight:400;color:rgba(255,255,255,.7);margin-top:2px}
+.cred-stat{display:flex;flex-direction:column;justify-content:center;padding:12px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+.cred-stat:last-child{border-right:none}
+.cred-stat-n{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold-l);line-height:1}
+.cred-stat-l{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:4px}
+
+/* ── ZONE PRINCIPALE (remontée) ── */
+.main{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 320px;gap:24px}
+.section-h{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue)}
+.portes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.porte{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--blue);padding:18px 20px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;transition:background .12s,box-shadow .12s,transform .12s;box-shadow:0 1px 2px rgba(22,55,99,.05)}
+.porte:hover{background:var(--blue-l);box-shadow:0 6px 18px rgba(30,68,126,.14);transform:translateY(-1px)}
+.porte-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.porte-ico{width:40px;height:40px;background:var(--blue);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.porte-ico svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.porte-cat{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
+.porte-t{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);line-height:1.05}
+.porte-d{font-size:12.5px;color:var(--mid);line-height:1.55;flex:1}
+.porte-go{margin-top:14px;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid var(--gold-l);padding-bottom:3px;transition:gap .12s,border-color .12s}
+.porte:hover .porte-go{gap:9px;border-color:var(--gold)}
+.aside{display:flex;flex-direction:column;gap:16px}
+.box{background:var(--white);border:1px solid var(--line)}
+.box-h{background:var(--blue);color:#fff;padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.box-b{padding:16px}
+.audit-big{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.audit-sub{font-size:12.5px;color:var(--mid);line-height:1.6;margin-bottom:14px}
+.btn{display:block;background:var(--gold-d);color:#fff;text-align:center;padding:13px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .12s}
+.btn:hover{background:var(--gold);color:#fff}
+.city{padding:12px 0;border-bottom:1px solid var(--line)}
+.city:last-child{border-bottom:none;padding-bottom:0}
+.city-n{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.city-r{font-size:12.5px;color:var(--mid);line-height:1.6}
+.city-r a{color:var(--blue);text-decoration:none}
+
+/* ── BLOC IDENTITÉ ── */
+.intro{max-width:1200px;margin:0 auto;padding:8px 24px 2px;display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:center}
+.intro-photo{aspect-ratio:4/5;border:1px solid var(--line);background:var(--blue-l);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;color:var(--mid)}
+.intro-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.intro-name{font-family:var(--serif);font-size:27px;font-weight:600;color:var(--ink);line-height:1}
+.intro-role{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold-d);margin-top:5px}
+.intro-quote{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--blue-d);line-height:1.4;border-left:3px solid var(--gold-l);padding-left:14px;margin:14px 0 12px}
+.intro-bio{font-size:13px;color:var(--mid);line-height:1.65;max-width:760px}
+.intro-sign{display:inline-block;margin-top:10px;font-family:var(--serif);font-size:16px;color:var(--blue);font-weight:600}
+
+/* ── CARROUSEL (réduit + descendu) ── */
+.car{position:relative;height:190px;overflow:hidden;background:var(--blue-d);max-width:1200px;margin:18px auto 0}
+.car-track{display:flex;height:100%;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.car-slide{flex:0 0 100%;height:100%;background-size:cover;background-repeat:no-repeat;position:relative}
+.cs1{background-image:url('img/tour.jpg');background-position:center 42%}
+.cs2{background-image:url('img/tortue.jpg');background-position:center 50%}
+.cs3{background-image:url('img/le_canigou.jpeg');background-position:center 40%}
+.car-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:96px;z-index:1;background:linear-gradient(transparent,rgba(11,28,52,.62))}
+.car-cap{position:absolute;left:20px;bottom:12px;z-index:3;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#fff}
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:40px;height:40px;border:none;cursor:pointer;background:rgba(22,55,99,.6);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.car-arrow:hover{background:rgba(22,55,99,.9)}
+.car-prev{left:0}.car-next{right:0}
+.car-dots{position:absolute;right:14px;bottom:6px;z-index:4;display:flex;gap:8px}
+.car-dots button{width:26px;height:24px;border:none;padding:10px 0;cursor:pointer;background:none;display:flex;align-items:center}
+.car-dots button::before{content:'';display:block;width:100%;height:4px;background:rgba(255,255,255,.5);transition:background .15s}
+.car-dots button.on::before{background:#fff}
+
+/* ── PROCÉDURES ── */
+.proc-wrap{max-width:1200px;margin:0 auto;padding:18px 24px 30px}
+.proc-head{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.proc{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--gold);padding:14px 16px;box-shadow:0 1px 2px rgba(22,55,99,.05)}
+.proc-step{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
+.proc-n{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.proc-d{font-size:12px;color:var(--mid);line-height:1.55}
+
+footer{background:var(--blue-d);color:rgba(255,255,255,.7);font-size:11px;padding:16px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media(max-width:860px){
+  .head{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
+  .hm-mj{font-size:23px}.hm-dom{font-size:15px}.hm-and{font-size:13px}.head-sub{font-size:10px}
+  .head-phones{gap:14px}
+  .head-right{gap:14px;flex-wrap:wrap}
+  .menu{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{padding:11px 14px;font-size:11px;white-space:nowrap;flex:0 0 auto}
+  .cred-main{border-right:none}
+  .main{grid-template-columns:1fr;padding:16px}
+  .portes{grid-template-columns:1fr}
+  .intro{grid-template-columns:1fr;padding:16px 16px 0;gap:16px}
+  .intro-photo{max-width:160px}
+  .car{margin:14px 0 0}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- EN-TÊTE -->
+<header class="head">
+  <div class="head-brand">
+    <div class="head-mark">
+      <span class="hm-mj">mj</span><span class="hm-dom">-atlantique.fr</span><span class="hm-and">et</span><span class="hm-mj">mj</span><span class="hm-dom">-perpignan.fr</span>
+      <span class="head-sub">SCP Delphine RAYMOND · Mandataire Judiciaire · La Rochelle &amp; Perpignan</span>
+    </div>
+  </div>
+  <div class="head-right">
+    <div class="head-phones">
+      <div class="head-phone">La Rochelle<strong>05 46 41 32 19</strong></div>
+      <div class="head-phone">Perpignan<strong>04 68 81 09 97</strong></div>
+    </div>
+    <!-- FIX 1 : bouton permanent vers l'espace (Gemweb), plus de menu au survol -->
+    <a href="#" class="access-btn"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Accéder à mon espace</a>
+    <a href="../index.html" class="head-back">← Galerie</a>
+  </div>
+</header>
+
+<!-- MENU BLEU -->
+<nav class="menu">
+  <a href="#" class="on">Accueil</a>
+  <a href="#">Étude</a>
+  <a href="#">Dossier</a>
+  <a href="#">Actif à vendre</a>
+  <a href="#">Reprise</a>
+  <a href="#">Salarié</a>
+  <a href="#">Dirigeant</a>
+  <a href="#">Passif Créancier</a>
+</nav>
+
+<!-- BANDEAU CRÉDIBILITÉ (trust immédiat, compact) -->
+<div class="cred">
+  <div class="cred-main">
+    <div class="cred-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
+    <div>
+      <div class="cred-kick">Mandataire désigné par la justice</div>
+      <div class="cred-txt">Delphine Raymond
+        <small>Mandataire judiciaire · inscrite sur la liste nationale des administrateurs et mandataires judiciaires</small>
+      </div>
+    </div>
+  </div>
+  <div class="cred-stat"><div class="cred-stat-n">19 ans</div><div class="cred-stat-l">d'exercice</div></div>
+  <div class="cred-stat"><div class="cred-stat-n">10</div><div class="cred-stat-l">collaborateurs</div></div>
+  <div class="cred-stat"><div class="cred-stat-n">2</div><div class="cred-stat-l">ressorts</div></div>
+  <div class="cred-stat"><div class="cred-stat-n">Gratuit</div><div class="cred-stat-l">1er entretien</div></div>
+</div>
+
+<!-- ZONE PRINCIPALE — FIX 2 : remontée above-the-fold (juste sous la crédibilité) -->
+<div class="main">
+
+  <!-- 4 portes -->
+  <div>
+    <div class="section-h">Accès direct — sélectionnez votre situation</div>
+    <div class="portes">
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></div>
+          <div><div class="porte-cat">Chef d'entreprise</div><div class="porte-t">Dirigeant</div></div>
+        </div>
+        <div class="porte-d">Mon entreprise est en difficulté. Mandat ad hoc, conciliation, sauvegarde — un audit confidentiel identifie les options.</div>
+        <div class="porte-go">Espace dirigeant →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div><div class="porte-cat">Employé de l'entreprise</div><div class="porte-t">Salarié</div></div>
+        </div>
+        <div class="porte-d">Mes salaires sont garantis par l'AGS quelle que soit l'issue. Déclarez vos créances salariales dans les délais.</div>
+        <div class="porte-go">Espace salarié →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h5"/></svg></div>
+          <div><div class="porte-cat">Fournisseur · prêteur · bailleur</div><div class="porte-t">Créancier</div></div>
+        </div>
+        <div class="porte-d">L'entreprise me doit de l'argent. Déclarer ma créance — délai légal de 2 mois à compter du jugement d'ouverture.</div>
+        <div class="porte-go">Déclarer ma créance →</div>
+      </a>
+
+      <a href="#" class="porte">
+        <div class="porte-top">
+          <div class="porte-ico"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L21 8l-3-3"/></svg></div>
+          <div><div class="porte-cat">Acquéreur potentiel</div><div class="porte-t">Repreneur</div></div>
+        </div>
+        <div class="porte-d">Je cherche une entreprise ou un bien immobilier à reprendre. Consultez les actifs à la cession — fonds de commerce et biens immobiliers — dans nos deux ressorts.</div>
+        <div class="porte-go">Consulter les actifs →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- colonne droite -->
+  <aside class="aside">
+    <div class="box">
+      <div class="box-h">Premier rendez-vous</div>
+      <div class="box-b">
+        <div class="audit-big">Entretien gratuit</div>
+        <div class="audit-sub">45 min, en présentiel ou en visioconférence. Sans engagement. Les mandataires ne sont rémunérés que sur désignation du Tribunal.</div>
+        <a href="#" class="btn">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-h">Nous contacter</div>
+      <div class="box-b">
+        <div class="city">
+          <div class="city-n">La Rochelle <span style="font-weight:400;color:var(--mid)">— étude principale</span></div>
+          <div class="city-r">Le Bastion, 81 rue du Rempart Saint-Claude, 17000<br>05 46 41 32 19 · <a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div>
+        </div>
+        <div class="city">
+          <div class="city-n">Perpignan <span style="font-weight:400;color:var(--mid)">— étude secondaire</span></div>
+          <div class="city-r">26 rue Mailly, 66000<br>04 68 81 09 97 · <a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- BLOC IDENTITÉ — Delphine Raymond (preuve humaine) -->
+<section class="intro">
+  <div class="intro-photo">
+    <img src="img/delphine.jpg" alt="Delphine Raymond, mandataire judiciaire">
+  </div>
+  <div class="intro-txt">
+    <div class="intro-name">Delphine Raymond</div>
+    <div class="intro-role">Mandataire Judiciaire · La Rochelle &amp; Perpignan</div>
+    <p class="intro-quote">« À vos côtés dans la difficulté — avec rigueur, écoute et confidentialité. »</p>
+    <p class="intro-bio">Désignée par le Tribunal de Commerce, j'accompagne depuis dix-neuf ans dirigeants, salariés et créanciers à chaque étape des procédures collectives, sur les ressorts de La Rochelle et de Perpignan. <strong>Une équipe de dix collaborateurs expérimentés travaille à mes côtés.</strong> Mon rôle : protéger les intérêts en présence et rechercher, chaque fois que possible, la solution qui préserve l'activité et les emplois.</p>
+    <span class="intro-sign">Delphine Raymond</span>
+  </div>
+</section>
+
+<!-- CARROUSEL — FIX 3 : réduit (190px) et descendu en ambiance -->
+<div class="car">
+  <div class="car-track" id="ct">
+    <div class="car-slide cs1"><span class="car-cap">La Rochelle</span></div>
+    <div class="car-slide cs2"><span class="car-cap">Étude Raymond</span></div>
+    <div class="car-slide cs3"><span class="car-cap">Perpignan — Le Canigou</span></div>
+  </div>
+  <button class="car-arrow car-prev" onclick="go(cur-1)" aria-label="Précédent">‹</button>
+  <button class="car-arrow car-next" onclick="go(cur+1)" aria-label="Suivant">›</button>
+  <div class="car-dots">
+    <button class="on" onclick="go(0)" aria-label="1"></button>
+    <button onclick="go(1)" aria-label="2"></button>
+    <button onclick="go(2)" aria-label="3"></button>
+  </div>
+</div>
+
+<!-- PROCÉDURES COLLECTIVES — repères -->
+<section class="proc-wrap">
+  <div class="proc-head">Les procédures collectives — repères</div>
+  <div class="proc-grid">
+    <div class="proc"><div class="proc-step">En amont</div><div class="proc-n">Prévention</div><div class="proc-d">Mandat ad hoc &amp; conciliation — anticiper les difficultés, à l'amiable et en toute confidentialité.</div></div>
+    <div class="proc"><div class="proc-step">Étape 1</div><div class="proc-n">Sauvegarde</div><div class="proc-d">Réorganiser l'entreprise qui n'est pas en cessation des paiements, sous protection du Tribunal.</div></div>
+    <div class="proc"><div class="proc-step">Étape 2</div><div class="proc-n">Redressement</div><div class="proc-d">Poursuivre l'activité et apurer le passif quand la cessation des paiements est constatée.</div></div>
+    <div class="proc"><div class="proc-step">Issue</div><div class="proc-n">Liquidation</div><div class="proc-d">Réaliser ou céder les actifs lorsque le redressement n'est plus possible — emplois préservés si reprise.</div></div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Delphine RAYMOND — Mandataire Judiciaire · La Rochelle &amp; Perpignan</span>
+  <span><a href="mentions-legales.html" style="color:rgba(255,255,255,.85)">Mentions légales</a> · Inscrite sur la liste nationale des mandataires judiciaires · Confidentialité garantie</span>
+</footer>
+
+<script>
+const ct=document.getElementById('ct');
+const dots=document.querySelectorAll('.car-dots button');
+let cur=0,timer;
+function go(n){
+  cur=(n+3)%3;
+  ct.style.transform='translateX(-'+(cur*100)+'%)';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  clearInterval(timer);
+  timer=setInterval(()=>go(cur+1),4000);
+}
+timer=setInterval(()=>go(cur+1),4000);
+</script>
+</body>
+</html>
