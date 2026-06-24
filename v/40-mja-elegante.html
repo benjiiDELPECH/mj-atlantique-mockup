@@ -227,6 +227,11 @@ footer a{color:rgba(255,255,255,.85)}
 /* === DIRECTION ÉLÉGANTE — recette mjassocies "fondBleuTransparent" ===
    Photo EN COULEUR + voile navy #001656 plat à 60% : l'architecture transparaît. */
 .head{position:absolute;top:0;left:0;right:0;background:transparent;z-index:40}
+/* lisibilité de la nav transparente : dégradé sombre en haut + ombre sur les liens */
+.hero-topscrim{position:absolute;top:0;left:0;right:0;height:150px;z-index:3;pointer-events:none;background:linear-gradient(rgba(0,10,44,.62),rgba(0,10,44,0))}
+.head .nav a{color:#fff;text-shadow:0 1px 7px rgba(0,0,0,.55)}
+.head .brand-name,.head .brand-name span{text-shadow:0 1px 7px rgba(0,0,0,.55)}
+.head .nav .espace{border-color:rgba(255,255,255,.7)}
 .hero-mja{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
 .hero-bg-mja{position:absolute;inset:0;background:url('img/hero-tribunal-spp.jpg') center 42% / cover no-repeat;filter:brightness(1.06) contrast(1.02) saturate(1.05);will-change:transform}
 .hero-tint{position:absolute;inset:0;background:rgba(0,22,86,.48)}
@@ -281,6 +286,7 @@ footer a{color:rgba(255,255,255,.85)}
   <div class="hero-bg-mja" data-parallax></div>
   <div class="hero-tint"></div>
   <div class="hero-split-veil"><div class="col-l"></div><div class="col-r"></div></div>
+  <div class="hero-topscrim"></div>
   <div class="hero-mja-in">
     <div class="hero-panel">
       <div class="hero-mono">DR</div>
