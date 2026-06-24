@@ -10,7 +10,7 @@
 <meta property="og:title" content="SCP Delphine Raymond — Mandataires judiciaires · La Rochelle &amp; Perpignan">
 <meta property="og:description" content="Étude de mandataires judiciaires à La Rochelle (17). Prévention amiable, procédures collectives, déclaration de créance.">
 <meta property="og:url" content="https://www.mj-atlantique.fr/accueil">
-<meta property="og:image" content="img/hero-tribunal-spp.jpg">
+<meta property="og:image" content="v/img/hero-tribunal-spp.jpg">
 <meta name="theme-color" content="#001656">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23001656'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='13' fill='white' text-anchor='middle'%3EDR%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:2px;b
 @media(max-width:760px){.actu-grid{grid-template-columns:1fr;gap:14px}}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
 .hero-bg{position:absolute;left:0;right:0;top:-11%;height:122%;
-  background:url('img/hero-tribunal-spp.jpg') center 50% / cover no-repeat;will-change:transform;
+  background:url('v/img/hero-tribunal-spp.jpg') center 50% / cover no-repeat;will-change:transform;
   filter:brightness(1.02) contrast(1.02)}
 /* PROPOSITION A — LUMINEUSE : voile très léger, le Tribunal reste pleinement présent (effet
    transparence façon MJA). Juste assez d'ombre à gauche pour le titre, ça s'ouvre franchement à droite. */
@@ -191,7 +191,7 @@ footer a{color:rgba(255,255,255,.85)}
 .wink b{color:#fff;font-weight:700}
 /* bande immersive pleine page (100vh) + parallaxe — accent de crédibilité façon mjassocies */
 .band{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
-.band-bg{position:absolute;left:0;right:0;top:-11%;height:122%;background:url('img/hero-tribunal-spp.jpg') center 50% / cover no-repeat;will-change:transform}
+.band-bg{position:absolute;left:0;right:0;top:-11%;height:122%;background:url('v/img/hero-tribunal-spp.jpg') center 50% / cover no-repeat;will-change:transform}
 .band-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,0,70,.66),rgba(2,0,70,.80))}
 .band-in{position:relative;max-width:960px;margin:0 auto;padding:0 28px;text-align:center;color:#fff}
 .band-kick{font-size:12px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:24px;text-shadow:0 1px 6px rgba(0,0,0,.55)}
@@ -224,6 +224,34 @@ footer a{color:rgba(255,255,255,.85)}
   .hero-strip-in{gap:26px}
 }
 @media(max-width:560px){.grid4{grid-template-columns:1fr}}
+/* === DIRECTION ÉLÉGANTE — hero bichromie navy façon mjassocies === */
+.head{position:absolute;top:0;left:0;right:0;background:transparent;z-index:40}
+.hero-mja{position:relative;min-height:100vh;display:flex;background:var(--navy-d);overflow:hidden}
+.hero-mja .hero-split{display:grid;grid-template-columns:37% 63%;width:100%}
+.hero-panel{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:0 7%;background:var(--navy-d)}
+.hero-panel::after{content:'';position:absolute;top:18%;bottom:18%;right:0;width:1px;background:rgba(255,255,255,.18)}
+.hero-mono{font-family:Georgia,'Times New Roman',serif;font-size:104px;font-weight:400;letter-spacing:8px;line-height:1;color:#fff;padding-left:6px}
+.hero-mono-rule{width:62px;height:1px;background:var(--gold-soft);margin:24px 0 20px}
+.hero-panel-name{font-size:21px;font-weight:600;letter-spacing:.6px;color:#fff;line-height:1.3}
+.hero-panel-sub{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:10px}
+.hero-photo{position:relative;overflow:hidden}
+.hero-photo .hero-bg-mja{position:absolute;inset:-6%;background:url('v/img/hero-tribunal-spp.jpg') center 45%/cover no-repeat;filter:grayscale(1) contrast(1.04) brightness(1.14);will-change:transform}
+.hero-photo .hero-tint{position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,17,70,.88) 0%,rgba(7,27,90,.66) 52%,rgba(24,50,118,.5) 100%)}
+.hero-cap{position:absolute;left:8%;right:8%;bottom:13%;z-index:3;color:#fff}
+.hero-h-mja{font-size:60px;font-weight:300;text-transform:uppercase;letter-spacing:4px;line-height:1.05;text-shadow:0 2px 22px rgba(0,0,0,.45)}
+.hero-h-mja b{display:block;font-weight:300}
+.hero-cities{margin-top:18px;font-size:13.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.86)}
+.hero-cap-sub{margin-top:20px;font-size:14.5px;font-weight:400;line-height:1.6;max-width:540px;color:rgba(255,255,255,.8)}
+@media(max-width:860px){
+  .hero-mja{min-height:auto}
+  .hero-mja .hero-split{grid-template-columns:1fr}
+  .hero-panel{padding:118px 8% 34px;align-items:flex-start}
+  .hero-panel::after{display:none}
+  .hero-mono{font-size:72px}
+  .hero-photo{min-height:60vh}
+  .hero-cap{bottom:9%}
+  .hero-h-mja{font-size:36px;letter-spacing:2px}
+}
 </style>
 </head>
 <body>
@@ -247,30 +275,24 @@ footer a{color:rgba(255,255,255,.85)}
 </header>
 
 
-<section class="hero">
-  <div class="hero-bg" data-parallax></div><div class="hero-veil"></div>
-  <div class="hero-in">
-    <div class="hero-lead">
-      <div class="hero-kick">Désignée par la justice · La Rochelle · Perpignan</div>
-      <h1 class="hero-h">Delphine Raymond<em>Mandataire judiciaire</em></h1>
-      <p class="hero-sub">Au service des entreprises en difficulté — prévention amiable et procédures collectives, sur les ressorts de La Rochelle (17) et Perpignan (66).</p>
+<section class="hero-mja">
+  <div class="hero-split">
+    <div class="hero-panel">
+      <div class="hero-mono">DR</div>
+      <div class="hero-mono-rule"></div>
+      <div class="hero-panel-name">SCP Delphine Raymond</div>
+      <div class="hero-panel-sub">Mandataire judiciaire</div>
     </div>
-    <div class="hero-doors-col">
-    <div class="hero-doors-lead">Accès direct — vous êtes :</div>
-    <div class="hero-doors">
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/dirigeant"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13"/><path d="M16 21V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v15"/></svg><span><b>Dirigeant</b><em>Entreprise en difficulté</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/salarie"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><span><b>Salarié</b><em>Créances salariales · AGS</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/accueil/creancier/passif-creancier"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span><b>Créancier</b><em>Déclarer ma créance</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a class="hero-door" href="https://www.mj-atlantique.fr/anonym/actif/search"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3"/></svg><span><b>Repreneur</b><em>Entreprises &amp; actifs à reprendre</em></span><svg class="door-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
+    <div class="hero-photo">
+      <div class="hero-bg-mja" data-parallax></div>
+      <div class="hero-tint"></div>
+      <div class="hero-cap">
+        <h1 class="hero-h-mja">Mandataire<b>judiciaire</b></h1>
+        <div class="hero-cities">La Rochelle (17) — Perpignan (66)</div>
+        <p class="hero-cap-sub">Désignée par les tribunaux pour la prévention et le traitement des difficultés des entreprises.</p>
+      </div>
     </div>
   </div>
-  <div class="hero-strip"><div class="hero-strip-in">
-    <div><div class="hs-n">19 ans</div><div class="hs-l">d'exercice</div></div>
-    <div><div class="hs-n">10</div><div class="hs-l">collaborateurs</div></div>
-    <div><div class="hs-n">17 · 66</div><div class="hs-l">La Rochelle &amp; Perpignan</div></div>
-    <div><div class="hs-n">Gratuit</div><div class="hs-l">1er entretien d'audit</div></div>
-  </div></div>
 </section>
 
 <section>
@@ -394,7 +416,7 @@ footer a{color:rgba(255,255,255,.85)}
 <section>
   <div class="wrap">
     <div class="founder">
-      <div class="founder-photo" style="background-image:url('img/delphine.jpg')" role="img" aria-label="Portrait de Delphine Raymond, mandataire judiciaire"></div>
+      <div class="founder-photo" style="background-image:url('v/img/delphine.jpg')" role="img" aria-label="Portrait de Delphine Raymond, mandataire judiciaire"></div>
       <div class="founder-text">
         <div class="sec-kick">Votre interlocutrice</div>
         <h2 class="sec-h">Delphine Raymond</h2>
@@ -420,8 +442,8 @@ footer a{color:rgba(255,255,255,.85)}
   <div class="wrap">
     <div class="sec-head"><div class="sec-kick">Nos implantations</div><h2 class="sec-h">Nos deux études</h2><p class="sec-lead">La SCP Delphine Raymond intervient sur deux ressorts : La Rochelle (Charente-Maritime, 17) et Perpignan (Pyrénées-Orientales, 66).</p></div>
     <div class="contacts">
-      <div class="contact"><div class="contact-photo" style="background-image:url('img/tour.jpg')"></div><div class="contact-body"><div class="contact-c">La Rochelle</div><div class="contact-tag">Établissement principal · 17</div><div class="contact-l">81 rue du Rempart Saint-Claude, 17000 La Rochelle<br>Tél. <a href="tel:+33546413219"><strong>05 46 41 32 19</strong></a><br><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div></div></div>
-      <div class="contact"><div class="contact-photo" style="background-image:url('img/le_canigou.jpeg')"></div><div class="contact-body"><div class="contact-c">Perpignan</div><div class="contact-tag">Établissement secondaire · 66</div><div class="contact-l">26 rue Mailly, 66000 Perpignan<br>Tél. <a href="tel:+33468810997"><strong>04 68 81 09 97</strong></a><br><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a><br><a href="https://www.mj-perpignan.fr/accueil">Voir l'étude de Perpignan →</a></div></div></div>
+      <div class="contact"><div class="contact-photo" style="background-image:url('v/img/tour.jpg')"></div><div class="contact-body"><div class="contact-c">La Rochelle</div><div class="contact-tag">Établissement principal · 17</div><div class="contact-l">81 rue du Rempart Saint-Claude, 17000 La Rochelle<br>Tél. <a href="tel:+33546413219"><strong>05 46 41 32 19</strong></a><br><a href="mailto:contact@mj-atlantique.fr">contact@mj-atlantique.fr</a></div></div></div>
+      <div class="contact"><div class="contact-photo" style="background-image:url('v/img/le_canigou.jpeg')"></div><div class="contact-body"><div class="contact-c">Perpignan</div><div class="contact-tag">Établissement secondaire · 66</div><div class="contact-l">26 rue Mailly, 66000 Perpignan<br>Tél. <a href="tel:+33468810997"><strong>04 68 81 09 97</strong></a><br><a href="mailto:contact@mj-perpignan.fr">contact@mj-perpignan.fr</a><br><a href="https://www.mj-perpignan.fr/accueil">Voir l'étude de Perpignan →</a></div></div></div>
     </div>
   </div>
 </section>
