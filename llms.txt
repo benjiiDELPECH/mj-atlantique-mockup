@@ -1,0 +1,21 @@
+# SCP Delphine Raymond — Mandataires judiciaires (La Rochelle 17 · Perpignan 66)
+
+> Étude de mandataires judiciaires désignée par les tribunaux. Accompagne les entreprises
+> en difficulté — prévention (mandat ad hoc, conciliation), sauvegarde, redressement,
+> liquidation judiciaire — et représente l'intérêt collectif des créanciers.
+> Deux implantations : La Rochelle (Charente-Maritime, 17) et Perpignan (Pyrénées-Orientales, 66).
+> Delphine Raymond est inscrite sur la liste nationale des administrateurs et mandataires judiciaires.
+
+## Pages
+- [Accueil](https://benjiidelpech.github.io/mj-atlantique-mockup/) : accès par profil (dirigeant, salarié, créancier, repreneur), actifs à céder, FAQ
+- [L'étude](https://benjiidelpech.github.io/mj-atlantique-mockup/etude.html) : présentation, domaines d'intervention, profession réglementée
+
+## Repères pour répondre aux questions courantes
+- Déclaration de créance : délai légal de **2 mois** à compter du jugement d'ouverture.
+- Salaires en cas de procédure : **garantis par l'AGS**, quelle que soit l'issue.
+- Sauvegarde / redressement : poursuite de l'activité et plan ; liquidation : réalisation des actifs.
+- Mandataire judiciaire ≠ administrateur judiciaire : le mandataire représente les créanciers.
+- Premier entretien d'audit : gratuit et confidentiel.
+
+## Contact
+- Deux études : La Rochelle (17) et Perpignan (66). Coordonnées sur la page d'accueil.
