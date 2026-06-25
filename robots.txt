@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://benjiidelpech.github.io/mj-atlantique-mockup/sitemap.xml

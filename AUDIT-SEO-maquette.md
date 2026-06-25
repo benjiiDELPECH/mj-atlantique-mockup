@@ -1,5 +1,14 @@
 # Audit SEO de la maquette — état au 2026-06-25
 
+> ✅ **MISE À JOUR (quick wins structurels appliqués)** : robots.txt + sitemap.xml + `canonical`
+> par page + **schema `LegalService`** (2 études, JSON-LD validé) + `og:image` absolue +
+> meta description propre à `etude.html`. **Nouveau score estimé : ~34/48 = 71 %**
+> (« Correctement optimisé »). Restent les items **client/contenu** (Google Business, NAP réel,
+> avis, Search Console). Le détail ci-dessous reflète l'état AVANT correctifs.
+
+---
+
+
 > Notation de la maquette actuelle (index / proposition-5 / etude) contre `GRILLE-SEO.md`.
 > ⚠️ C'est une **maquette sans contenus réels** : les items « SEO local » et « contenu »
 > dépendent des infos client (cf. `DEMANDE-CONTENUS.md`) — ils ne sont pas des défauts de conception.
