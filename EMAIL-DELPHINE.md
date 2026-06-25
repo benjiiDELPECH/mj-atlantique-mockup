@@ -1,4 +1,4 @@
-# Brouillon email — version finale
+# Brouillon email — version courte (1er contact : obtenir le choix A/B)
 
 **À :** raymond@mj-atlantique.fr · delphine.raymond17@gmail.com
 **CC :** giuliano.rondeau@mj-atlantique.fr · cedric.garrigues@mj-atlantique.fr · gauthier.jouve@mj-atlantique.fr
@@ -15,9 +15,11 @@ B : https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-5.html
 
 Les accès vers le backoffice (espaces dirigeant, salarié, créancier, repreneur, déclaration de créance, actifs à céder) sont mis bien en évidence.
 
-J'en ai aussi profité pour reprendre le référencement (Google), assez limité sur le site actuel : les titres de pages y sont génériques (« DELPHINE RAYMOND : Accueil »), sans le métier ni les villes, et il manque les informations structurées que Google attend pour bien situer un cabinet. J'ai corrigé ça — titres « mandataire judiciaire · La Rochelle / Perpignan », coordonnées des deux études lisibles par Google. Et j'ai préparé en plus la visibilité dans les moteurs d'IA (ChatGPT, Perplexity).
-
-Dites-moi laquelle vous préférez. Pour finaliser, j'aurai besoin de vos photos (portraits, locaux des deux études) ; les quelques textes provisoires seront aussi remplacés par les vôtres.
+Dites-moi laquelle vous préférez.
 
 Je vous embrasse,
 Benjamin
+
+---
+> SEO (audit ancien site) + demande de photos/contenus → à envoyer APRÈS leur choix A/B.
+> Voir AUDIT-SEO-ancien-site.md et DEMANDE-CONTENUS.md.
