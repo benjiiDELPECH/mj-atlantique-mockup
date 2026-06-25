@@ -1,4 +1,4 @@
-# Brouillon email — version avec tableau SEO
+# Brouillon email — version finale (avec tableau SEO, sans jargon)
 
 **À :** raymond@mj-atlantique.fr · delphine.raymond17@gmail.com
 **CC :** giuliano.rondeau@mj-atlantique.fr · cedric.garrigues@mj-atlantique.fr · gauthier.jouve@mj-atlantique.fr
@@ -24,10 +24,8 @@ Au passage, j'en ai aussi profité pour le référencement (souvent négligé su
 | Titre des pages | « DELPHINE RAYMOND : Accueil » | « Mandataires judiciaires · La Rochelle & Perpignan » |
 | Fiche lue par Google & les IA | aucune | adresses, tél, horaires des 2 études |
 | Aperçu au partage | cassé | propre |
-| Titres de page (H1) | 3 par page | 1 seul |
+| Titres de page | 3 par page | 1 seul |
 | FAQ visible par les IA | aucune | Q/R citables (créance, AGS…) |
-
-(HTTPS, mobile, plan du site, Analytics étaient déjà en place.) Score global : ~54 % → ~71 %.
 
 Je vous embrasse,
 Benjamin
