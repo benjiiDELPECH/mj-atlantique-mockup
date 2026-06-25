@@ -1,19 +1,19 @@
-# Brouillon email — version courte (artisan)
+# Brouillon email — version courte & respectueuse
 
 **À :** raymond@mj-atlantique.fr · delphine.raymond17@gmail.com
 **CC :** giuliano.rondeau@mj-atlantique.fr · cedric.garrigues@mj-atlantique.fr · gauthier.jouve@mj-atlantique.fr
-**Objet :** Le nouveau site — A ou B ?
+**Objet :** Le nouveau site de l'étude — deux versions
 
 ---
 
 Bonjour Maman, bonjour à tous,
 
-Suite à notre visio du 18 juin, voici le nouveau site. Je l'''ai fait en deux ambiances, à vous de choisir :
+Suite à notre visio du 18 juin, voici le nouveau site, dans deux ambiances différentes :
 
-A (chaleureuse) : https://benjiidelpech.github.io/mj-atlantique-mockup/
-B (élégante) : https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-5.html
+A : https://benjiidelpech.github.io/mj-atlantique-mockup/
+B : https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-5.html
 
-Répondez-moi juste A ou B (et un mot si quelque chose vous gêne). Les photos et certains textes sont provisoires, on les remplacera par les vôtres.
+Dites-moi laquelle vous préférez. Les photos et quelques textes sont encore provisoires, on les finalisera ensemble.
 
 Je vous embrasse,
 Benjamin
