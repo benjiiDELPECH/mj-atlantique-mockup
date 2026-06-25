@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lexiroc — Cabinet d'avocats à La Rochelle &amp; Rochefort</title>
+<meta name="description" content="Cabinet d'avocats Lexiroc, La Rochelle et Rochefort (17) : droit du travail, droit des obligations, droit de la construction, droit pénal.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#114d85; --navy-d:#0b3260; --accent:#0d6efd; --accent-soft:rgba(77,150,230,.95);
+  --ink:#1a2230; --mid:#5b6472; --line:#e3e7ee; --font:'Raleway',-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.head{position:absolute;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;max-width:1180px;padding:22px 28px;width:100%;left:50%;transform:translateX(-50%)}
+.brand{display:flex;align-items:center;gap:13px;color:#fff}
+.brand-seal{width:46px;height:46px;border:1px solid var(--accent-soft);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:18px;font-weight:600;letter-spacing:1px;color:#fff}
+.brand-name{font-size:16px;font-weight:700;letter-spacing:.4px;line-height:1.15;text-shadow:0 1px 7px rgba(0,0,0,.5)}
+.brand-name span{display:block;font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:2px}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{color:#fff;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:9px 13px;text-shadow:0 1px 7px rgba(0,0,0,.5)}
+.nav a:hover{color:var(--accent-soft)}
+.nav .espace{border:1px solid rgba(255,255,255,.5);border-radius:7px;padding:9px 15px;font-weight:600}
+@media(max-width:900px){.nav{display:none}}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-d)}
+.hero-bg{position:absolute;inset:0;background:url('v/img/hero-tribunal-spp.jpg') center 42%/cover no-repeat;filter:brightness(1.03) contrast(1.02) saturate(1.04)}
+.hero-tint{position:absolute;inset:0;background:rgba(13,42,78,.62)}
+.hero-split{position:absolute;inset:0;z-index:1;display:grid;grid-template-columns:40% 60%}
+.hero-split .col-l{background:rgba(10,32,64,.42);border-right:1px solid rgba(255,255,255,.22)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:40% 60%;align-items:center;color:#fff}
+.hero-topscrim{position:absolute;top:0;left:0;right:0;height:150px;z-index:3;pointer-events:none;background:linear-gradient(rgba(8,28,56,.6),rgba(8,28,56,0))}
+.panel{position:relative;padding-right:8%}
+.mono{font-family:Georgia,'Times New Roman',serif;font-size:84px;font-weight:400;letter-spacing:3px;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.rule{width:62px;height:1px;background:var(--accent-soft);margin:22px 0 18px}
+.h-title{font-size:33px;font-weight:300;text-transform:uppercase;letter-spacing:4px;line-height:1.12;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+.h-name{font-size:20px;font-weight:600;margin-top:14px;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.h-sub{margin-top:8px;font-size:12.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.doors-col{padding-left:10%}
+.doors-lead{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:16px;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.doors{display:flex;flex-direction:column;gap:12px;max-width:460px}
+.door{display:flex;align-items:center;gap:15px;padding:16px 20px;border:1px solid rgba(255,255,255,.4);background:rgba(10,32,66,.72);box-shadow:0 8px 26px rgba(0,0,0,.26);color:#fff;transition:.16s}
+.door:hover{background:rgba(10,32,66,.92);border-color:var(--accent);transform:translateX(4px)}
+.door svg{width:24px;height:24px;stroke:var(--accent-soft);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.door b{display:block;font-size:15.5px;font-weight:700}
+.door em{display:block;font-style:normal;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);margin-top:2px}
+.door .arr{margin-left:auto;width:20px;height:20px;stroke:#fff;stroke-width:2.2;opacity:.8}
+.door:hover .arr{stroke:var(--accent-soft);opacity:1;transform:translateX(3px)}
+
+.strip{background:var(--navy);color:#fff;padding:18px 0}
+.strip-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:center;font-size:13px;letter-spacing:.3px}
+.strip-in svg{width:16px;height:16px;stroke:var(--accent-soft);fill:none;stroke-width:1.8;vertical-align:middle;margin-right:7px}
+.strip b{font-weight:700}
+.teaser-flag{background:var(--accent);color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px}
+@media(max-width:860px){
+  .hero{min-height:auto}.hero-split{display:none}.hero-tint{background:rgba(13,42,78,.72)}
+  .hero-in{grid-template-columns:1fr;padding:118px 8% 72px;gap:36px}
+  .panel{padding-right:0}.doors-col{padding-left:0}
+  .mono{font-size:66px}.h-title{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="teaser-flag">Proposition / concept — réalisé par Benjamin Delpech</div>
+
+<header class="head">
+  <div class="brand">
+    <div class="brand-seal">L</div>
+    <div class="brand-name">Lexiroc<span>Cabinet d'avocats</span></div>
+  </div>
+  <nav class="nav">
+    <a>Le cabinet</a><a>Domaines</a><a>L'équipe</a><a>Contact</a>
+    <a class="espace">Nous écrire</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tint"></div>
+  <div class="hero-split"><div class="col-l"></div><div class="col-r"></div></div>
+  <div class="hero-topscrim"></div>
+  <div class="hero-in">
+    <div class="panel">
+      <div class="mono">L</div>
+      <div class="rule"></div>
+      <h1 class="h-title">Avocats</h1>
+      <div class="h-name">Cabinet Lexiroc</div>
+      <div class="h-sub">La Rochelle · Rochefort (17)</div>
+    </div>
+    <div class="doors-col">
+      <div class="doors-lead">Votre dossier —</div>
+      <div class="doors">
+        <a class="door"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><span><b>Droit du travail</b><em>Salariés &amp; employeurs</em></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="door"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span><b>Droit des obligations</b><em>Contrats &amp; responsabilité</em></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="door"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg><span><b>Droit de la construction</b><em>Travaux &amp; malfaçons</em></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="door"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>Droit pénal</b><em>Défense &amp; assistance</em></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip"><div class="strip-in">
+  <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>4 rue des Écoles, 17000 La Rochelle — <b>05 46 41 21 41</b></span>
+  <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>127 rue Pierre Loti, 17300 Rochefort — <b>05 46 82 29 10</b></span>
+</div></div>
+
+</body>
+</html>
