@@ -48,8 +48,10 @@ Salarié, Créancier, Repreneur) à droite.
    - Si vous en avez : une ou deux photos de qualité (locaux, équipe) ;
    - Confirmation des 4 profils et de leurs intitulés.
 
-Dites-moi laquelle des deux directions vous parle le plus, et on affine
-à partir de là.
+Pour avancer vite : **répondez-moi simplement A ou B** (et deux-trois mots si
+un détail vous gêne) — je m'occupe du reste. Si vous avez des remarques,
+regroupez-les dans un seul mail, c'est plus efficace qu'un appel. Et si vous
+hésitez vraiment entre les deux, on se cale 15 minutes.
 
 Bien à vous,
 Benjamin
