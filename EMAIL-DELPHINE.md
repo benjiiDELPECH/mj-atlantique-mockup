@@ -13,9 +13,9 @@ Suite à notre visio du 18 juin, voici le nouveau site. J'ai pris comme référe
 A : https://benjiidelpech.github.io/mj-atlantique-mockup/
 B : https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-5.html
 
-Les accès vers le backoffice (espaces dirigeant, salarié, créancier, repreneur, déclaration de créance, actifs à céder) sont mis bien en évidence — et on peut encore les renforcer si besoin.
+Les accès vers le backoffice (espaces dirigeant, salarié, créancier, repreneur, déclaration de créance, actifs à céder) sont mis bien en évidence. J'ai aussi soigné le référencement — Google et même les moteurs d'IA (ChatGPT, Perplexity), ce que très peu de sites de cabinets font.
 
-Dites-moi laquelle vous préférez. Les photos et quelques textes sont encore provisoires, on les finalisera ensemble.
+Dites-moi laquelle vous préférez. Pour finaliser, j'aurai besoin de vos photos (portraits, locaux des deux études) ; les quelques textes provisoires seront aussi remplacés par les vôtres.
 
 Je vous embrasse,
 Benjamin
