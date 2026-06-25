@@ -19,9 +19,10 @@ Titre affirmé, photo du tribunal lumineuse, accès direct par profil, sensation
 accueillante.
 
 **▸ Direction B — élégante / institutionnelle**
-👉 https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-3.html
-Hero en deux colonnes avec voile bleu transparent, monogramme et titre en
-capitales fines — dans l'esprit épuré de mjassocies.eu.
+👉 https://benjiidelpech.github.io/mj-atlantique-mockup/proposition-5.html
+Hero en deux colonnes avec voile bleu transparent (esprit mjassocies.eu) :
+l'identité de l'étude à gauche, et les accès directs par profil (Dirigeant,
+Salarié, Créancier, Repreneur) à droite.
 
 (Les deux s'ouvrent sur ordinateur comme sur mobile.)
 
