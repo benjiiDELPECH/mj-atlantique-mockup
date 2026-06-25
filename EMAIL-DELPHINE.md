@@ -1,4 +1,4 @@
-# Brouillon email — version courte (1er contact : obtenir le choix A/B)
+# Brouillon email — version avec tableau SEO
 
 **À :** raymond@mj-atlantique.fr · delphine.raymond17@gmail.com
 **CC :** giuliano.rondeau@mj-atlantique.fr · cedric.garrigues@mj-atlantique.fr · gauthier.jouve@mj-atlantique.fr
@@ -17,9 +17,17 @@ Les accès vers le backoffice (espaces dirigeant, salarié, créancier, repreneu
 
 Dites-moi laquelle vous préférez.
 
+Au passage, j'en ai aussi profité pour le référencement (souvent négligé sur ce type de site) :
+
+| | Site actuel | Nouvelle version |
+|---|---|---|
+| Titre des pages | « DELPHINE RAYMOND : Accueil » | « Mandataires judiciaires · La Rochelle & Perpignan » |
+| Fiche lue par Google & les IA | aucune | adresses, tél, horaires des 2 études |
+| Aperçu au partage | cassé | propre |
+| Titres de page (H1) | 3 par page | 1 seul |
+| FAQ visible par les IA | aucune | Q/R citables (créance, AGS…) |
+
+(HTTPS, mobile, plan du site, Analytics étaient déjà en place.) Score global : ~54 % → ~71 %.
+
 Je vous embrasse,
 Benjamin
-
----
-> SEO (audit ancien site) + demande de photos/contenus → à envoyer APRÈS leur choix A/B.
-> Voir AUDIT-SEO-ancien-site.md et DEMANDE-CONTENUS.md.
