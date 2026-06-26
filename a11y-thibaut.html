@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diagnostic accessibilité — Cabinet Thibaut de Montauzon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0c2c49;--ink:#1a2230;--mid:#5b6472;--line:#e3e7ee;--soft:#f4f6f9;--red:#d23f3f;--amber:#e0922f;--green:#1f9d57;--font:'Raleway',-apple-system,'Segoe UI',Roboto,sans-serif}
+body{font-family:var(--font);color:var(--ink);background:#eef1f5;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+.head{background:var(--navy);color:#fff;padding:34px 0}
+.head .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.kick{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.h1{font-size:26px;font-weight:700;margin-top:6px}
+.h1 span{display:block;font-size:14px;font-weight:500;color:rgba(255,255,255,.78);margin-top:4px}
+.by{font-size:12.5px;color:rgba(255,255,255,.7);text-align:right}
+.by b{color:#fff}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;margin:22px 0;box-shadow:0 10px 30px rgba(10,30,60,.06)}
+.score-row{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
+.gauge{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;flex-shrink:0}
+.gauge.before{background:conic-gradient(var(--amber) 0 72%, #eceff3 72% 100%)}
+.gauge.after{background:conic-gradient(var(--green) 0 98%, #eceff3 98% 100%)}
+.gauge .inner{width:118px;height:118px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.gauge .num{font-size:38px;font-weight:800;line-height:1}
+.gauge.before .num{color:var(--amber)}.gauge.after .num{color:var(--green)}
+.gauge .lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-top:4px}
+.gauge-cap{text-align:center;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-top:10px}
+.arrow{font-size:30px;color:var(--mid)}
+.sec-t{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.sec-s{font-size:13.5px;color:var(--mid);margin-bottom:18px}
+.legal{background:#fff5ed;border-left:4px solid var(--amber);border-radius:6px;padding:16px 20px;font-size:14px;color:var(--ink)}
+.legal b{color:#8a4d10}
+.issue{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+.issue:first-of-type{border-top:0}
+.issue .ic{width:26px;height:26px;border-radius:50%;background:#fdecec;color:var(--red);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:15px}
+.issue b{display:block;font-size:15px;color:var(--ink)}
+.issue span{display:block;font-size:13px;color:var(--mid);margin-top:2px}
+.issue .tag{font-size:11px;font-weight:700;color:var(--red);margin-left:auto;flex-shrink:0;align-self:center}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.ba>div{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ba .t{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 12px;color:#fff}
+.ba .before .t{background:var(--red)}.ba .after .t{background:var(--green)}
+.ba .demo{padding:18px 16px;background:#fff}
+.lc{background:#cfd6df;color:#aeb6c0;padding:10px 12px;border-radius:5px;font-size:14px}
+.hc{background:#0c2c49;color:#fff;padding:10px 12px;border-radius:5px;font-size:14px}
+.lnk-bad{color:#7b8794;text-decoration:none;font-size:14px}
+.lnk-good{color:#0a58d6;text-decoration:underline;font-weight:600;font-size:14px}
+.lnk-good:focus,.lnk-good{outline:2px solid #0a58d6;outline-offset:3px;border-radius:2px}
+.cta{background:var(--navy);color:#fff;border-radius:12px;padding:30px;text-align:center}
+.cta h2{font-size:21px;font-weight:700;margin-bottom:10px}
+.cta p{color:rgba(255,255,255,.82);max-width:560px;margin:0 auto 18px}
+.price{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:12px 22px;font-weight:700;margin:4px}
+.foot{font-size:12px;color:var(--mid);text-align:center;padding:24px 0 40px}
+@media(max-width:620px){.ba{grid-template-columns:1fr}.by{text-align:left}}
+</style>
+</head>
+<body>
+
+<header class="head"><div class="wrap">
+  <div>
+    <div class="kick">Diagnostic accessibilité web</div>
+    <div class="h1">Cabinet Thibaut de Montauzon<span>thibautdemontauzonavocat.fr — juin 2026</span></div>
+  </div>
+  <div class="by">Réalisé par<br><b>Benjamin Delpech</b><br>Ingénieur logiciel</div>
+</div></header>
+
+<div class="wrap">
+
+  <div class="card">
+    <div class="score-row">
+      <div>
+        <div class="gauge before"><div class="inner"><div class="num">72</div><div class="lbl">/ 100</div></div></div>
+        <div class="gauge-cap">Aujourd'hui</div>
+      </div>
+      <div class="arrow">→</div>
+      <div>
+        <div class="gauge after"><div class="inner"><div class="num">98</div><div class="lbl">/ 100</div></div></div>
+        <div class="gauge-cap">Après correction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-t">Pourquoi maintenant ?</div>
+    <div class="legal">Depuis juin 2025, l'<b>European Accessibility Act</b> impose l'accessibilité des sites de services au public — sous peine de sanctions. <b>Un site inaccessible exclut aussi ~15% de visiteurs</b> (déficiences visuelles, motrices, cognitives) et pénalise votre référencement. C'est un besoin réel, largement sous-estimé.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-t">6 problèmes détectés (analyse automatique)</div>
+    <div class="sec-s">Test Lighthouse — un audit manuel WCAG complet en révèle généralement davantage.</div>
+    <div class="issue"><div class="ic">!</div><div><b>Contrastes insuffisants</b><span>3 zones de texte peu lisibles pour les malvoyants et en plein soleil sur mobile.</span></div><div class="tag">Critique</div></div>
+    <div class="issue"><div class="ic">!</div><div><b>Liens sans intitulé perceptible</b><span>4 liens (icônes) que les lecteurs d'écran annoncent « lien » sans dire où ils mènent.</span></div><div class="tag">Critique</div></div>
+    <div class="issue"><div class="ic">!</div><div><b>Liens distinguables seulement par la couleur</b><span>2 liens invisibles pour les daltoniens.</span></div><div class="tag">Élevé</div></div>
+    <div class="issue"><div class="ic">!</div><div><b>Hiérarchie des titres incorrecte</b><span>Ordre des titres non séquentiel → navigation au clavier/lecteur d'écran perturbée.</span></div><div class="tag">Moyen</div></div>
+    <div class="issue"><div class="ic">!</div><div><b>Repère « contenu principal » absent</b><span>Pas de zone &lt;main&gt; → impossible d'« aller au contenu » directement.</span></div><div class="tag">Moyen</div></div>
+    <div class="issue"><div class="ic">!</div><div><b>Structure de liste invalide</b><span>Une liste contient des éléments non conformes → restitution erronée.</span></div><div class="tag">Moyen</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-t">Avant / après — exemples concrets</div>
+    <div class="ba">
+      <div class="before"><div class="t">Avant — contraste</div><div class="demo"><div class="lc">Maître Thibaut de Montauzon</div></div></div>
+      <div class="after"><div class="t">Après — corrigé</div><div class="demo"><div class="hc">Maître Thibaut de Montauzon</div></div></div>
+      <div class="before"><div class="t">Avant — lien</div><div class="demo"><a class="lnk-bad" href="#">En savoir plus</a> <span style="font-size:12px;color:#9aa3ad">(invisible au clavier / daltonien)</span></div></div>
+      <div class="after"><div class="t">Après — lien</div><div class="demo"><a class="lnk-good" href="#">En savoir plus</a> <span style="font-size:12px;color:#5b6472">(souligné + focus visible)</span></div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Je corrige tout ça pour vous</h2>
+    <p>Audit complet WCAG 2.1 AA + corrections du code, livrés clés en main. Mise en conformité EAA, site lisible par tous, meilleur référencement.</p>
+    <div><span class="price">Audit complet — 1 800 €</span><span class="price">Audit + corrections — sur devis</span></div>
+    <p style="margin-top:18px;font-size:14px">Benjamin Delpech — ingénieur logiciel · je me tiens à votre disposition.</p>
+  </div>
+
+  <div class="foot">Score établi par analyse automatique (Google Lighthouse), juin 2026. Document de présentation sans valeur contractuelle. Réalisé par Benjamin Delpech.</div>
+
+</div>
+</body>
+</html>
