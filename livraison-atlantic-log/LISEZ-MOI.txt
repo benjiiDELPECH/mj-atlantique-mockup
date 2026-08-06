@@ -2,30 +2,20 @@ Charte graphique — SCP Delphine Raymond
 Benjamin Delpech · 6 août 2026 · benjamin.delpech66@gmail.com
 
 
-Ce qu'il y a dedans
--------------------
+Dans le paquet
+--------------
 
-  charte-mj-atlantique.css   la feuille de thème — c'est le livrable
+  charte-mj-atlantique.css   la feuille de thème
   fonts/                     Raleway auto-hébergée (2 woff2 + le @font-face)
-  maquette/                  la page d'accueil telle qu'elle doit rendre,
-                             en HTML autonome : ouvrez index.html dans un
-                             navigateur, tout est dedans (styles en ligne,
-                             images, polices)
 
 
-Comment ça s'assemble
----------------------
+Où la poser
+-----------
 
-Le HTML de maquette/ n'est PAS à intégrer — je sais bien que vos pages sont
-générées depuis Gemarcur, pas déposées à la main. Il est là comme plan de
-référence : la structure, les proportions, l'ordre des blocs, les textes
-définitifs. À reconstruire avec vos composants natifs (les cartes d'entrée,
-le bandeau photo), puis la feuille de style leur donne l'apparence.
-
-La charte se pose après app/config/css/styles.css. Elle ne touche pas au
-markup, elle ne fait que surcharger vos sélecteurs à partir de variables CSS.
-Le mieux serait qu'elle remplace la partie "thème client" de styles.css
-plutôt que de s'y ajouter, mais faites au plus simple.
+Après app/config/css/styles.css. Elle ne touche pas au markup, elle ne fait
+que surcharger vos sélecteurs à partir de variables CSS. Le mieux serait
+qu'elle remplace la partie "thème client" de styles.css plutôt que de s'y
+ajouter, mais faites au plus simple.
 
 Les polices sont en local, pas de Google Fonts — je préfère éviter ça sur le
 site d'une étude. La feuille les appelle en relatif (./fonts/raleway.css) ;
