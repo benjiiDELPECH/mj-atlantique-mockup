@@ -1,0 +1,67 @@
+Charte graphique — SCP Delphine Raymond
+Benjamin Delpech · 6 août 2026 · benjamin.delpech66@gmail.com
+
+
+Dans le zip
+-----------
+
+  charte-mj-atlantique.css   la feuille de thème
+  fonts/                     Raleway auto-hébergée (2 woff2 + le @font-face)
+
+
+Où la poser
+-----------
+
+Après app/config/css/styles.css. Elle ne touche pas au markup, elle ne fait
+que surcharger vos sélecteurs à partir de variables CSS. Le mieux serait
+qu'elle remplace la partie "thème client" de styles.css plutôt que de s'y
+ajouter, mais faites au plus simple pour vous.
+
+Les polices sont en local, pas de Google Fonts — je préfère éviter ça sur le
+site d'une étude. La feuille les appelle en relatif (./fonts/raleway.css), à
+ajuster selon votre arborescence.
+
+
+Un point à vérifier avant
+-------------------------
+
+En regardant les pages, l'instance de l'étude tourne sur votre gabarit
+historique (#header, #bigMenu, #sidebar…), alors que ma charte vise les
+sélecteurs du gabarit récent — .main-navigation, .pictureBcg,
+.espace-gros-carres. C'est ce dernier qui porte les carrés d'entrée et le
+bandeau photo, les deux éléments que Me Raymond a validés.
+
+Donc si vous basculez l'étude sur le gabarit récent, la charte s'applique
+telle quelle. Si ce n'est pas envisageable, dites-le moi : je la réécris pour
+l'ancien, ça ne me pose pas de problème.
+
+Une chose à garder à l'œil dans tous les cas : le sitemap déclare 787 URLs,
+surtout des annonces d'actifs. Ce sont elles qui font venir les repreneurs,
+donc idéalement rien ne bouge, ou des 301.
+
+
+Deux questions
+--------------
+
+- Le préfixe de page : je cible .accueil-accueil section.pictureBcg avec un
+  repli sans préfixe. C'est la bonne convention ?
+- S'il y a des cartes photo type owl-carousel, donnez-moi les sélecteurs et
+  je vous envoie le traitement qui va avec.
+
+
+Le rendu visé
+-------------
+
+https://benjiidelpech.github.io/mj-atlantique-mockup/
+
+C'est une maquette statique, pas un site à mettre en ligne — la recherche
+mandat et la recherche actif restent évidemment chez vous.
+
+Détails déjà validés par Me Raymond, à reprendre : "chef d'entreprise" et non
+"dirigeant", "désignée par les tribunaux", 10 collaborateurs, installée
+depuis 2007, et ne pas afficher le numéro CNAJMJ.
+
+
+Au moindre doute, appelez-moi ou écrivez-moi, je réponds vite.
+
+Benjamin

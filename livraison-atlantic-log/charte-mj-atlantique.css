@@ -1,39 +1,14 @@
-/* =============================================================================
-   CHARTE GRAPHIQUE — SCP Delphine RAYMOND (MJ Atlantique / MJ Perpignan)
-   À destination d'Atlantic Log (Gemweb / Apache Tapestry).
+/* Charte graphique — SCP Delphine Raymond (MJ Atlantique / MJ Perpignan)
+   Benjamin Delpech — 6 août 2026
 
-   v2 — 06/08/2026.
+   À charger après app/config/css/styles.css. Ne touche pas au markup :
+   variables CSS + surcharges de sélecteurs natifs Gemweb.
 
-   RÔLE : feuille de thème par étude. Posée sur le gabarit Gemweb, elle applique
-   l'identité de la maquette validée par Me RAYMOND, SANS toucher au markup
-   Tapestry. Tout passe par des variables CSS + surcharges de sélecteurs natifs.
+   Vise le gabarit récent (.main-navigation, .pictureBcg, .espace-gros-carres).
+   Voir LISEZ-MOI.txt.
 
-   ⚠️ v2 — CORRECTION IMPORTANTE PAR RAPPORT À LA v1 :
-   la v1 portait des valeurs (marine #0a1c38, polices Spectral + Inter) qui ne
-   correspondaient PLUS à la maquette réellement livrée et validée. Appliquée
-   telle quelle, elle aurait produit un site différent de celui que la cliente a
-   approuvé. Les valeurs ci-dessous sont extraites du :root de la maquette de
-   référence (index.html) — elles font foi.
-
-   ⚠️ PRÉ-REQUIS DE GABARIT (vérifié le 06/08/2026 par inspection des pages
-   publiques) : mj-atlantique.fr sert un gabarit HISTORIQUE, construit sur des id
-   (#header, #bigMenu, #sidebar, #content-wrap, #footer-wrap) et sans balises
-   HTML5. Les sélecteurs ci-dessous (.espace-gros-carres, .pictureBcg,
-   .main-navigation, .boxed-content) appartiennent au gabarit MODERNE, déjà en
-   production sur d'autres études Gemweb — ils sont ABSENTS de l'instance MJ.
-   Cette feuille suppose donc la bascule préalable de l'instance sur le gabarit
-   moderne (cf. NOTE-INTEGRATION.md §2-3). À défaut, elle est à réécrire pour le
-   gabarit historique : c'est un travail distinct, que nous prenons en charge.
-
-   CHARGEMENT : après app/config/css/styles.css. Idéalement, ce fichier REMPLACE
-   la portion « thème client » de styles.css plutôt que de s'y ajouter.
-
-   POLICES : Raleway (texte, auto-hébergée) + Georgia (titres, police système,
-   aucun téléchargement). AUCUN appel à fonts.googleapis.com — conformité RGPD
-   (jurisprudence CNIL ; LG München I, 3 O 17493/20), point non négociable pour
-   une profession réglementée. Les fichiers .woff2 et leur feuille @font-face
-   sont fournis dans fonts/ (2 fichiers, 68 Ko au total, licence SIL OFL 1.1).
-   ============================================================================= */
+   Polices en local (fonts/), aucun appel externe. Chemin relatif à ajuster.
+   Points marqués [à confirmer] : à caler ensemble. */
 
 @import url('./fonts/raleway.css');
 
@@ -112,7 +87,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
    reste EN COULEUR et reçoit un voile marine semi-transparent — ce n'est pas un
    noir et blanc dégradé. Le voile est plus dense à gauche, plus clair à droite :
    c'est ce contraste qui dessine les deux colonnes.
-   [À CONFIRMER] le préfixe de page (.accueil-accueil) sur l'instance MJ. */
+   [à confirmer] le préfixe de page (.accueil-accueil) sur l'instance MJ. */
 .pictureBcg{ position:relative; }
 .accueil-accueil section.pictureBcg img,
 section.pictureBcg img{
@@ -193,7 +168,7 @@ section.presentation h1::before{
 .btn-primary:hover, .btn-primary:focus{
   background:var(--mj-navy-l); border-color:var(--mj-navy-l);
 }
-/* or réservé à l'action principale (« Prendre rendez-vous ») [À CONFIRMER classe] */
+/* or réservé à l'action principale (« Prendre rendez-vous ») [à confirmer classe] */
 .btn-gold, .btn-rdv{
   background:var(--mj-gold) !important; color:var(--mj-gold-d) !important;
   border:none; border-radius:0; font-weight:700;
@@ -214,6 +189,6 @@ footer section div.logoGrid{ font-family:var(--mj-serif); color:#fff; }
 /* ---- 10. SECTIONS ALTERNÉES ------------------------------------------------ */
 [class*="webinfo-"]:nth-of-type(even){ background:var(--mj-soft); }
 
-/* ---- 11. CARTES PHOTO / CARROUSEL [À CONFIRMER] ---------------------------- */
+/* ---- 11. CARTES PHOTO / CARROUSEL [à confirmer] ---------------------------- */
 /* Si l'instance expose des cartes owl-carousel / .item, nous fournirons le
    traitement correspondant une fois les sélecteurs réels communiqués. */
