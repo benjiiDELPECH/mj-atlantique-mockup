@@ -15,15 +15,19 @@ Où la poser
 Après app/config/css/styles.css. Elle ne touche pas au markup, elle ne fait
 que surcharger vos sélecteurs à partir de variables CSS. Le mieux serait
 qu'elle remplace la partie "thème client" de styles.css plutôt que de s'y
-ajouter, mais faites au plus simple pour vous.
+ajouter, mais faites au plus simple.
 
 Les polices sont en local, pas de Google Fonts — je préfère éviter ça sur le
-site d'une étude. La feuille les appelle en relatif (./fonts/raleway.css), à
-ajuster selon votre arborescence.
+site d'une étude. La feuille les appelle en relatif (./fonts/raleway.css) ;
+ajustez le chemin selon votre arborescence.
+
+J'ai ciblé le hero avec .accueil-accueil section.pictureBcg, plus un repli
+sans préfixe au cas où la convention diffère. S'il y a des cartes photo type
+owl-carousel, envoyez-moi les sélecteurs et je vous fais le traitement.
 
 
-Un point à vérifier avant
--------------------------
+Le gabarit
+----------
 
 En regardant les pages, l'instance de l'étude tourne sur votre gabarit
 historique (#header, #bigMenu, #sidebar…), alors que ma charte vise les
@@ -31,22 +35,41 @@ sélecteurs du gabarit récent — .main-navigation, .pictureBcg,
 .espace-gros-carres. C'est ce dernier qui porte les carrés d'entrée et le
 bandeau photo, les deux éléments que Me Raymond a validés.
 
-Donc si vous basculez l'étude sur le gabarit récent, la charte s'applique
-telle quelle. Si ce n'est pas envisageable, dites-le moi : je la réécris pour
-l'ancien, ça ne me pose pas de problème.
-
-Une chose à garder à l'œil dans tous les cas : le sitemap déclare 787 URLs,
-surtout des annonces d'actifs. Ce sont elles qui font venir les repreneurs,
-donc idéalement rien ne bouge, ou des 301.
+Si vous basculez l'étude sur le gabarit récent, la charte s'applique telle
+quelle. Sinon je la réécris pour l'ancien, ça ne me pose pas de problème.
 
 
-Deux questions
---------------
+Le référencement — ce qui ne bouge pas
+--------------------------------------
 
-- Le préfixe de page : je cible .accueil-accueil section.pictureBcg avec un
-  repli sans préfixe. C'est la bonne convention ?
-- S'il y a des cartes photo type owl-carousel, donnez-moi les sélecteurs et
-  je vous envoie le traitement qui va avec.
+Point soulevé côté étude, et la réponse est simple : il n'y a jamais deux
+sites. On rhabille celui qui existe. Même domaine, mêmes adresses, même
+contenu métier.
+
+   AUJOURD'HUI                          APRÈS
+   mj-atlantique.fr                     mj-atlantique.fr
+   ├── /accueil    ancien habillage     ├── /accueil    nouvel habillage
+   ├── /actif      787 annonces         ├── /actif      787 annonces  inchangé
+   ├── /mandat     recherche            ├── /mandat     recherche     inchangé
+   └── /salarie    espace connecté      └── /salarie    espace        inchangé
+
+   un seul site, une seule adresse      toujours un seul site
+
+Ce qu'il ne faut surtout pas faire, en revanche :
+
+   mj-atlantique.fr   +   un second site avec le même contenu
+                          → Google en choisit un et l'étude perd sur les deux
+
+Donc rien à craindre côté positions : ce qui les fait, ce sont les 787 pages
+d'annonces d'actifs, et elles ne bougent pas. Si une adresse devait malgré
+tout changer pendant la bascule, une redirection 301 suffit à tout conserver.
+
+Au passage, la refonte corrige trois manques du site actuel qui coûtent des
+positions : les titres de page sont génériques et sans ville, il n'y a aucune
+donnée structurée (Google ne "comprend" donc pas l'entité, ses deux adresses
+et ses horaires), et pas d'Open Graph (les liens partagés par mail ou LinkedIn
+s'affichent cassés). Tout ça est déjà dans la maquette, à reprendre à
+l'intégration.
 
 
 Le rendu visé
