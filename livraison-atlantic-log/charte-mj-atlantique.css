@@ -1,0 +1,219 @@
+/* =============================================================================
+   CHARTE GRAPHIQUE — SCP Delphine RAYMOND (MJ Atlantique / MJ Perpignan)
+   À destination d'Atlantic Log (Gemweb / Apache Tapestry).
+
+   v2 — 06/08/2026.
+
+   RÔLE : feuille de thème par étude. Posée sur le gabarit Gemweb, elle applique
+   l'identité de la maquette validée par Me RAYMOND, SANS toucher au markup
+   Tapestry. Tout passe par des variables CSS + surcharges de sélecteurs natifs.
+
+   ⚠️ v2 — CORRECTION IMPORTANTE PAR RAPPORT À LA v1 :
+   la v1 portait des valeurs (marine #0a1c38, polices Spectral + Inter) qui ne
+   correspondaient PLUS à la maquette réellement livrée et validée. Appliquée
+   telle quelle, elle aurait produit un site différent de celui que la cliente a
+   approuvé. Les valeurs ci-dessous sont extraites du :root de la maquette de
+   référence (index.html) — elles font foi.
+
+   ⚠️ PRÉ-REQUIS DE GABARIT (vérifié le 06/08/2026 par inspection des pages
+   publiques) : mj-atlantique.fr sert un gabarit HISTORIQUE, construit sur des id
+   (#header, #bigMenu, #sidebar, #content-wrap, #footer-wrap) et sans balises
+   HTML5. Les sélecteurs ci-dessous (.espace-gros-carres, .pictureBcg,
+   .main-navigation, .boxed-content) appartiennent au gabarit MODERNE, déjà en
+   production sur d'autres études Gemweb — ils sont ABSENTS de l'instance MJ.
+   Cette feuille suppose donc la bascule préalable de l'instance sur le gabarit
+   moderne (cf. NOTE-INTEGRATION.md §2-3). À défaut, elle est à réécrire pour le
+   gabarit historique : c'est un travail distinct, que nous prenons en charge.
+
+   CHARGEMENT : après app/config/css/styles.css. Idéalement, ce fichier REMPLACE
+   la portion « thème client » de styles.css plutôt que de s'y ajouter.
+
+   POLICES : Raleway (texte, auto-hébergée) + Georgia (titres, police système,
+   aucun téléchargement). AUCUN appel à fonts.googleapis.com — conformité RGPD
+   (jurisprudence CNIL ; LG München I, 3 O 17493/20), point non négociable pour
+   une profession réglementée. Les fichiers .woff2 et leur feuille @font-face
+   sont fournis dans fonts/ (2 fichiers, 68 Ko au total, licence SIL OFL 1.1).
+   ============================================================================= */
+
+@import url('./fonts/raleway.css');
+
+/* ---- 1. TOKENS — extraits de la maquette validée --------------------------- */
+:root{
+  --mj-navy:    #001656;   /* marine principal — hero, nav, footer */
+  --mj-navy-d:  #020046;   /* marine profond — bandeau bas */
+  --mj-navy-l:  #0a2e7a;   /* marine clair — survols, liens */
+  --mj-gold:    #b8923f;   /* or — filets et accents UNIQUEMENT, jamais un aplat */
+  --mj-gold-d:  #7a5820;   /* or sombre — texte sur fond or */
+  --mj-gold-l:  #a07d2e;
+  --mj-ink:     #1a2230;   /* texte courant */
+  --mj-mid:     #5b6472;   /* texte secondaire */
+  --mj-bg:      #fff;      /* fond de page */
+  --mj-soft:    #f4f6f9;   /* fond de section alterné */
+  --mj-line:    #e3e7ee;   /* filets et bordures */
+  --mj-white:   #fff;
+  --mj-sans:    'Raleway', -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+  --mj-serif:   Georgia, 'Times New Roman', serif;
+}
+
+/* ---- 2. BASE --------------------------------------------------------------- */
+body{
+  font-family:var(--mj-sans);
+  color:var(--mj-ink);
+  background:var(--mj-bg);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.boxed-content-title{ font-family:var(--mj-serif); font-weight:400; }
+a{ color:var(--mj-navy-l); }
+a:hover{ color:var(--mj-navy); }
+
+/* accessibilité — focus visible (WCAG 2.4.7), souvent absent des thèmes Gemweb */
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline:2px solid var(--mj-gold); outline-offset:2px;
+}
+
+/* ---- 3. NAVIGATION (.main-navigation) -------------------------------------- */
+.main-navigation{
+  background:var(--mj-white);
+  border-bottom:2px solid var(--mj-navy) !important;
+}
+.main-navigation .navbarFlex a h1{
+  color:var(--mj-navy) !important;
+  font-family:var(--mj-serif);
+  text-decoration:none !important;
+}
+.main-navigation .navbar-nav > li > a,
+.main-navigation .navbar-nav > li > a.dropdown-toggle{
+  color:var(--mj-navy);
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  font-size:12.5px;
+}
+.main-navigation .navbar-nav > li > a:hover,
+.main-navigation .navbar-nav > li > a.active{
+  color:var(--mj-navy-l);
+  border-bottom:2px solid var(--mj-gold);
+}
+
+/* bandeau de connexion à l'espace client */
+#loginform .input-group-addon{
+  background:var(--mj-navy); color:#fff; border-color:var(--mj-navy);
+}
+#loginform button[type="submit"], .t-beaneditor-submit{
+  background:var(--mj-navy); color:#fff; border:none; border-radius:0;
+  text-transform:uppercase; font-weight:700; letter-spacing:.5px; padding:9px 14px;
+}
+#loginform button[type="submit"]:hover, .t-beaneditor-submit:hover{
+  background:var(--mj-navy-l);
+}
+
+/* ---- 4. HERO (.pictureBcg) ------------------------------------------------- */
+/* Recette vérifiée sur mjassocies.eu, référence citée par la cliente : la photo
+   reste EN COULEUR et reçoit un voile marine semi-transparent — ce n'est pas un
+   noir et blanc dégradé. Le voile est plus dense à gauche, plus clair à droite :
+   c'est ce contraste qui dessine les deux colonnes.
+   [À CONFIRMER] le préfixe de page (.accueil-accueil) sur l'instance MJ. */
+.pictureBcg{ position:relative; }
+.accueil-accueil section.pictureBcg img,
+section.pictureBcg img{
+  opacity:1 !important;
+  height:90dvh; width:100%; object-fit:cover; object-position:center 38%;
+  z-index:-2;
+}
+.accueil-accueil section.pictureBcg::after,
+section.pictureBcg::after{
+  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(105deg,
+     rgba(0,22,86,.88) 0%, rgba(0,22,86,.72) 42%, rgba(0,22,86,.34) 100%);
+}
+/* scrim haut : rend la nav lisible par-dessus la photo */
+section.pictureBcg::before{
+  content:''; position:absolute; inset:0 0 auto 0; height:150px; z-index:-1;
+  background:linear-gradient(to bottom, rgba(2,0,70,.55), transparent);
+  pointer-events:none;
+}
+
+section.presentation h1{
+  font-family:var(--mj-serif); color:#fff; font-weight:400;
+  font-size:clamp(34px,5vw,64px); line-height:1.05; letter-spacing:.2px;
+}
+section.presentation h3{
+  font-family:var(--mj-serif); color:rgba(255,255,255,.88); font-weight:400;
+  font-size:clamp(16px,2vw,22px); margin-top:14px;
+}
+/* filet or au-dessus du titre — signature de la maquette */
+section.presentation h1::before{
+  content:''; display:block; width:46px; height:2px;
+  background:var(--mj-gold); margin-bottom:18px;
+}
+
+/* ---- 5. LES CARTES D'ENTRÉE (.espace-gros-carres .boxed-content) ----------- */
+/* Composant NATIF du gabarit moderne Gemweb — « les carrés en porte d'entrée »,
+   l'élément explicitement validé par Me RAYMOND. Rien à développer. */
+.espace-gros-carres a .boxed-content{
+  background:var(--mj-white) !important;
+  border:1px solid var(--mj-line) !important;
+  border-top:3px solid var(--mj-navy) !important;
+  border-radius:0 !important;
+  box-shadow:0 1px 2px rgba(0,22,86,.05);
+  transition:box-shadow .14s, transform .14s, border-color .14s;
+}
+.espace-gros-carres a .boxed-content:hover{
+  background:var(--mj-white) !important;
+  border-top-color:var(--mj-gold) !important;
+  box-shadow:0 12px 32px rgba(0,22,86,.13);
+  transform:translateY(-2px);
+}
+.espace-gros-carres a .boxed-content i,
+.espace-gros-carres a .boxed-content .boxed-content-title,
+.espace-gros-carres a .boxed-content h2,
+.espace-gros-carres a .boxed-content span{ color:var(--mj-navy) !important; }
+.espace-gros-carres a .boxed-content p{ color:var(--mj-mid) !important; }
+.espace-gros-carres a .boxed-content:hover i,
+.espace-gros-carres a .boxed-content:hover .boxed-content-title,
+.espace-gros-carres a .boxed-content:hover h2{ color:var(--mj-navy-l) !important; }
+.espace-gros-carres a .boxed-content i,
+.boxed-content > i{ font-size:2.4rem !important; color:var(--mj-navy) !important; }
+.boxed-content .boxed-content-title{ font-size:22px; font-weight:400; }
+
+@media (prefers-reduced-motion: reduce){
+  .espace-gros-carres a .boxed-content{ transition:none; }
+  .espace-gros-carres a .boxed-content:hover{ transform:none; }
+}
+
+/* ---- 6. TITRES DE BLOCS (webinfo-*) --------------------------------------- */
+[class*="webinfo-"] h1,
+[class*="webinfo-"] h3{ color:var(--mj-navy) !important; text-decoration:none !important; }
+
+/* ---- 7. BOUTONS ------------------------------------------------------------ */
+.btn-primary, a.btn-primary{
+  background:var(--mj-navy); border-color:var(--mj-navy); border-radius:0;
+  text-transform:uppercase; font-weight:700; letter-spacing:.6px;
+}
+.btn-primary:hover, .btn-primary:focus{
+  background:var(--mj-navy-l); border-color:var(--mj-navy-l);
+}
+/* or réservé à l'action principale (« Prendre rendez-vous ») [À CONFIRMER classe] */
+.btn-gold, .btn-rdv{
+  background:var(--mj-gold) !important; color:var(--mj-gold-d) !important;
+  border:none; border-radius:0; font-weight:700;
+}
+.btn-gold:hover, .btn-rdv:hover{ background:var(--mj-gold-l) !important; color:#fff !important; }
+
+/* ---- 8. FORMULAIRES -------------------------------------------------------- */
+.form-control{ border-radius:0; border-color:var(--mj-line); }
+.form-control:focus{ border-color:var(--mj-navy-l); box-shadow:0 0 0 2px rgba(10,46,122,.15); }
+
+/* ---- 9. FOOTER ------------------------------------------------------------- */
+footer{ background:var(--mj-navy); color:rgba(255,255,255,.78); }
+footer section a{ color:rgba(255,255,255,.9); }
+footer section div.logoGrid{ font-family:var(--mj-serif); color:#fff; }
+.copyright{ background:var(--mj-navy-d) !important; color:rgba(255,255,255,.6); }
+.copyright a{ color:rgba(255,255,255,.85); }
+
+/* ---- 10. SECTIONS ALTERNÉES ------------------------------------------------ */
+[class*="webinfo-"]:nth-of-type(even){ background:var(--mj-soft); }
+
+/* ---- 11. CARTES PHOTO / CARROUSEL [À CONFIRMER] ---------------------------- */
+/* Si l'instance expose des cartes owl-carousel / .item, nous fournirons le
+   traitement correspondant une fois les sélecteurs réels communiqués. */
