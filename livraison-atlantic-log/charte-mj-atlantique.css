@@ -18,8 +18,8 @@
   --mj-navy-d:  #020046;   /* marine profond — bandeau bas */
   --mj-navy-l:  #0a2e7a;   /* marine clair — survols, liens */
   --mj-gold:    #b8923f;   /* or — filets et accents UNIQUEMENT, jamais un aplat */
-  --mj-gold-d:  #7a5820;   /* or sombre — texte sur fond or */
-  --mj-gold-l:  #a07d2e;
+  --mj-gold-d:  #7a5820;   /* or sombre — texte sur fond clair */
+  --mj-gold-l:  #cda955;   /* or clair — survol du bouton or */
   --mj-ink:     #1a2230;   /* texte courant */
   --mj-mid:     #5b6472;   /* texte secondaire */
   --mj-bg:      #fff;      /* fond de page */
@@ -169,11 +169,12 @@ section.presentation h1::before{
   background:var(--mj-navy-l); border-color:var(--mj-navy-l);
 }
 /* or réservé à l'action principale (« Prendre rendez-vous ») [à confirmer classe] */
+/* texte marine sur l'or : 5,78:1 au repos, 7,53:1 au survol (WCAG AA ≥ 4,5) */
 .btn-gold, .btn-rdv{
-  background:var(--mj-gold) !important; color:var(--mj-gold-d) !important;
+  background:var(--mj-gold) !important; color:var(--mj-navy) !important;
   border:none; border-radius:0; font-weight:700;
 }
-.btn-gold:hover, .btn-rdv:hover{ background:var(--mj-gold-l) !important; color:#fff !important; }
+.btn-gold:hover, .btn-rdv:hover{ background:var(--mj-gold-l) !important; color:var(--mj-navy) !important; }
 
 /* ---- 8. FORMULAIRES -------------------------------------------------------- */
 .form-control{ border-radius:0; border-color:var(--mj-line); }
