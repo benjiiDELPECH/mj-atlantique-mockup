@@ -31,13 +31,18 @@ for img in $(cat "${PAGES[@]}" | grep -oE 'v/img/[A-Za-z0-9_.-]+' | sort -u); do
 done
 cp -R apercu "$DIST/apercu"
 
-# En-têtes : noindex uniquement sur les domaines *.pages.dev (prod et previews).
+# En-têtes : noindex toujours sur *.pages.dev (prod et previews) ; sur le domaine
+# public aussi, tant que INDEXABLE=1 n'est pas passé explicitement (la vitrine
+# n'est indexée qu'une fois la grille « 29 axes » verte).
 cat > "$DIST/_headers" <<'HDR'
 https://:project.pages.dev/*
   X-Robots-Tag: noindex, nofollow
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex, nofollow
 HDR
+if [ "${INDEXABLE:-0}" != "1" ]; then
+  printf '/*\n  X-Robots-Tag: noindex, nofollow\n' >> "$DIST/_headers"
+fi
 
 # robots.txt, sitemap.xml, llms.txt : URL réécrites. robots reste permissif :
 # un Disallow empêcherait les robots de lire le noindex des copies.
@@ -54,4 +59,4 @@ for f in "${PAGES[@]}"; do
     echo "ECHEC : meta robots noindex dans $DIST/$f" >&2; exit 1
   fi
 done
-echo "OK : $DIST prêt (SITE=$SITE)"
+echo "OK : $DIST prêt (SITE=$SITE, INDEXABLE=${INDEXABLE:-0})"
