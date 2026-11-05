@@ -17,10 +17,13 @@ mkdir -p "$DIST/v/img"
 
 # Pages : réécriture des URL ; suppression de la balise noindex (et d'un éventuel
 # commentaire sur la même ligne). Les liens vers www.mj-atlantique.fr restent intacts.
+# Les emplacements « à fournir » (data-a-fournir) restent visibles dans l'aperçu
+# client, mais sont masqués côté public.
 for f in "${PAGES[@]}"; do
   sed -E \
     -e "s|$SRC|$SITE|g" \
     -e 's|<meta name="robots" content="noindex">(<!--.*-->)?||g' \
+    -e 's|</head>|<style>[data-a-fournir]{display:none!important}</style></head>|' \
     "$f" > "$DIST/$f"
 done
 
@@ -57,6 +60,12 @@ fi
 for f in "${PAGES[@]}"; do
   if grep -qiE '<meta[^>]*name="robots"[^>]*noindex' "$DIST/$f"; then
     echo "ECHEC : meta robots noindex dans $DIST/$f" >&2; exit 1
+  fi
+  if grep -iE 'à (fournir|préciser)' "$DIST/$f" | grep -qv 'data-a-fournir'; then
+    echo "ECHEC : emplacement « à fournir » non marqué data-a-fournir dans $DIST/$f" >&2; exit 1
+  fi
+  if ! grep -q '\[data-a-fournir\]{display:none' "$DIST/$f"; then
+    echo "ECHEC : masquage data-a-fournir absent de $DIST/$f" >&2; exit 1
   fi
 done
 echo "OK : $DIST prêt (SITE=$SITE, INDEXABLE=${INDEXABLE:-0})"
