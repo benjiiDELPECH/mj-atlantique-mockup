@@ -1,2 +1,5 @@
 facture/
 dist/
+qualite/node_modules/
+qualite/crops/
+.wrangler/
