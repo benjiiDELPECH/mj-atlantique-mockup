@@ -138,22 +138,7 @@ section.soft{background:var(--soft)}
 .cede-cat span{display:block;font-size:13.5px;color:rgba(255,255,255,.82);margin-top:4px;line-height:1.5}
 .cede-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .cede-note{font-size:14px;color:rgba(255,255,255,.8);max-width:420px}
-/* Opportunités de reprise — fiches standardisées (grille d'éval repreneur) */
-.opp-head{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin:4px 0 16px}
-.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
-.opp-card{background:#fff;border-radius:9px;padding:20px 22px;color:var(--ink);display:flex;flex-direction:column;text-decoration:none;transition:.15s}
-.opp-card:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,0,22,.28)}
-.opp-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
-.opp-tag{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy-l)}
-.opp-status{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#7a5820;background:rgba(184,146,63,.15);padding:3px 9px;border-radius:20px;white-space:nowrap}
-.opp-title{font-size:16.5px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:14px}
-.opp-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;border-top:1px solid var(--line);padding-top:13px}
-.opp-fields div{display:flex;flex-direction:column}
-.opp-fields span{color:var(--mid);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
-.opp-fields b{font-weight:700;color:var(--ink);font-size:13.5px}
-.opp-more{margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);display:inline-flex;align-items:center;gap:6px}
-.opp-card:hover .opp-more{color:var(--gold)}
-@media(max-width:760px){.cede-grid{grid-template-columns:1fr 1fr}.opp-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.cede-grid{grid-template-columns:1fr 1fr}}
 /* Recherche d'actifs — barre directe (redirige vers Atlantic Log) */
 .actif-search{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:20px 22px;margin:0 0 30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .asr-label{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;color:#fff}
@@ -449,42 +434,6 @@ footer a{color:rgba(255,255,255,.85)}
     <div class="cede-cat"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg><b>Biens immobiliers</b><span>Locaux, murs, terrains</span></div>
     <div class="cede-cat"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 7 12 12l8.73-5"/><path d="M12 22V12"/></svg><b>Matériel &amp; stocks</b><span>Équipements, véhicules, marchandises</span></div>
     <div class="cede-cat"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><b>Parts &amp; titres</b><span>Cessions de droits sociaux</span></div>
-  </div>
-  <div class="opp-head">Opportunités en cours — exemples</div>
-  <div class="opp-grid">
-    <a class="opp-card" href="https://www.mj-atlantique.fr/anonym/actif/search">
-      <div class="opp-top"><span class="opp-tag">Fonds de commerce</span><span class="opp-status">Offres en cours</span></div>
-      <div class="opp-title">Restaurant — La Rochelle centre (17)</div>
-      <div class="opp-fields">
-        <div><span>Activité</span><b>Restauration</b></div>
-        <div><span>Effectif</span><b>8 salariés</b></div>
-        <div><span>Chiffre d'affaires</span><b>≈ 620 k€</b></div>
-        <div><span>Offres avant</span><b>15/07</b></div>
-      </div>
-      <span class="opp-more">En savoir plus →</span>
-    </a>
-    <a class="opp-card" href="https://www.mj-atlantique.fr/anonym/actif/search">
-      <div class="opp-top"><span class="opp-tag">Bien immobilier</span><span class="opp-status">Disponible</span></div>
-      <div class="opp-title">Local commercial — Perpignan (66)</div>
-      <div class="opp-fields">
-        <div><span>Type</span><b>Murs commerciaux</b></div>
-        <div><span>Surface</span><b>180 m²</b></div>
-        <div><span>Emplacement</span><b>Centre-ville</b></div>
-        <div><span>Prix</span><b>Sur demande</b></div>
-      </div>
-      <span class="opp-more">En savoir plus →</span>
-    </a>
-    <a class="opp-card" href="https://www.mj-atlantique.fr/anonym/actif/search">
-      <div class="opp-top"><span class="opp-tag">Matériel &amp; stocks</span><span class="opp-status">Enchères</span></div>
-      <div class="opp-title">Lot industriel — Charente-Maritime (17)</div>
-      <div class="opp-fields">
-        <div><span>Nature</span><b>Équipements</b></div>
-        <div><span>Lot</span><b>Complet</b></div>
-        <div><span>Secteur</span><b>Métallurgie</b></div>
-        <div><span>Clôture</span><b>22/07</b></div>
-      </div>
-      <span class="opp-more">En savoir plus →</span>
-    </a>
   </div>
   <div class="cede-foot">
     <div class="cede-note">Annonces mises à jour en continu — alertes par email pour les repreneurs inscrits.</div>

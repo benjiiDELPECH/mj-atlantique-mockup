@@ -13,19 +13,22 @@ fi
 if [ $# -eq 0 ]; then
   ./build-pages.sh
   PORT=$(python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])')
-  python3 -m http.server "$PORT" --bind 127.0.0.1 -d dist >/dev/null 2>&1 &
+  # serve.cjs reproduit Cloudflare Pages : adresses sans .html, 404.html, en-têtes de _headers
+  node qualite/serve.cjs dist "$PORT" &
   SRV=$!
   trap 'kill $SRV' EXIT
-  for _ in $(seq 50); do curl -sf -o /dev/null "http://127.0.0.1:$PORT/index.html" && break; sleep 0.1; done
-  BASE="http://127.0.0.1:$PORT"; ACCUEIL=/index.html; PAGES=(/index.html /etude.html /contact.html)
+  for _ in $(seq 50); do curl -sf -o /dev/null "http://127.0.0.1:$PORT/" && break; sleep 0.1; done
+  BASE="http://127.0.0.1:$PORT"; CANON="${SITE:-https://etude.mj-atlantique.fr}"
 else
-  BASE="${1%/}"; ACCUEIL=/; PAGES=(/ /etude /contact)
+  BASE="${1%/}"; CANON="$BASE"
 fi
+PAGES=(/ /etude /contact /page-introuvable)
 
 cd qualite
 mkdir -p crops
 node test-decodeur.cjs
-node chevauche.cjs "$BASE$ACCUEIL"
+node site.cjs "$BASE" "$CANON"
+node chevauche.cjs "$BASE/"
 node axe-typo.cjs "$BASE" "${PAGES[@]}"
 node contraste.cjs "$BASE" "${PAGES[@]}" > crops/contraste.json
-echo "OK : contraste, axe, tailles, « à fournir », chevauchement ($BASE)"
+echo "OK : site (404, en-têtes, canoniques), contraste, axe, tailles, console, « à fournir », chevauchement ($BASE)"

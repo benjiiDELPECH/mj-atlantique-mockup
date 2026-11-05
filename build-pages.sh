@@ -19,13 +19,21 @@ mkdir -p "$DIST/v/img"
 # commentaire sur la même ligne). Les liens vers www.mj-atlantique.fr restent intacts.
 # Les emplacements « à fournir » (data-a-fournir) restent visibles dans l'aperçu
 # client, mais sont masqués côté public.
+# Adresses publiques sans .html (Cloudflare redirige /etude.html en 308 vers /etude) :
+# canonique, og:url et liens internes pointent directement sur la forme finale.
 for f in "${PAGES[@]}"; do
+  chemin="/${f%.html}"; [ "$f" = index.html ] && chemin=/
   sed -E \
     -e "s|$SRC|$SITE|g" \
+    -e "s#($SITE/[a-z-]+)\.html#\1#g" \
+    -e 's#href="index\.html#href="/#g' \
+    -e 's#href="(etude|contact)\.html#href="/\1#g' \
+    -e "s#<meta property=\"og:url\" content=\"[^\"]*\">#<meta property=\"og:url\" content=\"$SITE$chemin\">#" \
     -e 's|<meta name="robots" content="noindex">(<!--.*-->)?||g' \
     -e 's|</head>|<style>[data-a-fournir]{display:none!important}</style></head>|' \
     "$f" > "$DIST/$f"
 done
+cp 404.html "$DIST/404.html"
 
 # Polices, images référencées par les pages, aperçu avant/après (garde son noindex).
 cp -R fonts "$DIST/fonts"
@@ -43,14 +51,26 @@ https://:project.pages.dev/*
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex, nofollow
 HDR
+# En-têtes de sécurité sur tout le site. 'unsafe-inline' : styles et scripts sont
+# inline dans les pages ; seul autre destinataire de formulaire = recherche d'actifs
+# Atlantic Log. HSTS sans includeSubDomains : le domaine appartient à l'étude.
+cat >> "$DIST/_headers" <<'HDR'
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; form-action 'self' https://www.mj-atlantique.fr; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+HDR
 if [ "${INDEXABLE:-0}" != "1" ]; then
-  printf '/*\n  X-Robots-Tag: noindex, nofollow\n' >> "$DIST/_headers"
+  printf '  X-Robots-Tag: noindex, nofollow\n' >> "$DIST/_headers"
 fi
 
-# robots.txt, sitemap.xml, llms.txt : URL réécrites. robots reste permissif :
-# un Disallow empêcherait les robots de lire le noindex des copies.
+# robots.txt, sitemap.xml, llms.txt : URL réécrites, sans .html. robots reste
+# permissif : un Disallow empêcherait les robots de lire le noindex des copies.
 for f in robots.txt sitemap.xml llms.txt; do
-  sed "s|$SRC|$SITE|g" "$f" > "$DIST/$f"
+  sed -E -e "s|$SRC|$SITE|g" -e "s#($SITE/[a-z-]+)\.html#\1#g" "$f" > "$DIST/$f"
 done
 
 # Gardes : le build échoue si une URL d'aperçu ou un noindex subsiste côté public.
