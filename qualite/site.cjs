@@ -25,6 +25,10 @@ const attr = (html, re) => (html.match(re) || [])[1];
     if (og !== canon) ko.push(`${p} : og:url « ${og} » ≠ canonique`);
     for (const h of html.match(/href="(?!https?:|mailto:|tel:|#)[^"]*\.html[^"]*"/g) || []) ko.push(`${p} : lien interne en .html ${h}`);
     if (/class="opp-card"|Opportunités en cours/.test(html)) ko.push(`${p} : annonces d'exemple encore présentes`);
+    // Un formulaire doit aboutir quelque part : action absente, vide ou « # » = message perdu.
+    for (const f of html.match(/<form\b[^>]*>/g) || []) if (!/action="https?:\/\/[^"#]+"/.test(f)) ko.push(`${p} : formulaire sans destination ${f}`);
+    if (p === '/contact') for (const m of ['contact@mj-atlantique.fr', 'contact@mj-perpignan.fr'])
+      if (!html.includes(`href="mailto:${m}`)) ko.push(`/contact : lien d'écriture vers ${m} absent`);
   }
   const r404 = await get('/cette-page-nexiste-pas'), b404 = await r404.text();
   if (r404.status !== 404) ko.push(`404 : statut ${r404.status}`);

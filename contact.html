@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Contact — SCP Delphine Raymond · La Rochelle (17) &amp; Perpignan (66)</title>
-<meta name="description" content="Contacter la SCP Delphine Raymond, mandataires judiciaires. Deux études : La Rochelle (17) et Perpignan (66). Adresses, téléphones, horaires et formulaire de contact.">
+<meta name="description" content="Contacter la SCP Delphine Raymond, mandataires judiciaires. Deux études : La Rochelle (17) et Perpignan (66). Adresses, téléphones, horaires et adresses e-mail.">
 <!-- Open Graph (aperçu mail / LinkedIn) — og:image à passer en URL absolue à la mise en ligne -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -273,15 +273,13 @@ footer a{color:rgba(255,255,255,.85)}
 .etude-card li:first-child{border-top:0}
 .etude-card svg{width:18px;height:18px;stroke:var(--gold-soft);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
 .etude-card .tofill{color:var(--mid);font-style:italic}
-.cform{max-width:720px;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.cform .full{grid-column:1 / -1}
-.cform label{display:block;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);margin-bottom:7px}
-.cform input,.cform select,.cform textarea{width:100%;border:1px solid var(--line);border-radius:7px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;outline:none;transition:border-color .15s}
-.cform input:focus,.cform select:focus,.cform textarea:focus{border-color:var(--gold-soft)}
-.cform textarea{min-height:130px;resize:vertical}
-.cform .btn{cursor:pointer;border:0}
-.cform-note{font-size:12.5px;color:var(--mid);margin-top:14px}
-@media(max-width:760px){.contact-grid,.cform{grid-template-columns:1fr}.page-h{font-size:36px;letter-spacing:3px}}
+.ecrire{max-width:720px;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ecrire-c{display:block;background:#fff;border:1px solid var(--line);border-radius:7px;padding:20px 22px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.ecrire-c:hover{border-color:var(--gold-soft)}
+.ecrire-v{display:block;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+.ecrire-m{display:block;font-size:17px;font-weight:600;color:var(--navy);text-decoration:underline;overflow-wrap:anywhere}
+.ecrire-t{display:block;font-size:14px;color:var(--mid);margin-top:6px}
+@media(max-width:760px){.contact-grid,.ecrire{grid-template-columns:1fr}.page-h{font-size:36px;letter-spacing:3px}}
 </style>
 <link rel="canonical" href="https://benjiidelpech.github.io/mj-atlantique-mockup/contact.html">
 <script type="application/ld+json">
@@ -404,18 +402,11 @@ footer a{color:rgba(255,255,255,.85)}
 </div></section>
 
 <section class="csec soft"><div class="wrap">
-  <div class="sec-head"><div class="sec-kick">Écrivez-nous</div><h2 class="sec-h">Formulaire de contact</h2><p class="sec-lead">Décrivez votre situation en quelques mots ; nous revenons vers vous rapidement.</p></div>
-  <form class="cform" action="#" method="post">
-    <div><label for="f-nom">Nom</label><input id="f-nom" type="text" name="nom" placeholder="Votre nom"></div>
-    <div><label for="f-email">Email</label><input id="f-email" type="email" name="email" placeholder="vous@exemple.fr"></div>
-    <div><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" name="tel" placeholder="Optionnel"></div>
-    <div><label for="f-etude">Étude concernée</label><select id="f-etude" name="etude"><option>La Rochelle (17)</option><option>Perpignan (66)</option><option>Je ne sais pas</option></select></div>
-    <div class="full"><label for="f-profil">Vous êtes</label><select id="f-profil" name="profil"><option>Chef d'entreprise</option><option>Salarié</option><option>Créancier</option><option>Repreneur / investisseur</option><option>Autre</option></select></div>
-    <div class="full"><label for="f-message">Votre message</label><textarea id="f-message" name="message" placeholder="Décrivez votre situation…"></textarea></div>
-    <div class="full"><button class="btn btn-o" type="submit" style="background:var(--navy);color:#fff;border:0">Envoyer le message</button>
-      <div class="cform-note">Vos informations restent confidentielles et ne servent qu'à traiter votre demande.</div>
-    </div>
-  </form>
+  <div class="sec-head"><div class="sec-kick">Écrivez-nous</div><h2 class="sec-h">Écrire à l'étude</h2><p class="sec-lead">Choisissez l'étude concernée : votre messagerie s'ouvre avec son adresse.</p></div>
+  <div class="ecrire">
+    <a class="ecrire-c" href="mailto:contact@mj-atlantique.fr"><span class="ecrire-v">La Rochelle (17)</span><span class="ecrire-m">contact@mj-atlantique.fr</span><span class="ecrire-t">Tél. 05 46 41 32 19</span></a>
+    <a class="ecrire-c" href="mailto:contact@mj-perpignan.fr"><span class="ecrire-v">Perpignan (66)</span><span class="ecrire-m">contact@mj-perpignan.fr</span><span class="ecrire-t">Tél. 04 68 81 09 97</span></a>
+  </div>
 </div></section>
 
 
