@@ -27,6 +27,9 @@ const attr = (html, re) => (html.match(re) || [])[1];
     if (/class="opp-card"|Opportunités en cours/.test(html)) ko.push(`${p} : annonces d'exemple encore présentes`);
     // Un formulaire doit aboutir quelque part : action absente, vide ou « # » = message perdu.
     for (const f of html.match(/<form\b[^>]*>/g) || []) if (!/action="https?:\/\/[^"#]+"/.test(f)) ko.push(`${p} : formulaire sans destination ${f}`);
+    // Un lien qui ne mène nulle part (« # » ou vide) promet un clic sans suite.
+    const morts = html.match(/href="#?"/g) || [];
+    if (morts.length) ko.push(`${p} : ${morts.length} lien(s) vers nulle part (href="#" ou vide)`);
     if (p === '/contact') for (const m of ['contact@mj-atlantique.fr', 'contact@mj-perpignan.fr'])
       if (!html.includes(`href="mailto:${m}`)) ko.push(`/contact : lien d'écriture vers ${m} absent`);
   }
