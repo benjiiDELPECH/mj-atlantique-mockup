@@ -13,6 +13,9 @@ const SECU = {
   'content-security-policy': /frame-ancestors 'none'.*object-src 'none'|object-src 'none'.*frame-ancestors 'none'/,
 };
 const ko = [];
+// Google coupe la description vers 155-160 caractères : au-delà, l'aperçu finit en « … ».
+const DESC_MAX = 160;
+const vues = { description: new Map(), 'og:description': new Map() };
 const get = u => fetch(base + u, { redirect: 'manual' });
 const attr = (html, re) => (html.match(re) || [])[1];
 (async () => {
@@ -23,6 +26,17 @@ const attr = (html, re) => (html.match(re) || [])[1];
     const canon = attr(html, /<link rel="canonical" href="([^"]+)"/), og = attr(html, /<meta property="og:url" content="([^"]+)"/);
     if (canon !== site + p) ko.push(`${p} : canonique « ${canon} » ≠ ${site + p}`);
     if (og !== canon) ko.push(`${p} : og:url « ${og} » ≠ canonique`);
+    // Une description par page, lisible en entier dans l'aperçu, différente de celle des autres pages.
+    const desc = {
+      description: attr(html, /<meta name="description" content="([^"]*)"/),
+      'og:description': attr(html, /<meta property="og:description" content="([^"]*)"/),
+    };
+    for (const [k, d] of Object.entries(desc)) {
+      if (!d) { ko.push(`${p} : ${k} absente`); continue; }
+      if (d.length > DESC_MAX) ko.push(`${p} : ${k} de ${d.length} caractères (> ${DESC_MAX})`);
+      if (vues[k].has(d)) ko.push(`${p} : ${k} identique à celle de ${vues[k].get(d)}`);
+      vues[k].set(d, p);
+    }
     for (const h of html.match(/href="(?!https?:|mailto:|tel:|#)[^"]*\.html[^"]*"/g) || []) ko.push(`${p} : lien interne en .html ${h}`);
     if (/class="opp-card"|Opportunités en cours/.test(html)) ko.push(`${p} : annonces d'exemple encore présentes`);
     // Un formulaire doit aboutir quelque part : action absente, vide ou « # » = message perdu.
