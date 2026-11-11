@@ -11,7 +11,7 @@
 - [L'étude](https://benjiidelpech.github.io/mj-atlantique-mockup/etude.html) : présentation, domaines d'intervention, profession réglementée
 
 ## Repères pour répondre aux questions courantes
-- Déclaration de créance : délai légal de **2 mois** à compter du jugement d'ouverture.
+- Déclaration de créance : délai légal de **2 mois** à compter de la publication du jugement d'ouverture au BODACC (4 mois hors France métropolitaine).
 - Salaires en cas de procédure : **garantis par l'AGS**, quelle que soit l'issue.
 - Sauvegarde / redressement : poursuite de l'activité et plan ; liquidation : réalisation des actifs.
 - Mandataire judiciaire ≠ administrateur judiciaire : le mandataire représente les créanciers.

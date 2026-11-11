@@ -16,12 +16,21 @@ const ko = [];
 // Google coupe la description vers 155-160 caractères : au-delà, l'aperçu finit en « … ».
 const DESC_MAX = 160;
 const vues = { description: new Map(), 'og:description': new Map() };
+// Affirmations contredites par une source (checklist §1 « zéro invention ») : elles ne doivent pas revenir.
+const CONTREDITS = [
+  [/à compter du jugement d.ouverture/, 'le délai court de la publication au BODACC (art. R.622-24 C. com., Infogreffe)'],
+  [/fondée en 2007|[ÉE]tude créée/, 'SCP immatriculée le 13.09.1991 (SIRENE 383573201) ; la source dit « inscrite sur la liste nationale depuis 2007 »'],
+  [/17001/, 'code postal 17000 (SIRENE et mentions légales de www.mj-atlantique.fr)'],
+  [/6 à 8 mois|12 et 24 mois/, 'durées de clôture sans source'],
+];
+const contredits = (lieu, texte) => { for (const [re, src] of CONTREDITS) if (re.test(texte)) ko.push(`${lieu} : « ${texte.match(re)[0]} » contredit — ${src}`); };
 const get = u => fetch(base + u, { redirect: 'manual' });
 const attr = (html, re) => (html.match(re) || [])[1];
 (async () => {
   for (const p of PAGES) {
     const r = await get(p), html = await r.text();
     if (r.status !== 200) { ko.push(`${p} : statut ${r.status}`); continue; }
+    contredits(p, html);
     for (const [h, re] of Object.entries(SECU)) if (!re.test(r.headers.get(h) || '')) ko.push(`${p} : en-tête ${h} absent ou faible (« ${r.headers.get(h)} »)`);
     const canon = attr(html, /<link rel="canonical" href="([^"]+)"/), og = attr(html, /<meta property="og:url" content="([^"]+)"/);
     if (canon !== site + p) ko.push(`${p} : canonique « ${canon} » ≠ ${site + p}`);
@@ -55,6 +64,7 @@ const attr = (html, re) => (html.match(re) || [])[1];
   const plan = await (await get('/sitemap.xml')).text(), locs = [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
   if (locs.join(' ') !== PAGES.map(p => site + p).join(' ')) ko.push(`sitemap : ${locs.join(' ')}`);
   const llms = await (await get('/llms.txt')).text();
+  contredits('llms.txt', llms);
   for (const l of llms.match(/https?:\/\/[^)\s]+\.html/g) || []) ko.push(`llms.txt : adresse en .html ${l}`);
   for (const x of ko) console.error('ÉCHEC site ' + x);
   console.log(`site : ${ko.length} défaut(s) (${base})`);
