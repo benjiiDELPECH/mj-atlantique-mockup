@@ -19,7 +19,7 @@ const vues = { description: new Map(), 'og:description': new Map() };
 // Affirmations contredites par une source (checklist §1 « zéro invention ») : elles ne doivent pas revenir.
 const CONTREDITS = [
   [/à compter du jugement d.ouverture/, 'le délai court de la publication au BODACC (art. R.622-24 C. com., Infogreffe)'],
-  [/fondée en 2007|[ÉE]tude créée/, 'SCP immatriculée le 13.09.1991 (SIRENE 383573201) ; la source dit « inscrite sur la liste nationale depuis 2007 »'],
+  [/fondée en 2007|[ÉE]tude créée|(?<!mandataires judiciaires )[Dd]epuis 2007/,'SCP immatriculée le 13.09.1991 (SIRENE 383573201) ; la source dit « inscrite sur la liste nationale depuis 2007 »'],
   [/17001/, 'code postal 17000 (SIRENE et mentions légales de www.mj-atlantique.fr)'],
   [/6 à 8 mois|12 et 24 mois/, 'durées de clôture sans source'],
 ];
