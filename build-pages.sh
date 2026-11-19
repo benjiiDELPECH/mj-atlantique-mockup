@@ -34,6 +34,8 @@ for f in "${PAGES[@]}"; do
     "$f" > "$DIST/$f"
 done
 cp 404.html "$DIST/404.html"
+# Icône demandée à la racine par les navigateurs, quelle que soit la balise <link rel="icon">.
+cp favicon.ico "$DIST/favicon.ico"
 
 # Polices, images référencées par les pages, aperçu avant/après (garde son noindex).
 cp -R fonts "$DIST/fonts"

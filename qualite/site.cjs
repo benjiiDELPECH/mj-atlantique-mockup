@@ -59,6 +59,9 @@ const attr = (html, re) => (html.match(re) || [])[1];
   const r404 = await get('/cette-page-nexiste-pas'), b404 = await r404.text();
   if (r404.status !== 404) ko.push(`404 : statut ${r404.status}`);
   if (!/href="\/"/.test(b404) || !/<title>[^<]*introuvable/i.test(b404)) ko.push('404 : page sans titre « introuvable » ni lien vers l\'accueil');
+  // Les navigateurs et les lecteurs de flux demandent /favicon.ico quelle que soit la balise <link rel="icon">.
+  const ico = await get('/favicon.ico');
+  if (ico.status !== 200 || !/^image\//.test(ico.headers.get('content-type') || '')) ko.push(`/favicon.ico : ${ico.status} ${ico.headers.get('content-type')}`);
   const rh = await get('/etude.html');
   if (![301, 308].includes(rh.status) || rh.headers.get('location') !== '/etude') ko.push(`/etude.html : ${rh.status} → ${rh.headers.get('location')}`);
   const plan = await (await get('/sitemap.xml')).text(), locs = [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
